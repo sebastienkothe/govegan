@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC4264D471F002158FD /* AppDelegate.swift */; };
+		836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC6264D471F002158FD /* SceneDelegate.swift */; };
+		836A9EC9264D471F002158FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC8264D471F002158FD /* ViewController.swift */; };
+		836A9ECC264D471F002158FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECA264D471F002158FD /* Main.storyboard */; };
+		836A9ECE264D4722002158FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECD264D4722002158FD /* Assets.xcassets */; };
+		836A9ED1264D4722002158FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECF264D4722002158FD /* LaunchScreen.storyboard */; };
+		836A9EDC264D4722002158FD /* goveganTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EDB264D4722002158FD /* goveganTests.swift */; };
+		836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EE6264D4723002158FD /* goveganUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		836A9ED8264D4722002158FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836A9EB9264D471F002158FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 836A9EC0264D471F002158FD;
+			remoteInfo = govegan;
+		};
+		836A9EE3264D4723002158FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836A9EB9264D471F002158FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 836A9EC0264D471F002158FD;
+			remoteInfo = govegan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		836A9EC1264D471F002158FD /* govegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = govegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		836A9EC4264D471F002158FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		836A9EC6264D471F002158FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		836A9EC8264D471F002158FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		836A9ECB264D471F002158FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		836A9ECD264D4722002158FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		836A9ED0264D4722002158FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		836A9ED2264D4722002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836A9ED7264D4722002158FD /* goveganTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goveganTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836A9EDB264D4722002158FD /* goveganTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goveganTests.swift; sourceTree = "<group>"; };
+		836A9EDD264D4722002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836A9EE2264D4723002158FD /* goveganUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goveganUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836A9EE6264D4723002158FD /* goveganUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goveganUITests.swift; sourceTree = "<group>"; };
+		836A9EE8264D4723002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		836A9EBE264D471F002158FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9ED4264D4722002158FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9EDF264D4723002158FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		836A9EB8264D471F002158FD = {
+			isa = PBXGroup;
+			children = (
+				836A9EC3264D471F002158FD /* govegan */,
+				836A9EDA264D4722002158FD /* goveganTests */,
+				836A9EE5264D4723002158FD /* goveganUITests */,
+				836A9EC2264D471F002158FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		836A9EC2264D471F002158FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				836A9EC1264D471F002158FD /* govegan.app */,
+				836A9ED7264D4722002158FD /* goveganTests.xctest */,
+				836A9EE2264D4723002158FD /* goveganUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		836A9EC3264D471F002158FD /* govegan */ = {
+			isa = PBXGroup;
+			children = (
+				836A9EC4264D471F002158FD /* AppDelegate.swift */,
+				836A9EC6264D471F002158FD /* SceneDelegate.swift */,
+				836A9EC8264D471F002158FD /* ViewController.swift */,
+				836A9ECA264D471F002158FD /* Main.storyboard */,
+				836A9ECD264D4722002158FD /* Assets.xcassets */,
+				836A9ECF264D4722002158FD /* LaunchScreen.storyboard */,
+				836A9ED2264D4722002158FD /* Info.plist */,
+			);
+			path = govegan;
+			sourceTree = "<group>";
+		};
+		836A9EDA264D4722002158FD /* goveganTests */ = {
+			isa = PBXGroup;
+			children = (
+				836A9EDB264D4722002158FD /* goveganTests.swift */,
+				836A9EDD264D4722002158FD /* Info.plist */,
+			);
+			path = goveganTests;
+			sourceTree = "<group>";
+		};
+		836A9EE5264D4723002158FD /* goveganUITests */ = {
+			isa = PBXGroup;
+			children = (
+				836A9EE6264D4723002158FD /* goveganUITests.swift */,
+				836A9EE8264D4723002158FD /* Info.plist */,
+			);
+			path = goveganUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		836A9EC0264D471F002158FD /* govegan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836A9EEB264D4723002158FD /* Build configuration list for PBXNativeTarget "govegan" */;
+			buildPhases = (
+				836A9EBD264D471F002158FD /* Sources */,
+				836A9EBE264D471F002158FD /* Frameworks */,
+				836A9EBF264D471F002158FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = govegan;
+			productName = govegan;
+			productReference = 836A9EC1264D471F002158FD /* govegan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		836A9ED6264D4722002158FD /* goveganTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836A9EEE264D4723002158FD /* Build configuration list for PBXNativeTarget "goveganTests" */;
+			buildPhases = (
+				836A9ED3264D4722002158FD /* Sources */,
+				836A9ED4264D4722002158FD /* Frameworks */,
+				836A9ED5264D4722002158FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				836A9ED9264D4722002158FD /* PBXTargetDependency */,
+			);
+			name = goveganTests;
+			productName = goveganTests;
+			productReference = 836A9ED7264D4722002158FD /* goveganTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		836A9EE1264D4723002158FD /* goveganUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836A9EF1264D4723002158FD /* Build configuration list for PBXNativeTarget "goveganUITests" */;
+			buildPhases = (
+				836A9EDE264D4723002158FD /* Sources */,
+				836A9EDF264D4723002158FD /* Frameworks */,
+				836A9EE0264D4723002158FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				836A9EE4264D4723002158FD /* PBXTargetDependency */,
+			);
+			name = goveganUITests;
+			productName = goveganUITests;
+			productReference = 836A9EE2264D4723002158FD /* goveganUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		836A9EB9264D471F002158FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					836A9EC0264D471F002158FD = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					836A9ED6264D4722002158FD = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 836A9EC0264D471F002158FD;
+					};
+					836A9EE1264D4723002158FD = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 836A9EC0264D471F002158FD;
+					};
+				};
+			};
+			buildConfigurationList = 836A9EBC264D471F002158FD /* Build configuration list for PBXProject "govegan" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 836A9EB8264D471F002158FD;
+			productRefGroup = 836A9EC2264D471F002158FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				836A9EC0264D471F002158FD /* govegan */,
+				836A9ED6264D4722002158FD /* goveganTests */,
+				836A9EE1264D4723002158FD /* goveganUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		836A9EBF264D471F002158FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836A9ED1264D4722002158FD /* LaunchScreen.storyboard in Resources */,
+				836A9ECE264D4722002158FD /* Assets.xcassets in Resources */,
+				836A9ECC264D471F002158FD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9ED5264D4722002158FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9EE0264D4723002158FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		836A9EBD264D471F002158FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836A9EC9264D471F002158FD /* ViewController.swift in Sources */,
+				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
+				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9ED3264D4722002158FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836A9EDC264D4722002158FD /* goveganTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836A9EDE264D4723002158FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		836A9ED9264D4722002158FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 836A9EC0264D471F002158FD /* govegan */;
+			targetProxy = 836A9ED8264D4722002158FD /* PBXContainerItemProxy */;
+		};
+		836A9EE4264D4723002158FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 836A9EC0264D471F002158FD /* govegan */;
+			targetProxy = 836A9EE3264D4723002158FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		836A9ECA264D471F002158FD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				836A9ECB264D471F002158FD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		836A9ECF264D4722002158FD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				836A9ED0264D4722002158FD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		836A9EE9264D4723002158FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		836A9EEA264D4723002158FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		836A9EEC264D4723002158FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = govegan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		836A9EED264D4723002158FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = govegan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		836A9EEF264D4723002158FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = goveganTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.goveganTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/govegan.app/govegan";
+			};
+			name = Debug;
+		};
+		836A9EF0264D4723002158FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = goveganTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.goveganTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/govegan.app/govegan";
+			};
+			name = Release;
+		};
+		836A9EF2264D4723002158FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = goveganUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.goveganUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = govegan;
+			};
+			name = Debug;
+		};
+		836A9EF3264D4723002158FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
+				INFOPLIST_FILE = goveganUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.goveganUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = govegan;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		836A9EBC264D471F002158FD /* Build configuration list for PBXProject "govegan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836A9EE9264D4723002158FD /* Debug */,
+				836A9EEA264D4723002158FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836A9EEB264D4723002158FD /* Build configuration list for PBXNativeTarget "govegan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836A9EEC264D4723002158FD /* Debug */,
+				836A9EED264D4723002158FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836A9EEE264D4723002158FD /* Build configuration list for PBXNativeTarget "goveganTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836A9EEF264D4723002158FD /* Debug */,
+				836A9EF0264D4723002158FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836A9EF1264D4723002158FD /* Build configuration list for PBXNativeTarget "goveganUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836A9EF2264D4723002158FD /* Debug */,
+				836A9EF3264D4723002158FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 836A9EB9264D471F002158FD /* Project object */;
+}
