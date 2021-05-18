@@ -1,5 +1,5 @@
 //
-//  AuthenticationViewController.swift
+//  LogInViewController.swift
 //  govegan
 //
 //  Created by Mosma on 13/05/2021.
@@ -9,7 +9,7 @@ import UIKit
 import AuthenticationServices
 import Firebase
 
-class AuthenticationViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     // MARK: - Internal functions
     
@@ -18,12 +18,28 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        backButton.setup()
+        
         if #available(iOS 13.0, *) {
             setupSignInButton()
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     // MARK: - IBOutlets
+    @IBOutlet private weak var backButton: BackButton!
+    
+    // MARK: - IBActions
+    @IBAction func didTapOnBackButton(_ sender: Any) {
+        
+        //Go back to previous controller
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     // MARK: - Private functions
     
@@ -51,9 +67,15 @@ class AuthenticationViewController: UIViewController {
         // set this so the button will use auto layout constraint
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         
+        // Disable default constraints
+        signInButton.constraints.forEach { (constraint) in
+            constraint.isActive = false
+        }
+        
         NSLayoutConstraint.activate([
-            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20)
         ])
     }
     
@@ -95,7 +117,7 @@ class AuthenticationViewController: UIViewController {
 }
 
 // Used for handling the authentication callbacks
-extension AuthenticationViewController: ASAuthorizationControllerDelegate {
+extension LoginViewController: ASAuthorizationControllerDelegate {
     
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -132,7 +154,7 @@ extension AuthenticationViewController: ASAuthorizationControllerDelegate {
 }
 
 // Used to handling the presentation context
-extension AuthenticationViewController: ASAuthorizationControllerPresentationContextProviding {
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     @available(iOS 13.0, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         

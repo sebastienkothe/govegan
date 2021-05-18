@@ -20,16 +20,20 @@ class WelcomeViewController: UIViewController {
         goVeganImageViewConstraintPreAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         goVeganImageViewConstraintPostAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
         
-        setupGoVeganImageViewConstraints()
         
+        setupGoVeganImageViewConstraints()
+        setupLoginButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if user != nil {
+        if !animationHasBeenShown {
             switchLogoGoVeganToTheTop()
-        } else {}
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -38,10 +42,14 @@ class WelcomeViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet private weak var welcomeMessagesStackView: UIStackView!
+    @IBOutlet weak var loginButton: UIButton!
     
     // MARK: - Private properties
     private var goVeganImageViewConstraintPreAnimation: NSLayoutConstraint?
     private var goVeganImageViewConstraintPostAnimation: NSLayoutConstraint?
+    
+    /// Used to know if the animation of the govegan logo has already been used
+    private var animationHasBeenShown = false
     
     private let goVeganImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "govegan"))
@@ -58,18 +66,17 @@ class WelcomeViewController: UIViewController {
     
     /// Starts the performSegue method when the user presses the button
     @IBAction func goButton(_ sender: Any) {
-        performSegue(withIdentifier: "segueToAuthenticationViewController", sender: nil)
+        //performSegue(withIdentifier: "segueToNameRequestViewController", sender: nil)
     }
     
     // MARK: - Private functions
     /// Animates the "govegan" logo by moving it upwards
     private func switchLogoGoVeganToTheTop() {
         UIView.animate(withDuration: 1) { [weak self] in
-            
             self?.goVeganImageView.frame.origin.y -= 150
         } completion: { [weak self] _ in
+            self?.animationHasBeenShown = true
             self?.goVeganImageViewConstraintPostAnimation?.isActive = true
-            
             self?.slowlyDisplayWelcomeMessages()
         }
     }
@@ -91,5 +98,15 @@ class WelcomeViewController: UIViewController {
         UIView.animate(withDuration: 1) { [weak self] in
             self?.welcomeMessagesStackView?.alpha = 1.0
         }
+    }
+    
+    private func setupLoginButton() {
+        let loginButtonTap = UITapGestureRecognizer(target: self, action: #selector(didTapOnLoginButton))
+        loginButton.addGestureRecognizer(loginButtonTap)
+    }
+    
+    @objc private func didTapOnLoginButton(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
+        
     }
 }
