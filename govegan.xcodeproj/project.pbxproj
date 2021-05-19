@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3695E53519043E317DFD8A2D /* Pods_govegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3ADF45BD878A1AB10F09B /* Pods_govegan.framework */; };
+		3874B2446D3CC10CFC13FAD3 /* Pods_goveganTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0E39A2825D1CCC5F7520BA /* Pods_goveganTests.framework */; };
+		3AA86EB99F8BC0CF7D7B5392 /* Pods_govegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B54FBEA3C2397037ED4C00C /* Pods_govegan.framework */; };
 		831D0FCD2653B92700817B5A /* PickUpUserInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */; };
 		831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */; };
 		831D0FD72653DAF100817B5A /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD62653DAF100817B5A /* NextButton.swift */; };
@@ -25,7 +26,6 @@
 		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
 		83B313672654F9BC00657DF1 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B313662654F9BC00657DF1 /* UIApplication.swift */; };
 		83F9132B2653907A00F309DA /* NameRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* NameRequestViewController.swift */; };
-		9EB5085568E1E73DA9E1E117 /* Pods_goveganTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9D25A6E95943E11C5B73EF /* Pods_goveganTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +73,8 @@
 		83B313662654F9BC00657DF1 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* NameRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRequestViewController.swift; sourceTree = "<group>"; };
 		84FDF25E8ECAF305CE0B12C7 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
-		90A3ADF45BD878A1AB10F09B /* Pods_govegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_govegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB9D25A6E95943E11C5B73EF /* Pods_goveganTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goveganTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B54FBEA3C2397037ED4C00C /* Pods_govegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_govegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0E39A2825D1CCC5F7520BA /* Pods_goveganTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goveganTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F18795D87B3FC440394CFC /* Pods-govegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.release.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3695E53519043E317DFD8A2D /* Pods_govegan.framework in Frameworks */,
+				3AA86EB99F8BC0CF7D7B5392 /* Pods_govegan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EB5085568E1E73DA9E1E117 /* Pods_goveganTests.framework in Frameworks */,
+				3874B2446D3CC10CFC13FAD3 /* Pods_goveganTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +108,8 @@
 		2EB71FAA8B8BBD9FD709F827 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90A3ADF45BD878A1AB10F09B /* Pods_govegan.framework */,
-				BB9D25A6E95943E11C5B73EF /* Pods_goveganTests.framework */,
+				8B54FBEA3C2397037ED4C00C /* Pods_govegan.framework */,
+				EB0E39A2825D1CCC5F7520BA /* Pods_goveganTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 				836A9EBD264D471F002158FD /* Sources */,
 				836A9EBE264D471F002158FD /* Frameworks */,
 				836A9EBF264D471F002158FD /* Resources */,
-				E0CF607870DC878C8DC9C3D0 /* [CP] Embed Pods Frameworks */,
+				802B8D1D720517C6ED9006D9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,7 +404,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0CF607870DC878C8DC9C3D0 /* [CP] Embed Pods Frameworks */ = {
+		802B8D1D720517C6ED9006D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
