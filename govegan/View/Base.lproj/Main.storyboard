@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="2626.0869565217395" y="600"/>
         </scene>
-        <!--Name Request View Controller-->
+        <!--NameRequestViewController-->
         <scene sceneID="FRQ-oY-0kT">
             <objects>
-                <viewController id="GVl-rI-p5c" customClass="NameRequestViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="NameRequestViewController" id="GVl-rI-p5c" customClass="NameRequestViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xS8-oU-exK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

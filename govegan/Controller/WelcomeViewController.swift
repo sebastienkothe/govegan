@@ -20,7 +20,6 @@ class WelcomeViewController: UIViewController {
         goVeganImageViewConstraintPreAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         goVeganImageViewConstraintPostAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
         
-        
         setupGoVeganImageViewConstraints()
         setupLoginButton()
     }

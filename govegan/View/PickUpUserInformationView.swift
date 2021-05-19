@@ -16,6 +16,11 @@ class PickUpUserInformationView: UIView {
         
         // Activates the text Field selection
         answerTextField.becomeFirstResponder()
+        
+        guard let currentViewController = UIApplication.getTopViewController() else {return}
+        if currentViewController.title == "NameRequestViewController" {
+            createDatePickerView()
+        }
     }
     
     // Load the .xib and add the content view to the view hierarchy
@@ -40,6 +45,7 @@ class PickUpUserInformationView: UIView {
     // MARK: - IBActions
     
     // MARK: - Private properties
+    let datePicker = UIDatePicker()
     
     // MARK: - Private functions
     private func initSubviews() {
@@ -49,6 +55,30 @@ class PickUpUserInformationView: UIView {
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
+    }
+    
+    private func createDatePickerView() {
+        // Toolbar
+        let toolBar = UIToolbar()
+        
+        // Resizes the toolBar to use the most appropriate amount of space
+        toolBar.sizeToFit()
+        
+        let previousYearButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+        let currentDate = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+        
+        // Assign toolbar
+        answerTextField.inputAccessoryView = toolBar
+        
+        // Assign date picker to the text field
+        answerTextField.inputView = datePicker
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
+       
     }
 }
 

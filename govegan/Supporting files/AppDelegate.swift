@@ -8,22 +8,28 @@
 import UIKit
 import Firebase
 
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    // MARK: - Internal properties
     var window: UIWindow?
     
+    // Makes sure the configure code gets executed when AppDelegate is initialised
+    override init() {
+        super.init()
+        
+        // Setting up the firebase instance
+        setupFirebase()
+    }
+    
+    // MARK: - Internal functions
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
         
         if let user = Auth.auth().currentUser {
             print("You're sign in as \(user.uid), email: \(user.email ?? "")")
         }
         return true
     }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {}
     
     // MARK: UISceneSession Lifecycle
     
@@ -36,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    }
+    
+    // MARK: - Private functions
+    private func setupFirebase() {
+        FirebaseApp.configure()
     }
     
 }
