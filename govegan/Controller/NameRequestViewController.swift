@@ -8,7 +8,7 @@
 import UIKit
 
 class NameRequestViewController: UIViewController {
-
+    
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,13 @@ class NameRequestViewController: UIViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
         
         backButton.setup()
+        
+        pickUpUserInformationView.onMainButtonTapped = { [weak self] in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController =  storyBoard.instantiateViewController(withIdentifier: "VeganStartDateViewController") as! VeganStartDateViewController
+            
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +32,7 @@ class NameRequestViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet private weak var backButton: BackButton!
+    @IBOutlet weak var pickUpUserInformationView: PickUpUserInformationView!
     
     // MARK: - IBActions
     @IBAction func didTapOnBackButton(_ sender: Any) {

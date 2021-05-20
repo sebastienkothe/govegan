@@ -96,11 +96,42 @@
                     <navigationItem key="navigationItem" id="N8H-vB-UK7"/>
                     <connections>
                         <outlet property="backButton" destination="q5j-Bq-mIX" id="EwN-hX-hfq"/>
+                        <outlet property="pickUpUserInformationView" destination="aYo-Ob-Qvl" id="4At-fh-wzj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgo-2A-p9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626.0869565217395" y="-117.1875"/>
+        </scene>
+        <!--Vegan Start Date View Controller-->
+        <scene sceneID="GHn-oA-X0w">
+            <objects>
+                <viewController storyboardIdentifier="VeganStartDateViewController" id="rfA-7K-wCL" customClass="VeganStartDateViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IqL-cJ-rUi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDw-vr-WPJ" customClass="PickUpUserInformationView" customModule="govegan" customModuleProvider="target">
+                                <rect key="frame" x="20" y="70" width="335" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="RsY-ok-KFA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dfN-L1-61D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dfN-L1-61D" firstAttribute="trailing" secondItem="GDw-vr-WPJ" secondAttribute="trailing" constant="20" id="eKT-xL-kBG"/>
+                            <constraint firstItem="GDw-vr-WPJ" firstAttribute="leading" secondItem="dfN-L1-61D" secondAttribute="leading" constant="20" id="rYQ-7s-Qnj"/>
+                            <constraint firstItem="GDw-vr-WPJ" firstAttribute="top" secondItem="dfN-L1-61D" secondAttribute="top" constant="70" id="tJb-Dr-xMl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Em7-6E-diE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuL-Et-C49" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3802" y="-117"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="1Dg-yV-C5b">

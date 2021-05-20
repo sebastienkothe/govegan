@@ -16,11 +16,6 @@ class PickUpUserInformationView: UIView {
         
         // Activates the text Field selection
         answerTextField.becomeFirstResponder()
-        
-        guard let currentViewControllerOnTop = UIApplication.getTopViewController() else {return}
-        if currentViewControllerOnTop.title != "NameRequestViewController" {
-            createDatePickerView()
-        }
     }
     
     // Load the .xib and add the content view to the view hierarchy
@@ -43,6 +38,11 @@ class PickUpUserInformationView: UIView {
     @IBOutlet weak var solidLineLabel: UILabel!
     
     // MARK: - IBActions
+    @IBAction func didTapOnProceedButton() {
+        onMainButtonTapped?()
+    }
+    
+    var onMainButtonTapped: (() -> Void)?
     
     // MARK: - Private properties
     private let datePicker = UIDatePicker()
@@ -57,7 +57,7 @@ class PickUpUserInformationView: UIView {
         addSubview(contentView)
     }
     
-    private func createDatePickerView() {
+    func createDatePickerView() {
         
         setupDatePicker()
         
