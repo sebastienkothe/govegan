@@ -1,5 +1,5 @@
 //
-//  NameRequestViewController.swift
+//  PickUpUserInformationViewController.swift
 //  govegan
 //
 //  Created by Mosma on 18/05/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NameRequestViewController: UIViewController {
+class PickUpUserInformationViewController: UIViewController {
     
     // MARK: - Internal functions
     override func viewDidLoad() {
@@ -16,14 +16,20 @@ class NameRequestViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
         
-        backButton.setup()
-        
         pickUpUserInformationView.onMainButtonTapped = { [weak self] in
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController =  storyBoard.instantiateViewController(withIdentifier: "VeganStartDateViewController") as! VeganStartDateViewController
-            
-            self?.navigationController?.pushViewController(viewController, animated: true)
+            //            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            //            let viewController =  storyBoard.instantiateViewController(withIdentifier: "VeganStartDateViewController") as! VeganStartDateViewController
+            //
+            //            self?.navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        pickUpUserInformationView.backButtonTapped = { [weak self] in
+            
+            //Go back to previous controller
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,15 +37,9 @@ class NameRequestViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
-    @IBOutlet private weak var backButton: BackButton!
     @IBOutlet weak var pickUpUserInformationView: PickUpUserInformationView!
     
     // MARK: - IBActions
-    @IBAction func didTapOnBackButton(_ sender: Any) {
-        
-        //Go back to previous controller
-        navigationController?.popViewController(animated: true)
-    }
     
     // MARK: - Private properties
     

@@ -10,9 +10,15 @@ import UIKit
 
 class PickUpUserInformationView: UIView {
     
+    // MARK: - Internal properties
+    var onMainButtonTapped: (() -> Void)?
+    var backButtonTapped: (() -> Void)?
+    
     // MARK: - Internal functions
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        configureTheTextsOfTheViews()
         
         // Activates the text Field selection
         answerTextField.becomeFirstResponder()
@@ -30,44 +36,59 @@ class PickUpUserInformationView: UIView {
     }
     
     // MARK: - IBOutlets
-    @IBOutlet var contentView: UIView!
+    @IBOutlet private var contentView: UIView!
     
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var answerTextField: UITextField!
     @IBOutlet private weak var proceedButton: NextButton!
-    @IBOutlet weak var solidLineLabel: UILabel!
+    @IBOutlet private weak var solidLineLabel: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
     
     // MARK: - IBActions
-    @IBAction func didTapOnProceedButton() {
+    @IBAction private func didTapOnProceedButton() {
+        questionLabel.text = "vegan_start_date_question".localized
+        
+        if questionLabel.text == "vegan_start_date_question".localized {
+            createDatePickerView()
+            answerTextField.reloadInputViews()
+        }
+        
         onMainButtonTapped?()
     }
     
-    var onMainButtonTapped: (() -> Void)?
+    @IBAction private func didTapOnBackButton() {
+        if questionLabel.text == "vegan_start_date_question".localized {
+            questionLabel.text = "what_is_your_name_question".localized
+            answerTextField.inputAccessoryView = nil
+            answerTextField.inputView = nil
+            
+            answerTextField.reloadInputViews()
+            
+            answerTextField.text = ""
+        } else {
+            backButtonTapped?()
+        }
+    }
     
     // MARK: - Private properties
     private let datePicker = UIDatePicker()
-
+    
     // MARK: - Private functions
+    
+    /// Configure the texts to be displayed in the views
+    private func configureTheTextsOfTheViews() {
+        questionLabel.text = "what_is_your_name_question".localized
+        proceedButton.setTitle("proceed".localized, for: .normal)
+        backButton.setTitle("back_button".localized, for: .normal) 
+    }
+    
     private func initSubviews() {
         
         // Standard initialization logic
-        let nib = UINib(nibName: "PickUpUserInformationView", bundle: nil)
+        let nib = UINib(nibName: .pickUpUserInformationView, bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
-    }
-    
-    func createDatePickerView() {
-        
-        setupDatePicker()
-        
-        // Assign toolbar
-        answerTextField.inputAccessoryView = generateToolbar()
-        
-        answerTextField.text = formatDate(datePicker: datePicker)
-        
-        // Assign date picker to the text field
-        answerTextField.inputView = datePicker
     }
     
     private func setupDatePicker() {
@@ -89,8 +110,8 @@ class PickUpUserInformationView: UIView {
         // Resizes the toolBar to use the most appropriate amount of space
         toolBar.sizeToFit()
         
-        let previousYearButton = UIBarButtonItem(title: "Previous year", style: .done, target: self, action: #selector(didTapOnPreviousYearButton))
-        let currentDate = UIBarButtonItem(title: "Now", style: .done, target: self, action: #selector(didTapOnCurrentDateButton))
+        let previousYearButton = UIBarButtonItem(title: "previous_year".localized, style: .done, target: self, action: #selector(didTapOnPreviousYearButton))
+        let currentDate = UIBarButtonItem(title: "now".localized, style: .done, target: self, action: #selector(didTapOnCurrentDateButton))
         
         // Used to generate a space between the two main buttons
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -109,6 +130,19 @@ class PickUpUserInformationView: UIView {
         dateFormat.dateStyle = .medium
         
         return dateFormat.string(from: datePicker.date)
+    }
+    
+    private func createDatePickerView() {
+        
+        setupDatePicker()
+        
+        // Assign toolbar
+        answerTextField.inputAccessoryView = generateToolbar()
+        
+        answerTextField.text = formatDate(datePicker: datePicker)
+        
+        // Assign date picker to the text field
+        answerTextField.inputView = datePicker
     }
     
     @objc private func dateChanged() {
@@ -132,7 +166,6 @@ class PickUpUserInformationView: UIView {
     
 }
 
-// MARK: - Keyboard
 extension PickUpUserInformationView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         answerTextField.resignFirstResponder()

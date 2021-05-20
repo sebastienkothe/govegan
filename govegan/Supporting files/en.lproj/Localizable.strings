@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  govegan
+
+  Created by Mosma on 20/05/2021.
+  
+        English version
+*/
+
+// PickUpUserInformationView's label
+"vegan_start_date_question" = "How long have you been a vegan ?";
+"what_is_your_name_question" = "What should we call you ?";
+
+// Toolbar buttons
+"previous_year" = "Previous year";
+"now" = "Now";
+
+// Proceed button
+"proceed" = "           Proceed           ";
+
+// Back button
+"back_button" = "Back";
+

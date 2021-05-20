@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Going vegan is the best decision you've ever made!"; ObjectID = "8UE-sT-Wsq"; */
+"8UE-sT-Wsq.text" = "Devenir vegan est la meilleure décision que vous ayez jamais prise !";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "BqF-DX-wVP"; */
+"BqF-DX-wVP.normalTitle" = "Retour";
+
+/* Class = "UILabel"; text = "Congratulations !"; ObjectID = "XEK-b1-974"; */
+"XEK-b1-974.text" = "Félicitations !";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "ZHY-Cr-shL"; */
+"ZHY-Cr-shL.normalTitle" = "Se connecter";
+
+/* Class = "UIButton"; normalTitle = "           Let's go !           "; ObjectID = "h3l-Q8-epm"; */
+"h3l-Q8-epm.normalTitle" = "           Allons-y !           ";
+
+/* Class = "UILabel"; text = "Already registered ?"; ObjectID = "qhD-W8-Vj2"; */
+"qhD-W8-Vj2.text" = "Déjà enregistré ?";

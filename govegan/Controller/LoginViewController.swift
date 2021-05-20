@@ -19,8 +19,6 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        backButton.setup()
-        
         if #available(iOS 13.0, *) {
             setupSignInButton()
         }
@@ -31,7 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
-    @IBOutlet private weak var backButton: BackButton!
+    @IBOutlet private weak var backButton: UIButton!
     
     // MARK: - IBActions
     @IBAction func didTapOnBackButton(_ sender: Any) {
