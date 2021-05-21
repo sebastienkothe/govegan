@@ -29,15 +29,11 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
-    @IBOutlet private weak var backButton: UIButton!
     
     // MARK: - IBActions
-    @IBAction func didTapOnBackButton(_ sender: Any) {
-        
-        //Go back to previous controller
-        navigationController?.popViewController(animated: true)
+    @IBAction func didTapOnRegisterNowButton() {
+        navigationController?.popToRootViewController(animated: true)
     }
-    
     
     // MARK: - Private functions
     

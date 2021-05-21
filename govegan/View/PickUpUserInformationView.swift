@@ -49,6 +49,15 @@ class PickUpUserInformationView: UIView {
     
     // MARK: - IBActions
     @IBAction private func didTapOnProceedButton() {
+        guard let textFromAnswerTextField = answerTextField.text else { return }
+        
+        storeUserData(textFromAnswerTextField)
+        
+        guard !hasAllTheData else {
+            onMainButtonTapped?()
+            return
+        }
+        
         questionLabel.text = "vegan_start_date_question".localized
         
         createDatePickerView()
@@ -66,10 +75,27 @@ class PickUpUserInformationView: UIView {
     // MARK: - Private properties
     private let datePicker = UIDatePicker()
     
+    private var name = ""
+    private var veganStartDate: String = "" {
+        didSet {
+            if name != "".trimmingCharacters(in: .whitespaces) {
+                hasAllTheData = true
+                print("We have all the data required !")
+            }
+        }
+    }
+    
+    private var hasAllTheData = false
+    
     // MARK: - Private functions
     
-    @objc private func appDidEnterBackground() {
-        answerTextField.resignFirstResponder()
+    /// Retrieves user data
+    private func storeUserData(_ textFromAnswerTextField: String) {
+        if questionLabel.text == "vegan_start_date_question".localized {
+            veganStartDate = textFromAnswerTextField
+        } else {
+            name = textFromAnswerTextField
+        }
     }
     
     /// Used to hide/show items
@@ -189,6 +215,9 @@ class PickUpUserInformationView: UIView {
         answerTextField.text = formatDate(datePicker: datePicker)
     }
     
+    @objc private func appDidEnterBackground() {
+        answerTextField.resignFirstResponder()
+    }
     
 }
 

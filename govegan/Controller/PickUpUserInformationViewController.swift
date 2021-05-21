@@ -17,10 +17,10 @@ class PickUpUserInformationViewController: UIViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
         
         pickUpUserInformationView.onMainButtonTapped = { [weak self] in
-            //            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            //            let viewController =  storyBoard.instantiateViewController(withIdentifier: "VeganStartDateViewController") as! VeganStartDateViewController
-            //
-            //            self?.navigationController?.pushViewController(viewController, animated: true)
+                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                        let viewController =  storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            
+                        self?.navigationController?.pushViewController(viewController, animated: true)
         }
         
         pickUpUserInformationView.backButtonTapped = { [weak self] in
@@ -28,8 +28,6 @@ class PickUpUserInformationViewController: UIViewController {
             //Go back to previous controller
             self?.navigationController?.popViewController(animated: true)
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

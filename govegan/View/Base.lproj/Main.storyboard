@@ -12,46 +12,33 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DrM-jG-JLe">
-                                <rect key="frame" x="20" y="347" width="335" height="300"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9V-U8-b51">
+                                <rect key="frame" x="141" y="627" width="93" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="gW2-0b-kH1"/>
+                                    <constraint firstAttribute="height" constant="30" id="CR6-9K-bnX"/>
                                 </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqF-DX-wVP">
-                                <rect key="frame" x="20" y="20" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="6vD-1r-wMc"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="bS7-Hl-Wjw"/>
-                                </constraints>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Register now">
+                                    <color key="titleColor" red="0.69019607843137254" green="0.75294117647058822" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapOnBackButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eJD-6N-pRO"/>
+                                    <action selector="didTapOnRegisterNowButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZXP-r0-Nol"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BqF-DX-wVP" secondAttribute="trailing" symbolic="YES" id="Nr7-0T-rka"/>
-                            <constraint firstItem="BqF-DX-wVP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="RU8-Jr-F2P"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DrM-jG-JLe" secondAttribute="trailing" constant="20" id="b6h-uh-iBk"/>
-                            <constraint firstItem="BqF-DX-wVP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bb7-iC-Pfc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DrM-jG-JLe" secondAttribute="bottom" constant="20" id="kKP-8I-iw9"/>
-                            <constraint firstItem="DrM-jG-JLe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sWV-2V-Ki7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H9V-U8-b51" secondAttribute="bottom" constant="10" id="GAy-tu-HrF"/>
+                            <constraint firstItem="H9V-U8-b51" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gO7-MV-r1W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o4n-PF-bGB"/>
-                    <connections>
-                        <outlet property="backButton" destination="BqF-DX-wVP" id="r3E-g4-U9R"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,13 +128,13 @@
         <!--Welcome View Controller-->
         <scene sceneID="1Dg-yV-C5b">
             <objects>
-                <viewController id="zWx-Gc-OFR" customClass="WelcomeViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="zWx-Gc-OFR" customClass="WelcomeViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DqH-BS-wm9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3l-Q8-epm">
-                                <rect key="frame" x="98" y="557" width="179" height="50"/>
+                                <rect key="frame" x="98" y="567" width="179" height="50"/>
                                 <color key="backgroundColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="toK-Vl-9gU"/>
@@ -179,19 +166,19 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="m8c-Pq-etE">
-                                <rect key="frame" x="88.5" y="617" width="198" height="30"/>
+                                <rect key="frame" x="100" y="627" width="175.5" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already registered ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhD-W8-Vj2">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0020028871950000002" green="0.1214960888" blue="0.12549105290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.6705882352941176" green="0.76078431372549016" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHY-Cr-shL">
-                                        <rect key="frame" x="155" y="0.0" width="43" height="30"/>
+                                        <rect key="frame" x="132.5" y="0.0" width="43" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="Log in">
-                                            <color key="titleColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="titleColor" red="0.6705882352941176" green="0.76078431372549016" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="segueToLogInViewController" id="I0g-vg-0rY"/>
@@ -208,7 +195,7 @@
                         <constraints>
                             <constraint firstItem="4kZ-Rn-zBx" firstAttribute="leading" secondItem="dDw-7N-kE7" secondAttribute="leading" constant="50" id="2HJ-st-rj6"/>
                             <constraint firstItem="m8c-Pq-etE" firstAttribute="top" secondItem="h3l-Q8-epm" secondAttribute="bottom" constant="10" id="5x6-Vz-6Su"/>
-                            <constraint firstAttribute="bottom" secondItem="m8c-Pq-etE" secondAttribute="bottom" constant="20" id="M3B-wH-AZA"/>
+                            <constraint firstAttribute="bottom" secondItem="m8c-Pq-etE" secondAttribute="bottom" constant="10" id="M3B-wH-AZA"/>
                             <constraint firstItem="h3l-Q8-epm" firstAttribute="centerX" secondItem="dDw-7N-kE7" secondAttribute="centerX" id="VbV-mn-EPB"/>
                             <constraint firstItem="4kZ-Rn-zBx" firstAttribute="centerY" secondItem="DqH-BS-wm9" secondAttribute="centerY" constant="60" id="dQJ-Bs-ko9"/>
                             <constraint firstItem="4kZ-Rn-zBx" firstAttribute="centerX" secondItem="DqH-BS-wm9" secondAttribute="centerX" id="gdo-4P-oyd"/>
@@ -247,9 +234,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
