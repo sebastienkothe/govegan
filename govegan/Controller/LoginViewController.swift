@@ -12,12 +12,8 @@ import Firebase
 class LoginViewController: UIViewController {
     
     // MARK: - Internal functions
-    
-    // Called after the controller's view is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         
         if #available(iOS 13.0, *) {
             setupSignInButton()
@@ -36,12 +32,12 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Private functions
-    
     @available(iOS 13.0, *)
     @objc private func handleWithSignInWithAppleTapped() {
         performSignIn()
     }
     
+    /// Creation and configuration of the sign in Apple button
     @available(iOS 13.0, *)
     private func setupSignInButton() {
         
@@ -50,11 +46,12 @@ class LoginViewController: UIViewController {
         
         view.addSubview(button)
         defineTheConstraintsOf(button)
+        
         // the function that will be executed when user tap the button
         button.addTarget(self, action: #selector(handleWithSignInWithAppleTapped), for: .touchUpInside)
     }
     
-    /// Define the constraints of the SignInButton
+    /// Define the constraints of the sign in Apple button
     @available(iOS 13.0, *)
     private func defineTheConstraintsOf(_ signInButton: ASAuthorizationAppleIDButton) {
         
@@ -71,12 +68,9 @@ class LoginViewController: UIViewController {
             signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 50),
             signInButton.widthAnchor.constraint(equalToConstant: 200)
-//            signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20)
         ])
     }
     
-    ///
     @available(iOS 13.0, *)
     private func performSignIn() {
         
@@ -144,6 +138,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             Auth.auth().signIn(with: credential) { (authDataResult, error) in
                 if let user = authDataResult?.user {
                     print("Nice! You're now signed in as \(user.uid), email: \(user.email ?? "unknown ")")
+                    self.performSegue(withIdentifier: "segueToTabBarController", sender: nil)
                 }
             }
         }

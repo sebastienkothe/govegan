@@ -1,11 +1,11 @@
 /* 
-  Localizable.strings
-  govegan
-
-  Created by Mosma on 20/05/2021.
-  
-        French version
-*/
+ Localizable.strings
+ govegan
+ 
+ Created by Mosma on 20/05/2021.
+ 
+ French version
+ */
 
 // PickUpUserInformationView's label
 "vegan_start_date_question" = "Depuis quand êtes-vous vegan ?";

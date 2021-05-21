@@ -15,6 +15,7 @@
 		831D0FD72653DAF100817B5A /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD62653DAF100817B5A /* NextButton.swift */; };
 		8324C5742650204E00C2A1E2 /* AppleAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */; };
 		832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CE852264FA5D000C80925 /* WelcomeViewController.swift */; };
+		835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835ECAD82658158100BF3E00 /* ProgressViewController.swift */; };
 		836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC4264D471F002158FD /* AppDelegate.swift */; };
 		836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC6264D471F002158FD /* SceneDelegate.swift */; };
 		836A9EC9264D471F002158FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC8264D471F002158FD /* LoginViewController.swift */; };
@@ -24,7 +25,6 @@
 		836A9EDC264D4722002158FD /* goveganTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EDB264D4722002158FD /* goveganTests.swift */; };
 		836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EE6264D4723002158FD /* goveganUITests.swift */; };
 		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
-		83B313672654F9BC00657DF1 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B313662654F9BC00657DF1 /* UIApplication.swift */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
 		83FF51AA2657AB0E00AA2174 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF51A92657AB0E00AA2174 /* User.swift */; };
@@ -60,6 +60,7 @@
 		8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationService.swift; sourceTree = "<group>"; };
 		832CE852264FA5D000C80925 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		834861E2264D7DB30006A527 /* govegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = govegan.entitlements; sourceTree = "<group>"; };
+		835ECAD82658158100BF3E00 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		836A9EC1264D471F002158FD /* govegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = govegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836A9EC4264D471F002158FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836A9EC6264D471F002158FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		836A9EE6264D4723002158FD /* goveganUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goveganUITests.swift; sourceTree = "<group>"; };
 		836A9EE8264D4723002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		83B313662654F9BC00657DF1 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
 		83FF51A92657AB0E00AA2174 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -211,6 +211,7 @@
 				832CE852264FA5D000C80925 /* WelcomeViewController.swift */,
 				836A9EC8264D471F002158FD /* LoginViewController.swift */,
 				83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */,
+				835ECAD82658158100BF3E00 /* ProgressViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,7 +233,6 @@
 		83B313652654F99C00657DF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				83B313662654F9BC00657DF1 /* UIApplication.swift */,
 				83F3A0722656A3D40030929D /* String.swift */,
 			);
 			path = Extensions;
@@ -442,12 +442,12 @@
 				836A9EC9264D471F002158FD /* LoginViewController.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
+				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
 				832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */,
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
 				8324C5742650204E00C2A1E2 /* AppleAuthenticationService.swift in Sources */,
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
-				83B313672654F9BC00657DF1 /* UIApplication.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
 				83FF51AA2657AB0E00AA2174 /* User.swift in Sources */,
 			);

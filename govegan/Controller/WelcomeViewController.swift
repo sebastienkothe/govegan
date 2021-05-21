@@ -17,8 +17,8 @@ class WelcomeViewController: UIViewController {
         view.addSubview(goVeganImageView)
         
         // Assignment of constraints to respective properties
-        goVeganImageViewConstraintPreAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        goVeganImageViewConstraintPostAnimation = goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
+        preAnimationLogoConstraint = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        postAnimationLogoConstraint = goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
         
         setupGoVeganImageViewConstraints()
         setupLoginButton()
@@ -41,11 +41,17 @@ class WelcomeViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet private weak var welcomeMessagesStackView: UIStackView!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    
+    // MARK: - IBActions
+    /// Starts the performSegue method when the user presses the button
+    @IBAction private func goButton(_ sender: Any) {
+        //performSegue(withIdentifier: "segueToNameRequestViewController", sender: nil)
+    }
     
     // MARK: - Private properties
-    private var goVeganImageViewConstraintPreAnimation: NSLayoutConstraint?
-    private var goVeganImageViewConstraintPostAnimation: NSLayoutConstraint?
+    private var preAnimationLogoConstraint: NSLayoutConstraint?
+    private var postAnimationLogoConstraint: NSLayoutConstraint?
     
     /// Used to know if the animation of the govegan logo has already been used
     private var animationHasBeenShown = false
@@ -58,24 +64,15 @@ class WelcomeViewController: UIViewController {
         return imageView
     }()
     
-    /// Contains the user who is currently using the app
-    private var user = Auth.auth().currentUser
-    
-    // MARK: - IBActions
-    
-    /// Starts the performSegue method when the user presses the button
-    @IBAction func goButton(_ sender: Any) {
-        //performSegue(withIdentifier: "segueToNameRequestViewController", sender: nil)
-    }
-    
     // MARK: - Private functions
+    
     /// Animates the "govegan" logo by moving it upwards
     private func switchLogoGoVeganToTheTop() {
         UIView.animate(withDuration: 1) { [weak self] in
             self?.goVeganImageView.frame.origin.y -= 150
         } completion: { [weak self] _ in
             self?.animationHasBeenShown = true
-            self?.goVeganImageViewConstraintPostAnimation?.isActive = true
+            self?.postAnimationLogoConstraint?.isActive = true
             self?.slowlyDisplayWelcomeMessages()
         }
     }
@@ -84,8 +81,8 @@ class WelcomeViewController: UIViewController {
     private func setupGoVeganImageViewConstraints() {
         
         // Gives priority to the constraint that will be displayed last in order to deactivate the first one when the last one is activated
-        goVeganImageViewConstraintPreAnimation?.priority = UILayoutPriority(999)
-        goVeganImageViewConstraintPreAnimation?.isActive = true
+        preAnimationLogoConstraint?.priority = UILayoutPriority(999)
+        preAnimationLogoConstraint?.isActive = true
         
         goVeganImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         goVeganImageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -99,13 +96,18 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    /// Adds a tapGestureRecognizer and an associated action
     private func setupLoginButton() {
         let loginButtonTap = UITapGestureRecognizer(target: self, action: #selector(didTapOnLoginButton))
         loginButton.addGestureRecognizer(loginButtonTap)
     }
     
+    /// User redirection based on their connection status
     @objc private func didTapOnLoginButton(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
-        
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "segueToTabBarController", sender: nil)
+        } else {
+            performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
+        }
     }
 }

@@ -17,10 +17,10 @@ class PickUpUserInformationViewController: UIViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
         
         pickUpUserInformationView.onMainButtonTapped = { [weak self] in
-                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                        let viewController =  storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController =  storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             
-                        self?.navigationController?.pushViewController(viewController, animated: true)
+            self?.navigationController?.pushViewController(viewController, animated: true)
         }
         
         pickUpUserInformationView.backButtonTapped = { [weak self] in
@@ -37,13 +37,9 @@ class PickUpUserInformationViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var pickUpUserInformationView: PickUpUserInformationView!
     
-    // MARK: - IBActions
+    // MARK: - Private function
     
-    // MARK: - Private properties
-    
-    // MARK: - Private functions
-    
-    //Calls this function when the tap is recognized.
+    /// Allows you to close the keyboard
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }

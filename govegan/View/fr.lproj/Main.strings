@@ -1,3 +1,4 @@
+// MARK: - FRENCH
 
 /* Class = "UILabel"; text = "Going vegan is the best decision you've ever made!"; ObjectID = "8UE-sT-Wsq"; */
 "8UE-sT-Wsq.text" = "Devenir vegan est la meilleure décision que vous ayez jamais prise !";
@@ -16,3 +17,6 @@
 
 /* Class = "UILabel"; text = "Already registered ?"; ObjectID = "qhD-W8-Vj2"; */
 "qhD-W8-Vj2.text" = "Déjà enregistré ?";
+
+/* Class = "UIButton"; normalTitle = "Register now"; ObjectID = "H9V-U8-b51"; */
+"H9V-U8-b51.normalTitle" = "S'inscrire";

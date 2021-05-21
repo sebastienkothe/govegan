@@ -11,9 +11,6 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    // MARK: - Internal properties
-    var window: UIWindow?
-    
     // Makes sure the configure code gets executed when AppDelegate is initialised
     override init() {
         super.init()
@@ -22,17 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupFirebase()
     }
     
+    // MARK: - Internal properties
+    var window: UIWindow?
+    
     // MARK: - Internal functions
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        if let user = Auth.auth().currentUser {
-            print("You're sign in as \(user.uid), email: \(user.email ?? "")")
-        }
         return true
     }
     
     // MARK: UISceneSession Lifecycle
-    
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
