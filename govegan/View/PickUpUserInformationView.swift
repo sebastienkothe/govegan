@@ -19,7 +19,10 @@ class PickUpUserInformationView: UIView {
         super.awakeFromNib()
         
         setupViews()
-        
+                
+        // Avoids a constraint problem when the keyboard is open and the application is in the background
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+       
         // Activates the text Field selection
         answerTextField.becomeFirstResponder()
     }
@@ -64,6 +67,10 @@ class PickUpUserInformationView: UIView {
     private let datePicker = UIDatePicker()
     
     // MARK: - Private functions
+    
+    @objc private func appDidEnterBackground() {
+        answerTextField.resignFirstResponder()
+    }
     
     /// Used to hide/show items
     private func handleProceedButton(mustBeActivated: Bool) {
