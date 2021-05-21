@@ -18,7 +18,7 @@ class PickUpUserInformationView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        configureTheTextsOfTheViews()
+        setupViews()
         
         // Activates the text Field selection
         answerTextField.becomeFirstResponder()
@@ -48,23 +48,13 @@ class PickUpUserInformationView: UIView {
     @IBAction private func didTapOnProceedButton() {
         questionLabel.text = "vegan_start_date_question".localized
         
-        if questionLabel.text == "vegan_start_date_question".localized {
-            createDatePickerView()
-            answerTextField.reloadInputViews()
-        }
-        
-        onMainButtonTapped?()
+        createDatePickerView()
     }
-    
+        
     @IBAction private func didTapOnBackButton() {
         if questionLabel.text == "vegan_start_date_question".localized {
-            questionLabel.text = "what_is_your_name_question".localized
-            answerTextField.inputAccessoryView = nil
-            answerTextField.inputView = nil
-            
-            answerTextField.reloadInputViews()
-            
-            answerTextField.text = ""
+            returnToTheInitialConfigurationInterface()
+            handleProceedButton(mustBeActivated: false)
         } else {
             backButtonTapped?()
         }
@@ -75,11 +65,36 @@ class PickUpUserInformationView: UIView {
     
     // MARK: - Private functions
     
+    /// Used to hide/show items
+    private func handleProceedButton(mustBeActivated: Bool) {
+        
+        proceedButton.isUserInteractionEnabled = mustBeActivated ? true : false
+        
+        if mustBeActivated {
+            proceedButton.backgroundColor = #colorLiteral(red: 0, green: 0.6649529934, blue: 0.2719822228, alpha: 1)
+        } else {
+            proceedButton.backgroundColor = #colorLiteral(red: 0.9025184512, green: 0.8971535563, blue: 0.9066424966, alpha: 1)
+        }
+        
+    }
+    
+    /// Go back to the original interface configuration
+    private func returnToTheInitialConfigurationInterface() {
+        questionLabel.text = "what_is_your_name_question".localized
+        
+        answerTextField.inputAccessoryView = nil
+        answerTextField.inputView = nil
+        answerTextField.reloadInputViews()
+        
+        answerTextField.text = ""
+    }
+    
     /// Configure the texts to be displayed in the views
-    private func configureTheTextsOfTheViews() {
+    private func setupViews() {
         questionLabel.text = "what_is_your_name_question".localized
         proceedButton.setTitle("proceed".localized, for: .normal)
-        backButton.setTitle("back_button".localized, for: .normal) 
+        backButton.setTitle("back_button".localized, for: .normal)
+        handleProceedButton(mustBeActivated: false)
     }
     
     private func initSubviews() {
@@ -91,6 +106,7 @@ class PickUpUserInformationView: UIView {
         addSubview(contentView)
     }
     
+    /// Configure the previously initialized datePicker
     private func setupDatePicker() {
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(dateChanged), for: .allEvents)
@@ -125,6 +141,7 @@ class PickUpUserInformationView: UIView {
         return toolBar
     }
     
+    /// Convert datePicker.date to String with specific format
     private func formatDate(datePicker: UIDatePicker) -> String? {
         let dateFormat = DateFormatter()
         dateFormat.dateStyle = .medium
@@ -143,6 +160,8 @@ class PickUpUserInformationView: UIView {
         
         // Assign date picker to the text field
         answerTextField.inputView = datePicker
+        
+        answerTextField.reloadInputViews()
     }
     
     @objc private func dateChanged() {
@@ -173,6 +192,11 @@ extension PickUpUserInformationView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 13
+        let minLength = 2
+        
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        !text.trimmingCharacters(in: .whitespaces).isEmpty && text.count >= minLength ? handleProceedButton(mustBeActivated: true) : handleProceedButton(mustBeActivated: false)
+        
         return range.location < maxLength
     }
 }
