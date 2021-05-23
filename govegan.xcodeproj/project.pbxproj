@@ -26,6 +26,8 @@
 		836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EE6264D4723002158FD /* goveganUITests.swift */; };
 		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
+		83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */; };
+		83F8D8892659236F00EE96C4 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D8882659236F00EE96C4 /* ProgressCell.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
 		83FF51AA2657AB0E00AA2174 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF51A92657AB0E00AA2174 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		836A9EE8264D4723002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellElementsProvider.swift; sourceTree = "<group>"; };
+		83F8D8882659236F00EE96C4 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
 		83FF51A92657AB0E00AA2174 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84FDF25E8ECAF305CE0B12C7 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 		839DAEBD265008CA009E29F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83F8D87D265917CD00EE96C4 /* Data */,
 				8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */,
 				83FF51A92657AB0E00AA2174 /* User.swift */,
 			);
@@ -201,6 +206,7 @@
 				831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */,
 				831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */,
 				831D0FD62653DAF100817B5A /* NextButton.swift */,
+				83F8D8882659236F00EE96C4 /* ProgressCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +242,14 @@
 				83F3A0722656A3D40030929D /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		83F8D87D265917CD00EE96C4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +457,8 @@
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
+				83F8D8892659236F00EE96C4 /* ProgressCell.swift in Sources */,
+				83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */,
 				832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */,
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,

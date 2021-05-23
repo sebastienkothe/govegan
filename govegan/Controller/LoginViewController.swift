@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
         if #available(iOS 13.0, *) {
             setupSignInButton()
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

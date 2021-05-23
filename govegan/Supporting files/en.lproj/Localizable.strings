@@ -21,3 +21,11 @@
 // Back button
 "back_button" = "Back";
 
+// Labels from progressCell
+"vegan_since" = "Vegan since";
+"animal_lives" = "Animal lives";
+"kg_of_grain" = "Kg of grain";
+"litres_of_water" = "Litres of water";
+"sqm_of_forest" = "Sqm of forest";
+"kg_of_co2" = "Kg of CO2";
+
