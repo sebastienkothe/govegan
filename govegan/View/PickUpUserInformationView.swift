@@ -11,7 +11,7 @@ import UIKit
 class PickUpUserInformationView: UIView {
     
     // MARK: - Internal properties
-    var onMainButtonTapped: (() -> Void)?
+    var onMainButtonTapped: (([String]) -> Void)?
     var backButtonTapped: (() -> Void)?
     
     // MARK: - Internal functions
@@ -54,7 +54,7 @@ class PickUpUserInformationView: UIView {
         storeUserData(textFromAnswerTextField)
         
         guard !hasAllTheData else {
-            onMainButtonTapped?()
+            onMainButtonTapped?([name, veganStartDate])
             return
         }
         
@@ -150,6 +150,12 @@ class PickUpUserInformationView: UIView {
         } else {
             // Fallback on earlier versions
         }
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = -100
+        
+        guard let currentDateMinusOneHundredYears = Calendar.current.date(byAdding: dateComponent, to: Date()) else { return }
+        datePicker.minimumDate = currentDateMinusOneHundredYears
     }
     
     private func generateToolbar() -> UIToolbar {
@@ -175,9 +181,11 @@ class PickUpUserInformationView: UIView {
     }
     
     /// Convert datePicker.date to String with specific format
-    private func formatDate(datePicker: UIDatePicker) -> String? {
+    private func convertDateToStringFrom(_ datePicker: UIDatePicker) -> String? {
         let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .medium
+        dateFormat.dateStyle = .short
+        dateFormat.timeStyle = .short
+        dateFormat.locale = Locale(identifier: "FR-fr")
         
         return dateFormat.string(from: datePicker.date)
     }
@@ -189,7 +197,7 @@ class PickUpUserInformationView: UIView {
         // Assign toolbar
         answerTextField.inputAccessoryView = generateToolbar()
         
-        answerTextField.text = formatDate(datePicker: datePicker)
+        answerTextField.text = convertDateToStringFrom(datePicker)
         
         // Assign date picker to the text field
         answerTextField.inputView = datePicker
@@ -198,7 +206,7 @@ class PickUpUserInformationView: UIView {
     }
     
     @objc private func dateChanged() {
-        answerTextField.text = formatDate(datePicker: datePicker)
+        answerTextField.text = convertDateToStringFrom(datePicker)
     }
     
     @objc private func didTapOnPreviousYearButton() {
@@ -207,12 +215,13 @@ class PickUpUserInformationView: UIView {
         
         guard let previousYear = Calendar.current.date(byAdding: dateComponent, to: datePicker.date) else { return }
         datePicker.date = previousYear
-        answerTextField.text = formatDate(datePicker: datePicker)
+        answerTextField.text = convertDateToStringFrom(datePicker)
     }
     
     @objc private func didTapOnCurrentDateButton() {
+        datePicker.maximumDate = Date()
         datePicker.date = Date()
-        answerTextField.text = formatDate(datePicker: datePicker)
+        answerTextField.text = convertDateToStringFrom(datePicker)
     }
     
     @objc private func appDidEnterBackground() {

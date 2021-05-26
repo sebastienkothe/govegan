@@ -104,10 +104,6 @@ class WelcomeViewController: UIViewController {
     
     /// User redirection based on their connection status
     @objc private func didTapOnLoginButton(_ sender: UITapGestureRecognizer) {
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "segueToTabBarController", sender: nil)
-        } else {
-            performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
-        }
+        performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
     }
 }

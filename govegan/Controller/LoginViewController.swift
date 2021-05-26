@@ -11,6 +11,9 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Internal properties
+    var userData: [String] = []
+    
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,6 @@ class LoginViewController: UIViewController {
         if #available(iOS 13.0, *) {
             setupSignInButton()
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +33,8 @@ class LoginViewController: UIViewController {
     @IBAction func didTapOnRegisterNowButton() {
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    // MARK: - Private properties
     
     // MARK: - Private functions
     @available(iOS 13.0, *)
@@ -138,10 +142,31 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             Auth.auth().signIn(with: credential) { (authDataResult, error) in
                 if let user = authDataResult?.user {
-                    print("Nice! You're now signed in as \(user.uid), email: \(user.email ?? "unknown ")")
-                    self.performSegue(withIdentifier: "segueToTabBarController", sender: nil)
+                    
+                    var sender: User?
+                    
+                    if self.userData != [] {
+                        sender = User(name: self.userData[0], veganStartDate: self.userData[1], userID: user.uid, email: user.email ?? "unknown")
+                    } else {
+                        sender = User(name: "", veganStartDate: "", userID: user.uid, email: user.email ?? "unknown")
+                    }
+                    
+                    self.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: sender)
                 }
             }
+        }
+    }
+}
+
+extension LoginViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if
+            let destinationViewController = segue.destination as? DashboardTabBarController,
+            let user = sender as? User
+        {
+            destinationViewController.user = user
         }
     }
 }

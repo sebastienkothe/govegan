@@ -21,10 +21,17 @@
 // Back button
 "back_button" = "Retour";
 
-// Labels from progressCell
+// Progress title from progressCell
 "vegan_since" = "Vegan depuis";
 "animal_lives" = "Vies animales";
 "kg_of_grain" = "Kg de céréales";
 "litres_of_water" = "Litres d'eau";
 "sqm_of_forest" = "M² de forêt";
 "kg_of_co2" = "Kg de CO2";
+
+// Progress timer
+"second" = "seconde";
+"minute" = "minute";
+"hour" = "heure";
+"day" = "jour";
+"year" = "année";

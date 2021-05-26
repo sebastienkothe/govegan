@@ -16,10 +16,10 @@ class PickUpUserInformationViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
         
-        pickUpUserInformationView.onMainButtonTapped = { [weak self] in
+        pickUpUserInformationView.onMainButtonTapped = { [weak self] (userData) in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let viewController =  storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            
+            viewController.userData = userData
             self?.navigationController?.pushViewController(viewController, animated: true)
         }
         
