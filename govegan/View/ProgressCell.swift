@@ -12,8 +12,10 @@ class ProgressCell: UICollectionViewCell {
     // MARK: - Internal properties
     
     // MARK: - Internal functions
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setupShadow()
     }
     
     // MARK: - IBOutlets
@@ -28,10 +30,9 @@ class ProgressCell: UICollectionViewCell {
     // MARK: - Private properties
     
     // MARK: - Private functions
-    func setupShadowView() {
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOpacity = 1
-        shadowView.layer.shadowOffset = .zero
-        shadowView.layer.shadowRadius = 10
+    private func setupShadow() {
+        self.layer.shadowColor = #colorLiteral(red: 0.674947679, green: 0.755489707, blue: 0.9283690453, alpha: 1)
+        self.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
+        self.layer.shadowOpacity = 0.3
     }
 }

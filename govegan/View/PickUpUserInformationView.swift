@@ -80,7 +80,6 @@ class PickUpUserInformationView: UIView {
         didSet {
             if name != "".trimmingCharacters(in: .whitespaces) {
                 hasAllTheData = true
-                print("We have all the data required !")
             }
         }
     }

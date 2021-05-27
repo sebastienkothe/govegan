@@ -17,8 +17,7 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //guard let user = self.user else {return}
-        
-        user = User(name: "Jean", veganStartDate: "26/05/2021 09:00", userID: "", email: "")
+        user = User(name: "Jean", veganStartDate: "27/05/2021 11:30", userID: "", email: "")
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
@@ -58,7 +57,7 @@ class ProgressViewController: UIViewController {
         editTheTextOfTimeLabelsFrom(timeToDisplay)
         
         counterLabels.forEach( {(counterLabel) in
-            counterLabel.text = "\("")\(progressCellElementsProvider.dailyGoalTitle[counterLabel.tag])"
+            counterLabel.text = "\("")\(progressCalculator.calculateTheProgress()[counterLabel.tag])"
         })
     }
 }
@@ -72,19 +71,14 @@ extension ProgressViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgressCell", for: indexPath) as? ProgressCell else { return UICollectionViewCell() }
         
-        progressCell.setupShadowView()
         progressCell.counterLabel.tag = indexPath.item
-        
         counterLabels.append(progressCell.counterLabel)
         
         let image = progressCellElementsProvider.images[indexPath.item]
         let titleForProgression = progressCellElementsProvider.titleForProgression[indexPath.item]
         
-        //let dailyGoalTitle = progressCellElementsProvider.dailyGoalTitle[indexPath.item]
-        
         progressCell.titleForProgressionLabel.text = titleForProgression
         progressCell.imageView.image = image
-        //progressCell.counterLabel.text = dailyGoalTitle
         
         return progressCell
     }
