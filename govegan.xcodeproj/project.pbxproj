@@ -10,6 +10,7 @@
 		61D809698E25266A23CDC5BC /* libPods-govegan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8767AC7FA767291D5E2772A /* libPods-govegan.a */; };
 		71E3CA696B172CBFACD0B50F /* libPods-goveganTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F21E796CD8A96ADBC45F74 /* libPods-goveganTests.a */; };
 		8309025E2656B36E0052D36C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 830902602656B36E0052D36C /* Localizable.strings */; };
+		830B021F26637063003EB990 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B021E26637063003EB990 /* SettingViewController.swift */; };
 		831D0FCD2653B92700817B5A /* PickUpUserInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */; };
 		831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */; };
 		831D0FD72653DAF100817B5A /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD62653DAF100817B5A /* NextButton.swift */; };
@@ -29,8 +30,11 @@
 		836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EE6264D4723002158FD /* goveganUITests.swift */; };
 		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
-		8382FA1C265E43BB00E1DB4E /* ProgressCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA1B265E43BB00E1DB4E /* ProgressCellDelegate.swift */; };
 		839EA508265AB012001F1727 /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839EA507265AB012001F1727 /* DashboardTabBarController.swift */; };
+		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
+		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
+		83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */; };
+		83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
 		83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
@@ -63,6 +67,7 @@
 		830902552656B0DD0052D36C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8309025F2656B36E0052D36C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		830902642656B3760052D36C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		830B021E26637063003EB990 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickUpUserInformationView.xib; sourceTree = "<group>"; };
 		831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationView.swift; sourceTree = "<group>"; };
 		831D0FD62653DAF100817B5A /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -89,8 +94,11 @@
 		836A9EE8264D4723002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
-		8382FA1B265E43BB00E1DB4E /* ProgressCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellDelegate.swift; sourceTree = "<group>"; };
 		839EA507265AB012001F1727 /* DashboardTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
+		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
+		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
+		83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCellElementsProvider.swift; sourceTree = "<group>"; };
+		83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCircularProgressView.swift; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellElementsProvider.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +159,6 @@
 		83573E5F265D39B80021B738 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				8382FA1B265E43BB00E1DB4E /* ProgressCellDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -229,6 +236,9 @@
 				831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */,
 				831D0FD62653DAF100817B5A /* NextButton.swift */,
 				8382FA16265E3CB300E1DB4E /* ProgressCell.swift */,
+				83CA58F12660B50100186C6B /* AchievementCell.swift */,
+				83CA58F32660B80800186C6B /* AchievementHeader.swift */,
+				83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +254,7 @@
 				839EA507265AB012001F1727 /* DashboardTabBarController.swift */,
 				833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */,
 				8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */,
+				830B021E26637063003EB990 /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */,
+				83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -289,7 +301,7 @@
 				836A9EBD264D471F002158FD /* Sources */,
 				836A9EBE264D471F002158FD /* Frameworks */,
 				836A9EBF264D471F002158FD /* Resources */,
-				D8CBEA7E16D1FBD933AA287C /* [CP] Copy Pods Resources */,
+				89759311FA84667E5E95489F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +356,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					836A9EC0264D471F002158FD = {
 						CreatedOnToolsVersion = 12.4;
@@ -455,7 +467,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8CBEA7E16D1FBD933AA287C /* [CP] Copy Pods Resources */ = {
+		89759311FA84667E5E95489F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -483,13 +495,18 @@
 				839EA508265AB012001F1727 /* DashboardTabBarController.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
+				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
 				8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */,
+				83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
 				833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */,
+				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
+				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentariesViewController.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */,
+				83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */,
 				832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */,
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
@@ -497,7 +514,6 @@
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
 				83FF51AA2657AB0E00AA2174 /* User.swift in Sources */,
-				8382FA1C265E43BB00E1DB4E /* ProgressCellDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +713,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LD_VERIFY_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -721,6 +738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LD_VERIFY_BITCODE = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

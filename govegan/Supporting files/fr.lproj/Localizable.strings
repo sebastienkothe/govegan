@@ -35,3 +35,10 @@
 "hour" = "heure";
 "day" = "jour";
 "year" = "année";
+
+// Success titles
+"animals" = "Animal";
+"grain" = "Céréale";
+"water" = "Eau";
+"forest" = "Forêt";
+"CO2" = "CO2";

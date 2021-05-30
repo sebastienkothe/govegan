@@ -36,3 +36,11 @@
 "day" = "day";
 "year" = "year";
 
+// Success titles
+"animals" = "Animal";
+"grain" = "Grain";
+"water" = "Water";
+"forest" = "Forest";
+"CO2" = "CO2";
+
+

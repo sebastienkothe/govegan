@@ -25,7 +25,7 @@ struct ProgressCellElementsProvider {
      1 animal par jour
      */
     
-    let dailyGoalTitle = [
-        "/\(1)", "/\(18)", "/\(4163)", "/\(3)", "/\(9)"
-    ]
+//    let dailyGoalTitle = [
+//        "/\(1)", "/\(18)", "/\(4163)", "/\(3)", "/\(9)"
+//    ]
 }
