@@ -43,4 +43,37 @@
 "forest" = "Forest";
 "CO2" = "CO2";
 
+// Header section for achievement table view
+"category" = "Category";
+"goal" = "Goal";
+"progress" = "Progress";
+
+// Additional information on the objectives
+"life" = "life";
+"sqm" = "sqm";
+
+// Network
+"error_unknown_error_title" = "Unknown error";
+"error_failed_to_decode_json_title" = "Cannot decode JSON";
+"error_no_data_title" = "No data recovered";
+"error_cannot_create_url_title" = "Cannot create URL";
+"error_incorrect_http_response_code_title" = "Incorrect http response code";
+
+"error_message" = "ERROR";
+"validation_message" = "Alright!";
+
+// Documentary descriptions
+"dominion" = "Exposing the dark underbelly of modern animal agriculture through drones, hidden & handheld cameras, the feature-length film explores the morality and validity of our dominion over the animal kingdom.";
+"earthlings" = "Using hidden cameras and never-before-seen footage, EARTHLINGS chronicles the day-to-day practices of the largest industries in the world, all of which rely entirely on animals for profit. Narrated by Joaquin Phoenix.";
+"why_go_vegan_description" = "You will never see your life the same way again after watching this video. Ed Winters, known as Earthling Ed, is a vegan educator, public speaker and content creator recognised for his efforts to spread the word about kindness to all non-humans.";
+"fight_for_them_description" = "Do you want to defend animal rights? Join Anonymous for the Voiceless.";
+
+// Documentary VC - Alert
+"confirmation_link" = "Open the link?";
+"let_it_go" = "Let's go!";
+"youtube_video" = "YouTube video";
+"cancel" = "Cancel";
+"watch" = "Watch ";
+"why_go_vegan" = "Why go vegan";
+"fight_for_them" = "Fight for them";
 

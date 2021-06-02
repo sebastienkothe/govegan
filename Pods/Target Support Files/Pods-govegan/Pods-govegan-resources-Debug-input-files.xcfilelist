@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FacebookSDKStrings.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle

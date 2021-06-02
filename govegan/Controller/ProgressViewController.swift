@@ -11,13 +11,17 @@ import Firebase
 class ProgressViewController: UIViewController {
     
     // MARK: - Internal properties
+    
     var user = User(name: "", veganStartDate: "", userID: "", email: "")
+    let progressCalculator = ProgressCalculator()
     
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        progressCalculator.delegate = self
         //guard let user = self.user else {return}
-        user = User(name: "Jean", veganStartDate: "27/05/2021 11:30", userID: "", email: "")
+        user = User(name: "Jean", veganStartDate: "31/05/2021 17:38", userID: "", email: "")
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
@@ -30,35 +34,39 @@ class ProgressViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet var timeLabels: [UILabel]!
+    @IBOutlet weak var progressCollectionView: UICollectionView!
     
     // MARK: - IBActions
     
     // MARK: - private properties
     private var veganStartDate = Date()
-    private let progressCalculator = ProgressCalculator()
     private let progressCellElementsProvider = ProgressCellElementsProvider()
-    private var counterLabels: [UILabel] = []
     
+    private var progressByCategory: [String] = [] {
+        didSet {
+            progressCollectionView.reloadData()
+        }
+    }
+
     // MARK: - private functions
-    
     private func editTheTextOfTimeLabelsFrom(_ timeToDisplay: [String]) {
         timeLabels.forEach({ (timeLabel) in
             timeLabel.text = timeToDisplay[timeLabel.tag]
         })
     }
     
-    @objc func updateUserInterface() {
+    @objc private func updateUserInterface() {
         let userCalendar = Calendar.current
         
         //Change the seconds to days, hours, minutes and seconds
         let timeElapsed = userCalendar.dateComponents([.year, .day, .hour, .minute, .second], from: veganStartDate, to: Date())
         
+        // Manage the time to display
         let timeToDisplay = progressCalculator.checkTheTimeToDisplay(timeElapsed: timeElapsed)
         editTheTextOfTimeLabelsFrom(timeToDisplay)
         
-        counterLabels.forEach( {(counterLabel) in
-            counterLabel.text = "\("")\(progressCalculator.calculateTheProgress()[counterLabel.tag])"
-        })
+        // Retrieve the user's current progress
+        progressByCategory = progressCalculator.calculateTheProgress()
     }
 }
 
@@ -71,14 +79,12 @@ extension ProgressViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgressCell", for: indexPath) as? ProgressCell else { return UICollectionViewCell() }
         
-        progressCell.counterLabel.tag = indexPath.item
-        counterLabels.append(progressCell.counterLabel)
+        if !progressByCategory.isEmpty {
+            progressCell.counterLabel.text = "\("")\(progressByCategory[indexPath.item])"
+        }
         
-        let image = progressCellElementsProvider.images[indexPath.item]
-        let titleForProgression = progressCellElementsProvider.titleForProgression[indexPath.item]
-        
-        progressCell.titleForProgressionLabel.text = titleForProgression
-        progressCell.imageView.image = image
+        progressCell.titleForProgressionLabel.text = progressCellElementsProvider.titleForProgression[indexPath.item]
+        progressCell.imageView.image = progressCellElementsProvider.images[indexPath.item]
         
         return progressCell
     }
@@ -95,6 +101,13 @@ extension ProgressViewController: UICollectionViewDelegateFlowLayout {
         let cellSpacing: CGFloat = 5
         
         return CGSize(width: (width / numberOfColumns) - (xInsets + cellSpacing), height: (width / numberOfColumns) - (xInsets + cellSpacing))
+    }
+}
+
+extension ProgressViewController: ProgressCalculatorDelegate {
+    func progressCanBeUpdated(data: [Double]) {
+        let achievementViewController = tabBarController?.viewControllers?[1] as? AchievementViewController
+        achievementViewController?.progressCalculated = data
     }
 }
 

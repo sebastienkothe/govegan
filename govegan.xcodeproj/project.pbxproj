@@ -19,6 +19,15 @@
 		832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CE852264FA5D000C80925 /* WelcomeViewController.swift */; };
 		8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */; };
 		833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */; };
+		833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320B26653E240027E965 /* DocumentaryCell.swift */; };
+		833B320F266547760027E965 /* VeganNewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320E266547760027E965 /* VeganNewsResponse.swift */; };
+		833B32122665491C0027E965 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B32112665491C0027E965 /* NetworkManager.swift */; };
+		833B32142665495D0027E965 /* NetworkManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B32132665495D0027E965 /* NetworkManager+Mock.swift */; };
+		833B3216266549E20027E965 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B3215266549E20027E965 /* NetworkError.swift */; };
+		833B321826654A7D0027E965 /* VeganNewsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B321726654A7D0027E965 /* VeganNewsNetworkManager.swift */; };
+		833B321A26654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B321926654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift */; };
+		833B321C26654C0D0027E965 /* VeganNewsURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B321B26654C0D0027E965 /* VeganNewsURLProvider.swift */; };
+		833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */; };
 		835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835ECAD82658158100BF3E00 /* ProgressViewController.swift */; };
 		836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC4264D471F002158FD /* AppDelegate.swift */; };
 		836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC6264D471F002158FD /* SceneDelegate.swift */; };
@@ -35,10 +44,12 @@
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
 		83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */; };
 		83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */; };
+		83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */; };
+		83E7E0272663985B005211D3 /* ProgressViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
 		83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
-		83FE77AF265A99D000F003CC /* DocumentariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE77AE265A99D000F003CC /* DocumentariesViewController.swift */; };
+		83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */; };
 		83FF51AA2657AB0E00AA2174 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF51A92657AB0E00AA2174 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +87,15 @@
 		832CE852264FA5D000C80925 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectionStatusViewController.swift; sourceTree = "<group>"; };
+		833B320B26653E240027E965 /* DocumentaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCell.swift; sourceTree = "<group>"; };
+		833B320E266547760027E965 /* VeganNewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganNewsResponse.swift; sourceTree = "<group>"; };
+		833B32112665491C0027E965 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		833B32132665495D0027E965 /* NetworkManager+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Mock.swift"; sourceTree = "<group>"; };
+		833B3215266549E20027E965 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		833B321726654A7D0027E965 /* VeganNewsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganNewsNetworkManager.swift; sourceTree = "<group>"; };
+		833B321926654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganNewsUrlProviderProtocol.swift; sourceTree = "<group>"; };
+		833B321B26654C0D0027E965 /* VeganNewsURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganNewsURLProvider.swift; sourceTree = "<group>"; };
+		833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCellElementsProvider.swift; sourceTree = "<group>"; };
 		834861E2264D7DB30006A527 /* govegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = govegan.entitlements; sourceTree = "<group>"; };
 		835ECAD82658158100BF3E00 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		836A9EC1264D471F002158FD /* govegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = govegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,10 +119,12 @@
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
 		83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCellElementsProvider.swift; sourceTree = "<group>"; };
 		83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCircularProgressView.swift; sourceTree = "<group>"; };
+		83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegate.swift; sourceTree = "<group>"; };
+		83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewControllerDelegate.swift; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellElementsProvider.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
-		83FE77AE265A99D000F003CC /* DocumentariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentariesViewController.swift; sourceTree = "<group>"; };
+		83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryViewController.swift; sourceTree = "<group>"; };
 		83FF51A92657AB0E00AA2174 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84FDF25E8ECAF305CE0B12C7 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3F18795D87B3FC440394CFC /* Pods-govegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.release.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,9 +178,67 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		833B32052664FB170027E965 /* PickUpUserInformationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */,
+				831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */,
+				831D0FD62653DAF100817B5A /* NextButton.swift */,
+			);
+			path = PickUpUserInformationViewController;
+			sourceTree = "<group>";
+		};
+		833B32062664FB710027E965 /* ProgressViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8382FA16265E3CB300E1DB4E /* ProgressCell.swift */,
+			);
+			path = ProgressViewController;
+			sourceTree = "<group>";
+		};
+		833B32072664FBA30027E965 /* AchievementViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83CA58F12660B50100186C6B /* AchievementCell.swift */,
+				83CA58F32660B80800186C6B /* AchievementHeader.swift */,
+				83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */,
+			);
+			path = AchievementViewController;
+			sourceTree = "<group>";
+		};
+		833B320A26653DB00027E965 /* DocumentaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				833B320B26653E240027E965 /* DocumentaryCell.swift */,
+			);
+			path = DocumentaryViewController;
+			sourceTree = "<group>";
+		};
+		833B320D266547430027E965 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				833B320E266547760027E965 /* VeganNewsResponse.swift */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		833B3210266549090027E965 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				833B32112665491C0027E965 /* NetworkManager.swift */,
+				833B32132665495D0027E965 /* NetworkManager+Mock.swift */,
+				833B3215266549E20027E965 /* NetworkError.swift */,
+				833B321726654A7D0027E965 /* VeganNewsNetworkManager.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		83573E5F265D39B80021B738 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */,
+				83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */,
+				833B321926654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -218,6 +298,8 @@
 		839DAEBD265008CA009E29F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				833B3210266549090027E965 /* Networking */,
+				833B320D266547430027E965 /* DataModel */,
 				83573E5F265D39B80021B738 /* Protocol */,
 				83F8D87D265917CD00EE96C4 /* Data */,
 				8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */,
@@ -232,13 +314,10 @@
 			children = (
 				836A9ECA264D471F002158FD /* Main.storyboard */,
 				836A9ECF264D4722002158FD /* LaunchScreen.storyboard */,
-				831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */,
-				831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */,
-				831D0FD62653DAF100817B5A /* NextButton.swift */,
-				8382FA16265E3CB300E1DB4E /* ProgressCell.swift */,
-				83CA58F12660B50100186C6B /* AchievementCell.swift */,
-				83CA58F32660B80800186C6B /* AchievementHeader.swift */,
-				83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */,
+				833B320A26653DB00027E965 /* DocumentaryViewController */,
+				833B32072664FBA30027E965 /* AchievementViewController */,
+				833B32062664FB710027E965 /* ProgressViewController */,
+				833B32052664FB170027E965 /* PickUpUserInformationViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,7 +329,7 @@
 				836A9EC8264D471F002158FD /* LoginViewController.swift */,
 				83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */,
 				835ECAD82658158100BF3E00 /* ProgressViewController.swift */,
-				83FE77AE265A99D000F003CC /* DocumentariesViewController.swift */,
+				83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */,
 				839EA507265AB012001F1727 /* DashboardTabBarController.swift */,
 				833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */,
 				8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */,
@@ -286,6 +365,8 @@
 			children = (
 				83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */,
 				83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */,
+				833B321B26654C0D0027E965 /* VeganNewsURLProvider.swift */,
+				833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -492,26 +573,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				836A9EC9264D471F002158FD /* LoginViewController.swift in Sources */,
+				833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */,
+				83E7E0272663985B005211D3 /* ProgressViewControllerDelegate.swift in Sources */,
 				839EA508265AB012001F1727 /* DashboardTabBarController.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
+				833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */,
 				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
+				833B321A26654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift in Sources */,
+				833B321826654A7D0027E965 /* VeganNewsNetworkManager.swift in Sources */,
 				8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */,
 				83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */,
+				833B3216266549E20027E965 /* NetworkError.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
+				833B321C26654C0D0027E965 /* VeganNewsURLProvider.swift in Sources */,
 				833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */,
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
-				83FE77AF265A99D000F003CC /* DocumentariesViewController.swift in Sources */,
+				833B32142665495D0027E965 /* NetworkManager+Mock.swift in Sources */,
+				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */,
 				83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */,
 				832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */,
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
+				83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
 				8324C5742650204E00C2A1E2 /* AppleAuthenticationService.swift in Sources */,
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
+				833B32122665491C0027E965 /* NetworkManager.swift in Sources */,
+				833B320F266547760027E965 /* VeganNewsResponse.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
 				83FF51AA2657AB0E00AA2174 /* User.swift in Sources */,
 			);

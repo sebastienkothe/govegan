@@ -10,7 +10,14 @@ import Foundation
 class ProgressCalculator {
     
     // MARK: - Internal properties
-    var progressIsCalculated: (() -> Void)?
+    weak var delegate: ProgressCalculatorDelegate?
+    
+    var progressCalculated: [Double] = [] {
+        didSet {
+            delegate?.progressCanBeUpdated(data: progressCalculated)
+        }
+    }
+    
     var timeData: [Int] = []
     var animalSaved: Double = 0.0
     
@@ -42,47 +49,60 @@ class ProgressCalculator {
     }
     
     func calculateTheProgress() -> [String] {
-        let savedAnimalPerSecond = savedAnimalPerDay / 24 / 60 / 60
-        let savedGrainPerSecond = savedGrainPerDay / 24 / 60 / 60
-        let savedWaterPerSecond = savedWaterPerday / 24 / 60 / 60
-        let savedForestPerSecond = savedForestPerDay / 24 / 60 / 60
-        let savedCO2PerSecond = savedCO2PerDay / 24 / 60 / 60
+        let savedAnimalPerSecond = convertDailyDataToSeconds(1.0)
+        let savedGrainPerSecond = convertDailyDataToSeconds(18.1)
+        let savedWaterPerSecond = convertDailyDataToSeconds(4163.9)
+        let savedForestPerSecond = convertDailyDataToSeconds(2.8)
+        let savedCO2PerSecond = convertDailyDataToSeconds(9.1)
         
-        let elapsedTimeInSecondsFromMinute = Double(timeData[1]) * 60.0
-        let elapsedTimeInSecondsFromHour = Double(timeData[2]) * 60.0 * 60.0
-        let elapsedTimeInSecondsFromDay = Double(timeData[3]) * 60.0 * 60.0 * 24.0
-        let elapsedTimeInSecondsFromYear = Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.0
+        let elapsedTimeInSecondsFromMinutes = Double(timeData[1]) * 60.0
+        let elapsedTimeInSecondsFromHours = Double(timeData[2]) * 60.0 * 60.0
+        let elapsedTimeInSecondsFromDays = Double(timeData[3]) * 60.0 * 60.0 * 24.0
+        let elapsedTimeInSecondsFromYears = Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.0
         
-        let totalTime = Double(timeData[0]) + elapsedTimeInSecondsFromMinute + elapsedTimeInSecondsFromHour + elapsedTimeInSecondsFromDay + elapsedTimeInSecondsFromYear
+        let totalTimeInSeconds = Double(timeData[0]) + elapsedTimeInSecondsFromMinutes + elapsedTimeInSecondsFromHours + elapsedTimeInSecondsFromDays + elapsedTimeInSecondsFromYears
         
         /// To update progressBar
-        animalSaved = savedAnimalPerSecond * totalTime
+        animalSaved = savedAnimalPerSecond * totalTimeInSeconds
         
-        let animalSaved = convertToStringFrom(floor(savedAnimalPerSecond * totalTime), numberOfDecimal: 0)
-        let grainSaved = convertToStringFrom(savedGrainPerSecond * totalTime, numberOfDecimal: 0)
-        let waterSaved = convertToStringFrom(savedWaterPerSecond * totalTime, numberOfDecimal: 0)
-        let forestSaved = convertToStringFrom(savedForestPerSecond * totalTime, numberOfDecimal: 0)
-        let CO2saved = convertToStringFrom(savedCO2PerSecond * totalTime, numberOfDecimal: 0)
+        let animalSavedToString = convertToStringFrom(floor(savedAnimalPerSecond * totalTimeInSeconds), numberOfDecimal: 0)
+        let grainSavedToString = convertToStringFrom(savedGrainPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
+        let waterSavedToString = convertToStringFrom(savedWaterPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
+        let forestSavedToString = convertToStringFrom(savedForestPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
+        let CO2savedToString = convertToStringFrom(savedCO2PerSecond * totalTimeInSeconds, numberOfDecimal: 0)
+        
+        let animalSaved = savedAnimalPerSecond * totalTimeInSeconds
+        let grainSaved = savedGrainPerSecond * totalTimeInSeconds
+        let waterSaved = savedWaterPerSecond * totalTimeInSeconds
+        let forestSaved = savedForestPerSecond * totalTimeInSeconds
+        let CO2saved = savedCO2PerSecond * totalTimeInSeconds
+        
+        progressCalculated = [animalSaved,
+                               grainSaved,
+                               waterSaved,
+                               forestSaved,
+                               CO2saved]
         
         return [
-            animalSaved, grainSaved, waterSaved, forestSaved, CO2saved
+            animalSavedToString, grainSavedToString, waterSavedToString, forestSavedToString, CO2savedToString
         ]
     }
     
-    func computeTheProgressBarPercent() -> Float {
+    func computeProgressPercent() -> Float {
         return Float(1.0 - (floor(animalSaved + 1.0) - animalSaved))
     }
     
+    
+    
     // MARK: - private properties
-    private let savedGrainPerDay = 18.1 // 18
-    private let savedCO2PerDay = 9.1 // 9
-    private let savedWaterPerday = 4163.9 // 4163
-    private let savedForestPerDay = 2.8 // 3
-    private let savedAnimalPerDay = 1.0
     
     // MARK: - private functions
     private func convertToStringFrom(_ number: Double, numberOfDecimal: Int) -> String{
         return String(format: "%.\(String(numberOfDecimal))f", number)
+    }
+    
+    private func convertDailyDataToSeconds(_ dailyObjective: Double) -> Double {
+       return dailyObjective / 24 / 60 / 60
     }
     
 }

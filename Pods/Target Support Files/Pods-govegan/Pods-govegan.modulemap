@@ -1,4 +1,4 @@
-framework module Pods_govegan {
+module Pods_govegan {
   umbrella header "Pods-govegan-umbrella.h"
 
   export *

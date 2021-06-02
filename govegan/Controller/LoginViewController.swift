@@ -19,6 +19,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         if #available(iOS 13.0, *) {
+            buttonsStackView.constraints.forEach { (constraint) in
+                let constraintToRemove = constraint.identifier == "buttonsStackViewHeight"
+                if constraintToRemove {
+                    buttonsStackView.removeConstraint(constraint)
+                    buttonsStackView.addConstraint(buttonsStackView.heightAnchor.constraint(equalToConstant: 300))
+                }
+                
+            }
+            
             setupSignInButton()
         }
     }
@@ -28,6 +37,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     // MARK: - IBActions
     @IBAction func didTapOnRegisterNowButton() {

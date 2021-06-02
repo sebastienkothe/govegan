@@ -23,6 +23,9 @@ class AchievementCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var circularProgressView: AchievementCircularProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var objectiveLabel: UILabel!
     
     
     // MARK: - IBActions
