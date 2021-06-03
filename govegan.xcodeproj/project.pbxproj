@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,8 +14,10 @@
 		831D0FCD2653B92700817B5A /* PickUpUserInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */; };
 		831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */; };
 		831D0FD72653DAF100817B5A /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD62653DAF100817B5A /* NextButton.swift */; };
+		83219C2326693AF000C1FC71 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83219C2226693AF000C1FC71 /* StoreKit.framework */; };
 		83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83244D83265D237700A76F3A /* ProgressCalculator.swift */; };
 		8324C5742650204E00C2A1E2 /* AppleAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */; };
+		8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8324D3BA2667C7A20069A249 /* LoginButton.swift */; };
 		832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CE852264FA5D000C80925 /* WelcomeViewController.swift */; };
 		8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */; };
 		833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */; };
@@ -44,6 +46,13 @@
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
 		83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */; };
 		83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */; };
+		83D3F1B62668F07F007D4DCC /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3F1B52668F07F007D4DCC /* Hud.swift */; };
+		83DEAEAC2668F7290087B727 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 83DEAEAB2668F7290087B727 /* JGProgressHUD */; };
+		83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEAD2668F9700087B727 /* UIApplication+.swift */; };
+		83DEAEB12668FFF10087B727 /* InfoPlistParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */; };
+		83DEAEB3266900230087B727 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB2266900230087B727 /* Setup.swift */; };
+		83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB42669047E0087B727 /* UIAlertService.swift */; };
+		83DEAEB72669100B0087B727 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB62669100B0087B727 /* Service.swift */; };
 		83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */; };
 		83E7E0272663985B005211D3 /* ProgressViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
@@ -82,8 +91,10 @@
 		831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickUpUserInformationView.xib; sourceTree = "<group>"; };
 		831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationView.swift; sourceTree = "<group>"; };
 		831D0FD62653DAF100817B5A /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		83219C2226693AF000C1FC71 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83244D83265D237700A76F3A /* ProgressCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculator.swift; sourceTree = "<group>"; };
 		8324C5732650204E00C2A1E2 /* AppleAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationService.swift; sourceTree = "<group>"; };
+		8324D3BA2667C7A20069A249 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		832CE852264FA5D000C80925 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectionStatusViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +130,12 @@
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
 		83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCellElementsProvider.swift; sourceTree = "<group>"; };
 		83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCircularProgressView.swift; sourceTree = "<group>"; };
+		83D3F1B52668F07F007D4DCC /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
+		83DEAEAD2668F9700087B727 /* UIApplication+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistParser.swift; sourceTree = "<group>"; };
+		83DEAEB2266900230087B727 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
+		83DEAEB42669047E0087B727 /* UIAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertService.swift; sourceTree = "<group>"; };
+		83DEAEB62669100B0087B727 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegate.swift; sourceTree = "<group>"; };
 		83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewControllerDelegate.swift; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -136,6 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83219C2326693AF000C1FC71 /* StoreKit.framework in Frameworks */,
+				83DEAEAC2668F7290087B727 /* JGProgressHUD in Frameworks */,
 				61D809698E25266A23CDC5BC /* libPods-govegan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +180,7 @@
 		2EB71FAA8B8BBD9FD709F827 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83219C2226693AF000C1FC71 /* StoreKit.framework */,
 				F8767AC7FA767291D5E2772A /* libPods-govegan.a */,
 				20F21E796CD8A96ADBC45F74 /* libPods-goveganTests.a */,
 			);
@@ -176,6 +196,14 @@
 				7061ECD3CA03165DDC3C88E5 /* Pods-goveganTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8324D3B92667C7720069A249 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8324D3BA2667C7A20069A249 /* LoginButton.swift */,
+			);
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		833B32052664FB170027E965 /* PickUpUserInformationViewController */ = {
@@ -298,6 +326,7 @@
 		839DAEBD265008CA009E29F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83DEAEAF2668FFD30087B727 /* Helpers */,
 				833B3210266549090027E965 /* Networking */,
 				833B320D266547430027E965 /* DataModel */,
 				83573E5F265D39B80021B738 /* Protocol */,
@@ -314,6 +343,7 @@
 			children = (
 				836A9ECA264D471F002158FD /* Main.storyboard */,
 				836A9ECF264D4722002158FD /* LaunchScreen.storyboard */,
+				8324D3B92667C7720069A249 /* LoginViewController */,
 				833B320A26653DB00027E965 /* DocumentaryViewController */,
 				833B32072664FBA30027E965 /* AchievementViewController */,
 				833B32062664FB710027E965 /* ProgressViewController */,
@@ -355,9 +385,22 @@
 		83B313652654F99C00657DF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				83DEAEAD2668F9700087B727 /* UIApplication+.swift */,
 				83F3A0722656A3D40030929D /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		83DEAEAF2668FFD30087B727 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				83D3F1B52668F07F007D4DCC /* Hud.swift */,
+				83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */,
+				83DEAEB2266900230087B727 /* Setup.swift */,
+				83DEAEB42669047E0087B727 /* UIAlertService.swift */,
+				83DEAEB62669100B0087B727 /* Service.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		83F8D87D265917CD00EE96C4 /* Data */ = {
@@ -389,6 +432,9 @@
 			dependencies = (
 			);
 			name = govegan;
+			packageProductDependencies = (
+				83DEAEAB2668F7290087B727 /* JGProgressHUD */,
+			);
 			productName = govegan;
 			productReference = 836A9EC1264D471F002158FD /* govegan.app */;
 			productType = "com.apple.product-type.application";
@@ -462,6 +508,9 @@
 				fr,
 			);
 			mainGroup = 836A9EB8264D471F002158FD;
+			packageReferences = (
+				83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+			);
 			productRefGroup = 836A9EC2264D471F002158FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -582,6 +631,7 @@
 				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
 				833B321A26654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift in Sources */,
 				833B321826654A7D0027E965 /* VeganNewsNetworkManager.swift in Sources */,
+				83DEAEB3266900230087B727 /* Setup.swift in Sources */,
 				8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */,
 				83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */,
 				833B3216266549E20027E965 /* NetworkError.swift in Sources */,
@@ -589,6 +639,8 @@
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
 				833B321C26654C0D0027E965 /* VeganNewsURLProvider.swift in Sources */,
 				833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */,
+				83DEAEB12668FFF10087B727 /* InfoPlistParser.swift in Sources */,
+				83D3F1B62668F07F007D4DCC /* Hud.swift in Sources */,
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				833B32142665495D0027E965 /* NetworkManager+Mock.swift in Sources */,
@@ -596,12 +648,16 @@
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */,
 				83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */,
+				83DEAEB72669100B0087B727 /* Service.swift in Sources */,
 				832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */,
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
 				83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */,
+				83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
 				8324C5742650204E00C2A1E2 /* AppleAuthenticationService.swift in Sources */,
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
+				83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */,
+				8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */,
 				833B32122665491C0027E965 /* NetworkManager.swift in Sources */,
 				833B320F266547760027E965 /* VeganNewsResponse.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
@@ -965,6 +1021,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83DEAEAB2668F7290087B727 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 836A9EB9264D471F002158FD /* Project object */;
 }

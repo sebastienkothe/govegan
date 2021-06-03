@@ -7,6 +7,8 @@ target 'govegan' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
   pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
 
   target 'goveganTests' do
     inherit! :search_paths

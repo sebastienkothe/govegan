@@ -10,6 +10,8 @@ import Firebase
 
 class WelcomeViewController: UIViewController {
     
+    // MARK: - Internal properties
+    
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +46,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     
     // MARK: - IBActions
-    /// Starts the performSegue method when the user presses the button
-    @IBAction private func goButton(_ sender: Any) {
-        //performSegue(withIdentifier: "segueToNameRequestViewController", sender: nil)
-    }
     
     // MARK: - Private properties
     private var preAnimationLogoConstraint: NSLayoutConstraint?

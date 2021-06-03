@@ -61,11 +61,14 @@ class DocumentaryViewController: UIViewController {
         
         let okay = UIAlertAction(title: "let_it_go".localized, style: .default) { _ in
             
-            guard var url = URL(string:"youtube://\(youtubeID)") else { return }
-            if !UIApplication.shared.canOpenURL(url)  {
-                url = URL(string:"http://www.youtube.com/watch?v=\(youtubeID)")!
-            }
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            guard let localYoutubeUrl = URL(string:"youtube://\(youtubeID)"),
+                  let browserYoutubeUrl = URL(string:"http://www.youtube.com/watch?v=\(youtubeID)")
+            else { return }
+            
+            let youtubeUrl = UIApplication.shared.canOpenURL(localYoutubeUrl) ?
+                localYoutubeUrl : browserYoutubeUrl
+            
+            UIApplication.shared.open(youtubeUrl, options: [:], completionHandler: nil)
         }
         
         let okayColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

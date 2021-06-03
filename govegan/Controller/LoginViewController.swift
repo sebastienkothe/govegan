@@ -8,10 +8,13 @@
 import UIKit
 import AuthenticationServices
 import Firebase
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
     // MARK: - Internal properties
+    
+    /// Contains manually entered user data
     var userData: [String] = []
     
     // MARK: - Internal functions
@@ -19,15 +22,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         if #available(iOS 13.0, *) {
-            buttonsStackView.constraints.forEach { (constraint) in
-                let constraintToRemove = constraint.identifier == "buttonsStackViewHeight"
-                if constraintToRemove {
-                    buttonsStackView.removeConstraint(constraint)
-                    buttonsStackView.addConstraint(buttonsStackView.heightAnchor.constraint(equalToConstant: 300))
-                }
-                
-            }
-            
+            loginButtons.first?.isHidden = false
+            setupStackViewConstraints()
             setupSignInButton()
         }
     }
@@ -38,15 +34,118 @@ class LoginViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet var loginButtons: [LoginButton]!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     
     // MARK: - IBActions
+    
+    /// Leave the choice to the user to connect if he already has an account by returning to the home page
     @IBAction func didTapOnRegisterNowButton() {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    /// Used to close the keyboard when the user taps the screen
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func didTapOnLoginButton(_ sender: UIButton) {
+        guard let email = emailTextField.text, email.trimmingCharacters(in: .whitespaces) != "" else {
+            UIAlertService.showAlert(style: .alert, title: "Mail required", message: "Enter your email adress")
+            return
+        }
+        
+        guard let password = passwordTextField.text, password.trimmingCharacters(in: .whitespaces) != ""else {
+            UIAlertService.showAlert(style: .alert, title: "Password required", message: "Enter a password")
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
+            guard let strongSelf = self else { return }
+            
+            guard error == nil else {
+                // Show account creation
+                strongSelf.showCreateAccount(email: email, password: password)
+                return
+            }
+            
+            strongSelf.emailTextField.resignFirstResponder()
+            strongSelf.passwordTextField.resignFirstResponder()
+            Hud.handle(strongSelf.hud, with: HudInfo(type: .success, text: "Successfully connected!", detailText: "Redirection in progress"))
+            strongSelf.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
+        }
+    }
+    
+    
+    @IBAction func didTapOnFacebookLogin() {
+        
+        guard let currentAccessToken = AccessToken.current else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: currentAccessToken.tokenString)
+        
+        Auth.auth().signIn(with: credential) { (authDataResult, error) in
+            
+            guard error == nil else {
+                print("Login error: \(error?.localizedDescription ?? "")")
+                let alertController = UIAlertController(title: "Login error", message: error?.localizedDescription, preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okayAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            
+            guard let user = authDataResult?.user else { return }
+            
+            var sender: User?
+            
+            if self.userData != [] {
+                sender = User(name: self.userData[0], veganStartDate: self.userData[1], userID: user.uid, email: user.email ?? "unknown")
+            } else {
+                sender = User(name: "", veganStartDate: "", userID: user.uid, email: user.email ?? "unknown")
+            }
+            
+            self.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: sender)
+        }
+    }
+    
     // MARK: - Private properties
+    let hud = Hud.create()
     
     // MARK: - Private functions
+    private func showCreateAccount(email: String, password: String) {
+        let okay = UIAlertAction(title: "Continue", style: .default) {_ in
+            
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
+                guard let strongSelf = self else { return }
+                
+                guard error == nil else {
+                    guard let error = error else { return }
+                    UIAlertService.showAlert(style: .alert, title: "Error", message: error.localizedDescription)
+                    return
+                }
+                
+                strongSelf.emailTextField.resignFirstResponder()
+                strongSelf.passwordTextField.resignFirstResponder()
+                strongSelf.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        UIAlertService.showAlert(style: .alert, title: "Create Account", message: "Would you like to create account ?", actions: [okay, cancel], completion: nil)
+    }
+    
+    private func setupStackViewConstraints() {
+        buttonsStackView.constraints.forEach { (constraint) in
+            let constraintToRemove = constraint.identifier == "buttonsStackViewHeight"
+            if constraintToRemove {
+                buttonsStackView.removeConstraint(constraint)
+                buttonsStackView.addConstraint(buttonsStackView.heightAnchor.constraint(equalToConstant: 160))
+            }
+        }
+    }
+    
     @available(iOS 13.0, *)
     @objc private func handleWithSignInWithAppleTapped() {
         performSignIn()
@@ -56,34 +155,21 @@ class LoginViewController: UIViewController {
     @available(iOS 13.0, *)
     private func setupSignInButton() {
         
-        // Instantiate ASAuthorizationAppleIDButton as soon as the view appears (viewDidLoad)
-        let button = ASAuthorizationAppleIDButton()
-        
-        view.addSubview(button)
-        defineTheConstraintsOf(button)
+        guard let appleLoginButton = loginButtons.first else { return }
+        defineTheConstraintsOf(appleLoginButton)
         
         // the function that will be executed when user tap the button
-        button.addTarget(self, action: #selector(handleWithSignInWithAppleTapped), for: .touchUpInside)
+        appleLoginButton.addTarget(self, action: #selector(handleWithSignInWithAppleTapped), for: .touchUpInside)
     }
     
     /// Define the constraints of the sign in Apple button
     @available(iOS 13.0, *)
-    private func defineTheConstraintsOf(_ signInButton: ASAuthorizationAppleIDButton) {
-        
-        // set this so the button will use auto layout constraint
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
+    private func defineTheConstraintsOf(_ signInButton: UIButton) {
         
         // Disable default constraints
         signInButton.constraints.forEach { (constraint) in
             constraint.isActive = false
         }
-        
-        NSLayoutConstraint.activate([
-            signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signInButton.heightAnchor.constraint(equalToConstant: 50),
-            signInButton.widthAnchor.constraint(equalToConstant: 200)
-        ])
     }
     
     @available(iOS 13.0, *)
@@ -244,3 +330,8 @@ private func sha256(_ input: String) -> String {
     return hashString
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+    }
+}

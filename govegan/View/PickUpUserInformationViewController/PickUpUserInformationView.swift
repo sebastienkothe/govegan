@@ -134,8 +134,19 @@ class PickUpUserInformationView: UIView {
         // Standard initialization logic
         let nib = UINib(nibName: .pickUpUserInformationView, bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
-        contentView.frame = bounds
+        
         addSubview(contentView)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: self.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
+        questionLabel.numberOfLines = 0
     }
     
     /// Configure the previously initialized datePicker

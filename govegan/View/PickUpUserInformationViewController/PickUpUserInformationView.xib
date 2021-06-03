@@ -96,7 +96,7 @@
                 <constraint firstItem="qEs-CS-SP4" firstAttribute="centerX" secondItem="Oxt-C2-viq" secondAttribute="centerX" id="h5e-dh-2Kr"/>
                 <constraint firstItem="BDJ-PY-nRo" firstAttribute="top" secondItem="9K2-bB-bRE" secondAttribute="top" id="jnu-rq-3s1"/>
             </constraints>
-            <point key="canvasLocation" x="-954.39999999999998" y="-355.7721139430285"/>
+            <point key="canvasLocation" x="-906" y="-412"/>
         </view>
     </objects>
     <resources>
