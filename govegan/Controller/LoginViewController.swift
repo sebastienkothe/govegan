@@ -15,16 +15,28 @@ class LoginViewController: UIViewController {
     // MARK: - Internal properties
     
     /// Contains manually entered user data
-    var userData: [String] = []
-    
+    var userData: [String]?
+
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        firestoreManager.delegate = self
+        
+        
+        if let token = AccessToken.current, !token.isExpired {
+            // User is logged in
+            
+        } else {
+            
+            // If user already connected go to create facebookLoginButton
+            buttonsStackView.addArrangedSubview(facebookLoginButton)
+            facebookLoginButton.delegate = self
+        }
         
         if #available(iOS 13.0, *) {
-            loginButtons.first?.isHidden = false
+            appleLoginButton.isHidden = false
             setupStackViewConstraints()
-            setupSignInButton()
+            setupSignInWithAppleButton()
         }
     }
     
@@ -34,9 +46,11 @@ class LoginViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var buttonsStackView: UIStackView!
-    @IBOutlet var loginButtons: [LoginButton]!
+    @IBOutlet weak var appleLoginButton: LoginButton!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     
     
     // MARK: - IBActions
@@ -51,6 +65,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
+    /// Handle email/password connection
     @IBAction func didTapOnLoginButton(_ sender: UIButton) {
         guard let email = emailTextField.text, email.trimmingCharacters(in: .whitespaces) != "" else {
             UIAlertService.showAlert(style: .alert, title: "Mail required", message: "Enter your email adress")
@@ -62,62 +77,52 @@ class LoginViewController: UIViewController {
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-            guard let strongSelf = self else { return }
-            
-            guard error == nil else {
-                // Show account creation
-                strongSelf.showCreateAccount(email: email, password: password)
-                return
-            }
-            
-            strongSelf.emailTextField.resignFirstResponder()
-            strongSelf.passwordTextField.resignFirstResponder()
-            Hud.handle(strongSelf.hud, with: HudInfo(type: .success, text: "Successfully connected!", detailText: "Redirection in progress"))
-            strongSelf.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
-        }
+        handleEmailAndPasswordConnection(email, password)
     }
     
-    
+    /// Handle Facebook connection
     @IBAction func didTapOnFacebookLogin() {
+        guard let currentAccessToken = AccessToken.current else {
+            return
+        }
         
-        guard let currentAccessToken = AccessToken.current else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: currentAccessToken.tokenString)
         
-        Auth.auth().signIn(with: credential) { (authDataResult, error) in
-            
-            guard error == nil else {
-                print("Login error: \(error?.localizedDescription ?? "")")
-                let alertController = UIAlertController(title: "Login error", message: error?.localizedDescription, preferredStyle: .alert)
-                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okayAction)
-                self.present(alertController, animated: true, completion: nil)
-                return
-            }
-            
-            guard let user = authDataResult?.user else { return }
-            
-            var sender: User?
-            
-            if self.userData != [] {
-                sender = User(name: self.userData[0], veganStartDate: self.userData[1], userID: user.uid, email: user.email ?? "unknown")
-            } else {
-                sender = User(name: "", veganStartDate: "", userID: user.uid, email: user.email ?? "unknown")
-            }
-            
-            self.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: sender)
-        }
+        handleFacebookConnection(credential)
     }
     
     // MARK: - Private properties
-    let hud = Hud.create()
+    private let firestoreManager = FirestoreManager()
+    private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = ["public_profile", "email"]
+        return button
+    }()
     
     // MARK: - Private functions
+    private func handleEmailAndPasswordConnection(_ email: String, _ password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
+            
+            guard error == nil else {
+                // Show account creation
+                self?.showCreateAccount(email: email, password: password)
+                return
+            }
+            
+            self?.emailTextField.resignFirstResponder()
+            self?.passwordTextField.resignFirstResponder()
+
+            
+            self?.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
+        }
+    }
+    
+    // MARK: Email/password connection
     private func showCreateAccount(email: String, password: String) {
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let okay = UIAlertAction(title: "Continue", style: .default) {_ in
             
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
-                guard let strongSelf = self else { return }
                 
                 guard error == nil else {
                     guard let error = error else { return }
@@ -125,15 +130,36 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                strongSelf.emailTextField.resignFirstResponder()
-                strongSelf.passwordTextField.resignFirstResponder()
-                strongSelf.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
+                self?.emailTextField.resignFirstResponder()
+                self?.passwordTextField.resignFirstResponder()
+                
+                guard let userID = result?.user.uid else { return }
+                guard let username = self?.userData?[0], let veganStartDate = self?.userData?[1] else { return }
+                
+                self?.firestoreManager.addDocumentFrom(uid: userID, username: username, veganStartDate: veganStartDate)
             }
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        
         UIAlertService.showAlert(style: .alert, title: "Create Account", message: "Would you like to create account ?", actions: [okay, cancel], completion: nil)
+    }
+    
+    // MARK: Facebook connection
+    private func handleFacebookConnection(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { [weak self] (authDataResult, error) in
+            
+            guard error == nil else {
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                UIAlertService.showAlert(style: .alert, title: "Login error", message: error?.localizedDescription, actions: [okayAction])
+                return
+            }
+            
+            guard let user = authDataResult?.user else { return }
+            guard let username = self?.userData?[0], let veganStartDate = self?.userData?[1] else { return }
+            
+            let currentUser = User(name: username, veganStartDate: veganStartDate, userID: user.uid, email: user.email ?? "unknown")
+            
+            self?.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: currentUser)
+        }
     }
     
     private func setupStackViewConstraints() {
@@ -153,9 +179,8 @@ class LoginViewController: UIViewController {
     
     /// Creation and configuration of the sign in Apple button
     @available(iOS 13.0, *)
-    private func setupSignInButton() {
+    private func setupSignInWithAppleButton() {
         
-        guard let appleLoginButton = loginButtons.first else { return }
         defineTheConstraintsOf(appleLoginButton)
         
         // the function that will be executed when user tap the button
@@ -236,33 +261,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             
             // Create an identifier representing the user who has just connected
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            Auth.auth().signIn(with: credential) { (authDataResult, error) in
-                if let user = authDataResult?.user {
-                    
-                    var sender: User?
-                    
-                    if self.userData != [] {
-                        sender = User(name: self.userData[0], veganStartDate: self.userData[1], userID: user.uid, email: user.email ?? "unknown")
-                    } else {
-                        sender = User(name: "", veganStartDate: "", userID: user.uid, email: user.email ?? "unknown")
-                    }
-                    
-                    self.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: sender)
-                }
+            Auth.auth().signIn(with: credential) { [weak self] (authDataResult, error) in
+                
+                guard let user = authDataResult?.user else { return }
+                
+                guard let username = self?.userData?[0], let veganStartDate = self?.userData?[1] else { return }
+                
+                let currentUser = User(name: username, veganStartDate: veganStartDate, userID: user.uid, email: user.email ?? "unknown")
+                
+                self?.performSegue(withIdentifier: "segueToDashboardTabBarController", sender: currentUser)
             }
-        }
-    }
-}
-
-extension LoginViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        if
-            let destinationViewController = segue.destination as? DashboardTabBarController,
-            let user = sender as? User
-        {
-            destinationViewController.user = user
         }
     }
 }
@@ -334,4 +342,33 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
     }
+}
+
+extension LoginViewController: FirestoreManagerDelegate {
+    func operationFirestoreCompletedWith(error: Error?) {
+        guard error == nil else {
+            UIAlertService.showAlert(style: .alert, title: "Error", message: error?.localizedDescription)
+            return
+        }
+        
+        print("No error, go to segueToDashboardTabBarController")
+        performSegue(withIdentifier: "segueToDashboardTabBarController", sender: nil)
+    }
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        guard let token = result?.token?.tokenString else {
+            print("User failed to log in with Facebook")
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        
+        Auth.auth().signIn(with: credential, completion: { authDataResult, error in
+            
+        })
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
 }

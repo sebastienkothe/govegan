@@ -32,24 +32,14 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2bN-1L-V3R">
-                                <rect key="frame" x="50" y="322.5" width="220" height="70"/>
+                                <rect key="frame" x="50" y="288.5" width="220" height="70"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qy1-NR-Fht" customClass="LoginButton" customModule="govegan" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="apple-logo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNR-FU-Rr7" customClass="LoginButton" customModule="govegan" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="70"/>
-                                        <color key="backgroundColor" red="0.25882352939999997" green="0.4039215686" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="facebook">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didTapOnFacebookLogin" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Ig-s7-U8c"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -57,7 +47,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-Ov-qLZ">
-                                <rect key="frame" x="50" y="50" width="220" height="242.5"/>
+                                <rect key="frame" x="50" y="50" width="220" height="208.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTL-Is-F6a">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="41"/>
@@ -84,7 +74,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGe-oy-I5A" customClass="LoginButton" customModule="govegan" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="139" width="220" height="70"/>
+                                        <rect key="frame" x="0.0" y="139" width="220" height="36"/>
                                         <color key="backgroundColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Send">
@@ -95,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zd1-pj-c9N">
-                                        <rect key="frame" x="0.0" y="219" width="220" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="185" width="220" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -112,7 +102,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cn6-Ov-qLZ" secondAttribute="trailing" constant="50" id="Tub-6e-9ap"/>
                             <constraint firstItem="2bN-1L-V3R" firstAttribute="top" secondItem="cn6-Ov-qLZ" secondAttribute="bottom" constant="30" id="XU9-27-j5r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2bN-1L-V3R" secondAttribute="trailing" constant="50" id="XZc-iv-cPi"/>
-                            <constraint firstItem="TGe-oy-I5A" firstAttribute="height" secondItem="GNR-FU-Rr7" secondAttribute="height" id="eoU-Rs-sCj"/>
                             <constraint firstItem="H9V-U8-b51" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gO7-MV-r1W"/>
                             <constraint firstItem="cn6-Ov-qLZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="nkG-bi-9er"/>
                             <constraint firstItem="2bN-1L-V3R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="tq4-Uq-geT"/>
@@ -123,11 +112,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="o4n-PF-bGB"/>
                     <connections>
+                        <outlet property="appleLoginButton" destination="Qy1-NR-Fht" id="Vok-Nn-euR"/>
                         <outlet property="buttonsStackView" destination="2bN-1L-V3R" id="vT4-CE-x4n"/>
                         <outlet property="emailTextField" destination="BUc-o3-0BK" id="3Nf-wM-vVd"/>
                         <outlet property="passwordTextField" destination="9B6-D9-0gP" id="XdX-ho-1Yu"/>
-                        <outletCollection property="loginButtons" destination="Qy1-NR-Fht" collectionClass="NSMutableArray" id="2ND-8a-oLF"/>
-                        <outletCollection property="loginButtons" destination="GNR-FU-Rr7" collectionClass="NSMutableArray" id="nzV-Sn-0mF"/>
                         <segue destination="svi-8A-yCd" kind="show" identifier="segueToDashboardTabBarController" id="3M4-cg-4cP"/>
                     </connections>
                 </viewController>
@@ -169,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgo-2A-p9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="701"/>
+            <point key="canvasLocation" x="1324" y="781"/>
         </scene>
         <!--Documentaries-->
         <scene sceneID="RoC-ev-YjN">
@@ -305,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEf-MI-3t2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3478" y="2369"/>
+            <point key="canvasLocation" x="2683" y="1645"/>
         </scene>
         <!--Progress-->
         <scene sceneID="tgS-tk-e6o">
@@ -646,12 +634,12 @@
                     <viewLayoutGuide key="safeArea" id="HHu-xf-mCS"/>
                 </stackView>
             </objects>
-            <point key="canvasLocation" x="3912.8000000000002" y="635.53223388305855"/>
+            <point key="canvasLocation" x="3911" y="699"/>
         </scene>
-        <!--Dashboard Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="qTB-oV-IbW">
             <objects>
-                <tabBarController storyboardIdentifier="DashboardTabBarController" id="svi-8A-yCd" customClass="DashboardTabBarController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="DashboardTabBarController" id="svi-8A-yCd" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Cwo-yC-uWB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wTd-LP-qSd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -668,7 +656,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHB-VY-CtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="700"/>
+            <point key="canvasLocation" x="2717" y="729"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="1Dg-yV-C5b">
@@ -751,6 +739,7 @@
                     <connections>
                         <outlet property="loginButton" destination="ZHY-Cr-shL" id="Pob-GD-g67"/>
                         <outlet property="welcomeMessagesStackView" destination="4kZ-Rn-zBx" id="rz5-n8-ECt"/>
+                        <segue destination="svi-8A-yCd" kind="show" identifier="segueToTabBarFromWelcome" id="G1o-Nd-SD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmC-3r-1R3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -762,58 +751,28 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Jch-Cq-DfC" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="AMO-Y3-Gn1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3A5-pY-w4P">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="rnW-vh-If0" kind="relationship" relationship="rootViewController" id="Dyr-al-o31"/>
+                        <segue destination="zWx-Gc-OFR" kind="relationship" relationship="rootViewController" id="uVj-1W-yWd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ifx-vE-v6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="699"/>
-        </scene>
-        <!--User Connection Status View Controller-->
-        <scene sceneID="5MM-Xz-bKr">
-            <objects>
-                <viewController id="rnW-vh-If0" customClass="UserConnectionStatusViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uug-HI-0D0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rlg-dK-O5u">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                <color key="color" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cy2-kJ-AUA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Rlg-dK-O5u" firstAttribute="centerY" secondItem="Uug-HI-0D0" secondAttribute="centerY" id="L6T-iL-4D2"/>
-                            <constraint firstItem="Rlg-dK-O5u" firstAttribute="centerX" secondItem="Uug-HI-0D0" secondAttribute="centerX" id="ZnY-rm-asz"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="5B5-gA-yup"/>
-                    <connections>
-                        <segue destination="zWx-Gc-OFR" kind="show" identifier="segueToWelcomeViewController" id="Dcj-lY-ugz"/>
-                        <segue destination="svi-8A-yCd" kind="show" identifier="segueToDashboardTabBarController" id="zhu-jL-hME"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gBD-7Z-gZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="462" y="1558"/>
+            <point key="canvasLocation" x="251" y="-167"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zhu-jL-hME"/>
+        <segue reference="3M4-cg-4cP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple-logo" width="40" height="40"/>
         <image name="circled-play" width="30" height="30"/>
         <image name="clock" width="24" height="24"/>
         <image name="earthlings" width="648" height="670"/>
-        <image name="facebook" width="40" height="40"/>
         <image name="loading-bar" width="40" height="40"/>
         <image name="pig-80" width="80" height="80"/>
         <image name="settings" width="28" height="28"/>

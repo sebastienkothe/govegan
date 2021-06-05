@@ -11,25 +11,41 @@ import Firebase
 class ProgressViewController: UIViewController {
     
     // MARK: - Internal properties
-    
-    var user = User(name: "", veganStartDate: "", userID: "", email: "")
     let progressCalculator = ProgressCalculator()
     
     // MARK: - Internal functions
+    private func fetchVeganStartDateFrom(_ currentUserID: String) {
+        
+        // Get the document based on the user ID
+        let docRef = firestoreManager.referenceForUserData(uid: currentUserID)
+        
+        docRef.getDocument { [weak self] (document, error) in
+            guard let self = self else { return }
+            if let document = document, document.exists {
+                guard let data = document.data() else { return }
+                guard let veganStartDate = data["veganStartDate"] as? String else { return }
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+                guard let convertedDate = dateFormatter.date(from: veganStartDate) else { return }
+                
+                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         progressCalculator.delegate = self
-        //guard let user = self.user else {return}
-        user = User(name: "Jean", veganStartDate: "31/05/2021 17:38", userID: "", email: "")
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            print("Unable to retrieve user ID")
+            return
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        
-        guard let convertedDate = dateFormatter.date(from: user.veganStartDate) else { return }
-        veganStartDate = convertedDate
-        
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateUserInterface), userInfo: nil, repeats: true)
+        fetchVeganStartDateFrom(currentUserID)
     }
     
     // MARK: - IBOutlets
@@ -39,15 +55,14 @@ class ProgressViewController: UIViewController {
     // MARK: - IBActions
     
     // MARK: - private properties
-    private var veganStartDate = Date()
     private let progressCellElementsProvider = ProgressCellElementsProvider()
-    
+    private let firestoreManager = FirestoreManager()
     private var progressByCategory: [String] = [] {
         didSet {
             progressCollectionView.reloadData()
         }
     }
-
+    
     // MARK: - private functions
     private func editTheTextOfTimeLabelsFrom(_ timeToDisplay: [String]) {
         timeLabels.forEach({ (timeLabel) in
@@ -55,7 +70,8 @@ class ProgressViewController: UIViewController {
         })
     }
     
-    @objc private func updateUserInterface() {
+    @objc private func updateUserInterface(_ timer: Timer) {
+        guard let veganStartDate = timer.userInfo as? Date else { return }
         let userCalendar = Calendar.current
         
         //Change the seconds to days, hours, minutes and seconds

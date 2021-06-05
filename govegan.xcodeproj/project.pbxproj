@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,6 @@
 		8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8324D3BA2667C7A20069A249 /* LoginButton.swift */; };
 		832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CE852264FA5D000C80925 /* WelcomeViewController.swift */; };
 		8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */; };
-		833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */; };
 		833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320B26653E240027E965 /* DocumentaryCell.swift */; };
 		833B320F266547760027E965 /* VeganNewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320E266547760027E965 /* VeganNewsResponse.swift */; };
 		833B32122665491C0027E965 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B32112665491C0027E965 /* NetworkManager.swift */; };
@@ -40,14 +39,12 @@
 		836A9EDC264D4722002158FD /* ProgressCalculatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */; };
 		836A9EE7264D4723002158FD /* goveganUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EE6264D4723002158FD /* goveganUITests.swift */; };
 		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
+		83777176266A896800923AA5 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83777175266A896800923AA5 /* FirestoreManager.swift */; };
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
-		839EA508265AB012001F1727 /* DashboardTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839EA507265AB012001F1727 /* DashboardTabBarController.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
 		83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */; };
 		83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */; };
-		83D3F1B62668F07F007D4DCC /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3F1B52668F07F007D4DCC /* Hud.swift */; };
-		83DEAEAC2668F7290087B727 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 83DEAEAB2668F7290087B727 /* JGProgressHUD */; };
 		83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEAD2668F9700087B727 /* UIApplication+.swift */; };
 		83DEAEB12668FFF10087B727 /* InfoPlistParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */; };
 		83DEAEB3266900230087B727 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB2266900230087B727 /* Setup.swift */; };
@@ -58,6 +55,8 @@
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
 		83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
+		83FD458F266A2F7D009A409A /* FirebaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FD458E266A2F7D009A409A /* FirebaseKeys.swift */; };
+		83FD4593266A8755009A409A /* FirestoreReferenceManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */; };
 		83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */; };
 		83FF51AA2657AB0E00AA2174 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF51A92657AB0E00AA2174 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -97,7 +96,6 @@
 		8324D3BA2667C7A20069A249 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		832CE852264FA5D000C80925 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
-		833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConnectionStatusViewController.swift; sourceTree = "<group>"; };
 		833B320B26653E240027E965 /* DocumentaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCell.swift; sourceTree = "<group>"; };
 		833B320E266547760027E965 /* VeganNewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganNewsResponse.swift; sourceTree = "<group>"; };
 		833B32112665491C0027E965 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -124,13 +122,12 @@
 		836A9EE6264D4723002158FD /* goveganUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goveganUITests.swift; sourceTree = "<group>"; };
 		836A9EE8264D4723002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83777175266A896800923AA5 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
-		839EA507265AB012001F1727 /* DashboardTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBarController.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
 		83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCellElementsProvider.swift; sourceTree = "<group>"; };
 		83CA58F72661119D00186C6B /* AchievementCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCircularProgressView.swift; sourceTree = "<group>"; };
-		83D3F1B52668F07F007D4DCC /* Hud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		83DEAEAD2668F9700087B727 /* UIApplication+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlistParser.swift; sourceTree = "<group>"; };
 		83DEAEB2266900230087B727 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
@@ -141,6 +138,8 @@
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellElementsProvider.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
+		83FD458E266A2F7D009A409A /* FirebaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseKeys.swift; sourceTree = "<group>"; };
+		83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreReferenceManagerDelegate.swift; sourceTree = "<group>"; };
 		83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryViewController.swift; sourceTree = "<group>"; };
 		83FF51A92657AB0E00AA2174 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84FDF25E8ECAF305CE0B12C7 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83219C2326693AF000C1FC71 /* StoreKit.framework in Frameworks */,
-				83DEAEAC2668F7290087B727 /* JGProgressHUD in Frameworks */,
 				61D809698E25266A23CDC5BC /* libPods-govegan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +265,7 @@
 				83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */,
 				83E7E0262663985B005211D3 /* ProgressViewControllerDelegate.swift */,
 				833B321926654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift */,
+				83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -326,6 +325,7 @@
 		839DAEBD265008CA009E29F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83FD458B266A21A6009A409A /* Database */,
 				83DEAEAF2668FFD30087B727 /* Helpers */,
 				833B3210266549090027E965 /* Networking */,
 				833B320D266547430027E965 /* DataModel */,
@@ -356,13 +356,11 @@
 			isa = PBXGroup;
 			children = (
 				832CE852264FA5D000C80925 /* WelcomeViewController.swift */,
-				836A9EC8264D471F002158FD /* LoginViewController.swift */,
 				83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */,
+				836A9EC8264D471F002158FD /* LoginViewController.swift */,
 				835ECAD82658158100BF3E00 /* ProgressViewController.swift */,
-				83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */,
-				839EA507265AB012001F1727 /* DashboardTabBarController.swift */,
-				833A396B265B0DB0006E6C90 /* UserConnectionStatusViewController.swift */,
 				8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */,
+				83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */,
 				830B021E26637063003EB990 /* SettingViewController.swift */,
 			);
 			path = Controller;
@@ -394,7 +392,6 @@
 		83DEAEAF2668FFD30087B727 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				83D3F1B52668F07F007D4DCC /* Hud.swift */,
 				83DEAEB02668FFF10087B727 /* InfoPlistParser.swift */,
 				83DEAEB2266900230087B727 /* Setup.swift */,
 				83DEAEB42669047E0087B727 /* UIAlertService.swift */,
@@ -412,6 +409,15 @@
 				833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		83FD458B266A21A6009A409A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				83FD458E266A2F7D009A409A /* FirebaseKeys.swift */,
+				83777175266A896800923AA5 /* FirestoreManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +439,6 @@
 			);
 			name = govegan;
 			packageProductDependencies = (
-				83DEAEAB2668F7290087B727 /* JGProgressHUD */,
 			);
 			productName = govegan;
 			productReference = 836A9EC1264D471F002158FD /* govegan.app */;
@@ -509,7 +514,6 @@
 			);
 			mainGroup = 836A9EB8264D471F002158FD;
 			packageReferences = (
-				83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 836A9EC2264D471F002158FD /* Products */;
 			projectDirPath = "";
@@ -623,10 +627,11 @@
 			files = (
 				836A9EC9264D471F002158FD /* LoginViewController.swift in Sources */,
 				833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */,
+				83FD4593266A8755009A409A /* FirestoreReferenceManagerDelegate.swift in Sources */,
 				83E7E0272663985B005211D3 /* ProgressViewControllerDelegate.swift in Sources */,
-				839EA508265AB012001F1727 /* DashboardTabBarController.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
+				83FD458F266A2F7D009A409A /* FirebaseKeys.swift in Sources */,
 				833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */,
 				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
 				833B321A26654AFC0027E965 /* VeganNewsUrlProviderProtocol.swift in Sources */,
@@ -638,10 +643,9 @@
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
 				833B321C26654C0D0027E965 /* VeganNewsURLProvider.swift in Sources */,
-				833A396C265B0DB0006E6C90 /* UserConnectionStatusViewController.swift in Sources */,
 				83DEAEB12668FFF10087B727 /* InfoPlistParser.swift in Sources */,
-				83D3F1B62668F07F007D4DCC /* Hud.swift in Sources */,
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
+				83777176266A896800923AA5 /* FirestoreManager.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				833B32142665495D0027E965 /* NetworkManager+Mock.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
@@ -1021,25 +1025,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		83DEAEAB2668F7290087B727 /* JGProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 83DEAEAA2668F7290087B727 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
-			productName = JGProgressHUD;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 836A9EB9264D471F002158FD /* Project object */;
 }

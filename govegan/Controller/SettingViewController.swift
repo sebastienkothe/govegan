@@ -26,14 +26,11 @@ class SettingViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            Hud.handle(hud, with: HudInfo(type: .success, text: "Success", detailText: "Successfully signed out"))
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-            Hud.handle(hud, with: HudInfo(type: .error, text: "Error", detailText: signOutError.localizedDescription))
         }
     }
     
     // MARK: - Private properties
-    private let hud = Hud.create()
 }

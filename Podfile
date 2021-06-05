@@ -2,10 +2,13 @@ platform :ios, '10.0'
 
 target 'govegan' do
 
-  # Pods for govegan
+  # Firebase
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+
+  # Facebook 
   pod 'FBSDKLoginKit'
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'

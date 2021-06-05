@@ -13,8 +13,13 @@ class WelcomeViewController: UIViewController {
     // MARK: - Internal properties
     
     // MARK: - Internal functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "segueToTabBarFromWelcome", sender: nil)
+        }
         
         view.addSubview(goVeganImageView)
         
