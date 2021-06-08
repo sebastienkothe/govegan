@@ -22,7 +22,4 @@ class User {
     let veganStartDate: String
     let userID: String
     let email: String
-
-    
-    // MARK: - Private functions
 }

@@ -22,6 +22,14 @@ class ProgressCalculator {
     var animalSaved: Double = 0.0
     
     // MARK: - Internal functions
+    
+    func convertDate(_ dateAsAString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        return dateFormatter.date(from: dateAsAString)
+    }
+    
     func checkTheTimeToDisplay(timeElapsed: DateComponents) -> [String] {
         guard let second = timeElapsed.second, let minute = timeElapsed.minute, let hour = timeElapsed.hour, let day = timeElapsed.day, let year = timeElapsed.year else { return [] }
         
@@ -58,7 +66,7 @@ class ProgressCalculator {
         let elapsedTimeInSecondsFromMinutes = Double(timeData[1]) * 60.0
         let elapsedTimeInSecondsFromHours = Double(timeData[2]) * 60.0 * 60.0
         let elapsedTimeInSecondsFromDays = Double(timeData[3]) * 60.0 * 60.0 * 24.0
-        let elapsedTimeInSecondsFromYears = Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.0
+        let elapsedTimeInSecondsFromYears = Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.2422
         
         let totalTimeInSeconds = Double(timeData[0]) + elapsedTimeInSecondsFromMinutes + elapsedTimeInSecondsFromHours + elapsedTimeInSecondsFromDays + elapsedTimeInSecondsFromYears
         
@@ -78,21 +86,15 @@ class ProgressCalculator {
         let CO2saved = savedCO2PerSecond * totalTimeInSeconds
         
         progressCalculated = [animalSaved,
-                               grainSaved,
-                               waterSaved,
-                               forestSaved,
-                               CO2saved]
+                              grainSaved,
+                              waterSaved,
+                              forestSaved,
+                              CO2saved]
         
         return [
             animalSavedToString, grainSavedToString, waterSavedToString, forestSavedToString, CO2savedToString
         ]
     }
-    
-    func computeProgressPercent() -> Float {
-        return Float(1.0 - (floor(animalSaved + 1.0) - animalSaved))
-    }
-    
-    
     
     // MARK: - private properties
     
@@ -102,7 +104,7 @@ class ProgressCalculator {
     }
     
     private func convertDailyDataToSeconds(_ dailyObjective: Double) -> Double {
-       return dailyObjective / 24 / 60 / 60
+        return dailyObjective / 24 / 60 / 60
     }
     
 }

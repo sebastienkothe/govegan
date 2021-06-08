@@ -12,12 +12,12 @@ class LoginButton: UIButton {
     // MARK: - Internal functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        roundedCorner()
+        setup()
     }
     
     // MARK: - Private functions
     
-    private func roundedCorner() {
-        self.layer.cornerRadius = 10
+    private func setup() {
+        layer.cornerRadius = 10
     }
 }

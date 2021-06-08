@@ -22,7 +22,6 @@
 "back_button" = "Retour";
 
 // Progress title from progressCell
-"vegan_since" = "Vegan depuis";
 "animal_lives" = "Vies animales";
 "kg_of_grain" = "Kg de céréales";
 "litres_of_water" = "Litres d'eau";
@@ -36,13 +35,6 @@
 "day" = "jour";
 "year" = "année";
 
-// Success titles
-"animals" = "Animal";
-"grain" = "Céréale";
-"water" = "Eau";
-"forest" = "Forêt";
-"CO2" = "CO2";
-
 // Header section for achievement table view
 "category" = "Catégorie";
 "goal" = "Objectif";
@@ -52,27 +44,29 @@
 "life" = "vie";
 "sqm" = "㎡";
 
-// Network
-"error_unknown_error_title" = "Erreur inconnue";
-"error_failed_to_decode_json_title" = "Impossible de décoder le JSON";
-"error_no_data_title" = "Aucune donnée n'a pu en être récupéré";
-"error_cannot_create_url_title" = "Impossible de créer l'URL";
-"error_incorrect_http_response_code_title" = "Code de réponse http incorrect";
-
-"error_message" = "ERREUR";
-"validation_message" = "Entendu!";
-
 // Documentary descriptions
 "dominion" = "Dominion est un documentaire qui dénonce six différentes facettes de l'exploitation animale et remet en question la domination de l'espèce Homo sapiens sur le règne animal.";
 "earthlings" = "Earthlings montre ce que subissent chaque jour les animaux pour servir l'espèce humaine. Ce documentaire est connu pour avoir changé la vie de nombreuses personnes.";
 "why_go_vegan_description" = "Pourquoi devenir vegan ? C'est à cette question que répond Ed Winters en remettant en question la moralité de nos actions. Cette vidéo, qui totalise presque 4 millions de vues, ne vous laissera pas indifférent.";
-"fight_for_them_description" = "Vous êtes vegan et souhaitez donner une voix à ceux qui n'en ont pas ? Rejoignez Anonymous for the Voiceless.";
 
 // Documentary VC - Alert
-"confirmation_link" = "Ouvrir le lien ?";
 "let_it_go" = "Allons-y !";
-"youtube_video" = "Vidéo YouTube";
 "cancel" = "Annuler";
 "watch" = "Regarder ";
 "why_go_vegan" = "Pourquoi devenir vegan";
-"fight_for_them" = "Se battre pour eux";
+
+// LoginViewController
+"mail_required" = "Adresse email requise";
+"request_user_mail" = "Entrez votre adresse e-mail";
+"password_required" = "Mot de passe requis";
+"request_user_password" = "Entrer un mot de passe";
+
+"cancel" = "Annuler";
+"continue" = "Continuer";
+"okay" = "Ok";
+"submit" = "Soumettre";
+
+"error" = "Erreur";
+
+"create_account" = "Créer un compte";
+"ask_user_to_create_an_account" = "Voulez-vous créer un compte ?";

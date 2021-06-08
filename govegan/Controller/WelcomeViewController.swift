@@ -18,14 +18,10 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "segueToTabBarFromWelcome", sender: nil)
+            performSegue(withIdentifier: .segueToTabBarFromWelcome, sender: nil)
         }
         
         view.addSubview(goVeganImageView)
-        
-        // Assignment of constraints to respective properties
-        preAnimationLogoConstraint = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        postAnimationLogoConstraint = goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150)
         
         setupGoVeganImageViewConstraints()
         setupLoginButton()
@@ -53,8 +49,6 @@ class WelcomeViewController: UIViewController {
     // MARK: - IBActions
     
     // MARK: - Private properties
-    private var preAnimationLogoConstraint: NSLayoutConstraint?
-    private var postAnimationLogoConstraint: NSLayoutConstraint?
     
     /// Used to know if the animation of the govegan logo has already been used
     private var animationHasBeenShown = false
@@ -75,8 +69,11 @@ class WelcomeViewController: UIViewController {
             self?.goVeganImageView.frame.origin.y -= 150
         } completion: { [weak self] _ in
             self?.animationHasBeenShown = true
-            self?.postAnimationLogoConstraint?.isActive = true
             self?.slowlyDisplayWelcomeMessages()
+            
+            // Update goVeganImageView constraint
+            guard let centerYAnchorView = self?.view.centerYAnchor else { return }
+            self?.goVeganImageView.centerYAnchor.constraint(equalTo: (centerYAnchorView), constant: -150).isActive = true
         }
     }
     
@@ -84,8 +81,12 @@ class WelcomeViewController: UIViewController {
     private func setupGoVeganImageViewConstraints() {
         
         // Gives priority to the constraint that will be displayed last in order to deactivate the first one when the last one is activated
-        preAnimationLogoConstraint?.priority = UILayoutPriority(999)
-        preAnimationLogoConstraint?.isActive = true
+        let preAnimationLogoConstraint = goVeganImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        preAnimationLogoConstraint.priority = UILayoutPriority(999)
+        preAnimationLogoConstraint.isActive = true
+        
+        // Constraint for goVeganImageView post animation
+        goVeganImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150).isActive = false
         
         goVeganImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         goVeganImageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -107,6 +108,6 @@ class WelcomeViewController: UIViewController {
     
     /// User redirection based on their connection status
     @objc private func didTapOnLoginButton(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "segueToLogInViewController", sender: nil)
+        performSegue(withIdentifier: .segueToLoginFromWelcome, sender: nil)
     }
 }

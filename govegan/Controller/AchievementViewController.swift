@@ -34,7 +34,7 @@ class AchievementViewController: UIViewController {
     
     /// Allows you to edit the text for the goal
     private func setupTextForCells(_ text: NSMutableAttributedString, _ indexPath: IndexPath, _ additionalText: String) {
-        guard let avenirNextFont = UIFont(name: "Avenir Next", size: 17) else { return }
+        guard let avenirNextFont = UIFont(name: .avenirNext, size: 17) else { return }
         
         let firstPartOfTheText = String(format: "%.\(String(0))f", objectives[indexPath.item].rounded(.towardZero))
         let attributesForAdditionalText = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: avenirNextFont]
@@ -50,7 +50,7 @@ extension AchievementViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let achievementCell = tableView.dequeueReusableCell(withIdentifier: "AchievementCell", for: indexPath) as? AchievementCell else { return UITableViewCell() }
+        guard let achievementCell = tableView.dequeueReusableCell(withIdentifier: .achievementCell, for: indexPath) as? AchievementCell else { return UITableViewCell() }
         
         var additionalText = " \(achievementCellElementsProvider.objectiveInformations[indexPath.item])"
         if objectives[0] > 1 && indexPath.item == 0 { additionalText += "s"}

@@ -53,7 +53,7 @@ class AchievementHeader: UITableViewHeaderFooterView {
     
     // MARK: - Private functions
     private func setupLabel(label: UILabel, text: String, alignement: NSTextAlignment) {
-        label.font = UIFont(name: "Avenir Next", size: 17)
+        label.font = UIFont(name: .avenirNext, size: 17)
         label.textColor = #colorLiteral(red: 0.674947679, green: 0.755489707, blue: 0.9283690453, alpha: 1)
         label.text = text
         label.textAlignment = alignement

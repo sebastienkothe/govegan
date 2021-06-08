@@ -10,9 +10,31 @@ import Foundation
 extension String {
     
     // MARK: - Internal properties
-    static let pickUpUserInformationView = "PickUpUserInformationView"
-    
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
+    
+    // View
+    static let pickUpUserInformationView = "PickUpUserInformationView"
+    
+    // Controller
+    static let loginViewController = "LoginViewController"
+    static let signUpViewController = "SignUpViewController"
+    
+    // Segue
+    static let segueToTabBarFromLogin = "segueToTabBarFromLogin"
+    static let segueToLoginFromWelcome = "segueToLoginFromWelcome"
+    static let segueToTabBarFromWelcome = "segueToTabBarFromWelcome"
+    static let segueToTabBarFromSignUp = "segueToTabBarFromSignUp"
+    
+    // Cell
+    static let progressCell = "ProgressCell"
+    static let achievementCell = "AchievementCell"
+    static let documentaryCell = "DocumentaryCell"
+    
+    // Font
+    static let avenirNext = "Avenir Next"
+    
+    // Main storyboard file base name
+    static let mainStoryboard = "Main"
 }

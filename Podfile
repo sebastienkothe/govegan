@@ -8,11 +8,6 @@ target 'govegan' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
 
-  # Facebook 
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKShareKit'
-
   target 'goveganTests' do
     inherit! :search_paths
     # Pods for testing

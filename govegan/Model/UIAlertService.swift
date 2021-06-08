@@ -12,7 +12,7 @@ class UIAlertService {
     // MARK: -
     // MARK: Show alert
     
-    static func showAlert(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "Ok", style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
+    static func showAlert(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "okay".localized, style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {
             alert.addAction(action)
@@ -34,7 +34,7 @@ class UIAlertService {
             })
         }
         
-        let textFieldAction = UIAlertAction(title: "Submit", style: .cancel) { (action) in
+        let textFieldAction = UIAlertAction(title: "submit".localized, style: .cancel) { (action) in
             var textFieldsTexts: [String] = []
             if let alertTextFields = alert.textFields {
                 for textField in alertTextFields {
@@ -47,7 +47,7 @@ class UIAlertService {
         }
         alert.addAction(textFieldAction)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: "cancel".localized, style: .default) { (action) in
             completion(nil)
         }
         alert.addAction(cancelAction)

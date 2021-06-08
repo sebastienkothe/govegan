@@ -9,15 +9,7 @@ import Foundation
 import UIKit
 
 struct AchievementCellElementsProvider {
-    
-    let successTitles = [
-        "animals".localized,
-        "grain".localized,
-        "water".localized,
-        "forest".localized,
-        "CO2".localized
-    ]
-    
+        
     let categoryImages: [UIImage?] = [
         UIImage(named: "pig-80"), UIImage(named: "barley-80"), UIImage(named: "water-80"), UIImage(named: "tree-80"),UIImage(named: "co2-80")]
     

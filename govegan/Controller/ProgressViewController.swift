@@ -14,25 +14,16 @@ class ProgressViewController: UIViewController {
     let progressCalculator = ProgressCalculator()
     
     // MARK: - Internal functions
-    private func fetchVeganStartDateFrom(_ currentUserID: String) {
+    private func fetchVeganStartDateFrom(_ userID: String) {
         
         // Get the document based on the user ID
-        let docRef = firestoreManager.referenceForUserData(uid: currentUserID)
-        
-        docRef.getDocument { [weak self] (document, error) in
-            guard let self = self else { return }
-            if let document = document, document.exists {
-                guard let data = document.data() else { return }
-                guard let veganStartDate = data["veganStartDate"] as? String else { return }
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-                guard let convertedDate = dateFormatter.date(from: veganStartDate) else { return }
-                
-                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
-            } else {
-                print("Document does not exist")
-            }
+        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: firestoreManager.veganStartDateKey) { [weak self] (result) in
+            guard let strongSelf = self else { return }
+            guard let veganStartDate = result else { return }
+            
+            guard let convertedDate = strongSelf.progressCalculator.convertDate(veganStartDate) else { return }
+            
+            Timer.scheduledTimer(timeInterval: 0.1, target: strongSelf, selector: #selector(self?.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
         }
     }
     
@@ -40,12 +31,11 @@ class ProgressViewController: UIViewController {
         super.viewDidLoad()
         
         progressCalculator.delegate = self
-        guard let currentUserID = Auth.auth().currentUser?.uid else {
-            print("Unable to retrieve user ID")
+        guard let userID = Auth.auth().currentUser?.uid else {
             return
         }
         
-        fetchVeganStartDateFrom(currentUserID)
+        fetchVeganStartDateFrom(userID)
     }
     
     // MARK: - IBOutlets
@@ -93,7 +83,7 @@ extension ProgressViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgressCell", for: indexPath) as? ProgressCell else { return UICollectionViewCell() }
+        guard let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: .progressCell, for: indexPath) as? ProgressCell else { return UICollectionViewCell() }
         
         if !progressByCategory.isEmpty {
             progressCell.counterLabel.text = "\("")\(progressByCategory[indexPath.item])"
