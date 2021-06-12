@@ -17,6 +17,7 @@ class ProgressCalculatorTestCase: XCTestCase {
     var timeElapsed: DateComponents!
     var fromDate: Date!
     var toDate: Date!
+    var achievementCellElementsProvider: AchievementCellElementsProvider!
     
     
     override func setUp() {
@@ -25,6 +26,7 @@ class ProgressCalculatorTestCase: XCTestCase {
         progressCalculatorDelegateMock = ProgressCalculatorDelegateMock()
         progressCalculator.delegate = progressCalculatorDelegateMock
         userCalendar = Calendar.current
+        achievementCellElementsProvider = AchievementCellElementsProvider()
     }
     
     func testGivenProgressCalculatedIsEmpty_WhenProgressCalculatedIsChanged_ThenDelegateShouldGetTheNewValue() {
@@ -173,5 +175,41 @@ class ProgressCalculatorTestCase: XCTestCase {
         // Then
         // 0,958333333333333 - 17,345833333333333 - 3990,404166666666667 - 2,683333333333333 - 8,720833333333333
         XCTAssertEqual(result, ["0", "17", "3990", "3", "9"])
+    }
+    
+    func testGivenDefaultGoalsAreSet_WhenWeCallUpdateProgressLayer_ThenShouldReturnAConsistentGoalAndPercentageProgression() {
+        
+        // Given
+        progressCalculator.objectives = [1, 20, 4500, 10, 35]
+        
+        // When
+        let expectedPercentage = [0.55, 0.7730769230769231, 0.7692478632478633, 0.7769230769230769, 0.7630434782608696]
+        let currentProgressions = [1.1, 20.1, 4500.1, 10.1, 35.1]
+        
+        for (index, _) in progressCalculator.objectives.enumerated() {
+            XCTAssertEqual(progressCalculator.updateProgressLayer(index: index, calculatedProgress: currentProgressions[index]), CGFloat(expectedPercentage[index]))
+        }
+        
+        // Then
+        //            CGFloat(1 / (objective / calculatedProgress))
+        XCTAssertEqual(progressCalculator.objectives, [2, 26, 5850, 13, 46])
+    }
+    
+    func testGivenDefaultGoalsAreSet_WhenWeCallProvideComposedText_ThenShouldReturnAppropriateString() {
+        
+        // Given
+        progressCalculator.objectives = [50, 90, 8740, 2, 40]
+        
+        // When
+        for (index, _) in progressCalculator.objectives.enumerated() {
+            
+            let firstPartOfText = String(format: "%.\(String(0))f", progressCalculator.objectives[index].rounded(.towardZero))
+            let additionalText = " \(achievementCellElementsProvider.objectiveInformations[index])"
+            
+            // The,
+            XCTAssertEqual(progressCalculator.provideComposedText(index, additionalText).string, "\(firstPartOfText)" + "\(additionalText)")
+        }
+        
+        
     }
 }

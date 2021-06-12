@@ -40,7 +40,6 @@ class PickUpUserInformationView: UIView {
     
     // MARK: - IBOutlets
     @IBOutlet private var contentView: UIView!
-    
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var answerTextField: UITextField!
     @IBOutlet private weak var proceedButton: NextButton!
@@ -53,7 +52,7 @@ class PickUpUserInformationView: UIView {
         
         storeUserData(textFromAnswerTextField)
         
-        guard !hasAllTheData else {
+        if hasAllTheData {
             onMainButtonTapped?([name, veganStartDate])
             return
         }

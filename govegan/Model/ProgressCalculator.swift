@@ -5,7 +5,7 @@
 //  Created by Mosma on 25/05/2021.
 //
 
-import Foundation
+import UIKit
 
 class ProgressCalculator {
     
@@ -18,10 +18,33 @@ class ProgressCalculator {
         }
     }
     
+    var objectives: [Double] = [1, 20, 4500, 10, 35]
+    
     var timeData: [Int] = []
-    var animalSaved: Double = 0.0
     
     // MARK: - Internal functions
+    
+    func updateProgressLayer(index: Int, calculatedProgress: Double) -> CGFloat {
+        
+        while calculatedProgress > objectives[index]  {
+            objectives[index] = ceil(objectives[index] * 1.3)
+        }
+        
+        return CGFloat(1 / (objectives[index] / calculatedProgress))
+    }
+    
+    /// Allows you to edit the text for the goal
+    func provideComposedText(_ item: Int, _ additionalText: String) -> NSMutableAttributedString {
+        
+        let text = NSMutableAttributedString()
+        
+        let firstPartOfTheText = String(format: "%.\(String(0))f", objectives[item].rounded(.towardZero))
+        let attributesForAdditionalText = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: .avenirNext, size: 17)]
+        
+        text.append(NSAttributedString(string: firstPartOfTheText, attributes: [:]))
+        text.append(NSAttributedString(string: additionalText, attributes: attributesForAdditionalText as [NSAttributedString.Key : Any]))
+        return text
+    }
     
     func convertDate(_ dateAsAString: String) -> Date? {
         let dateFormatter = DateFormatter()
@@ -41,12 +64,48 @@ class ProgressCalculator {
         var dayText = "day".localized
         var yearText = "year".localized
         
+        checkIfPluralIsRequired(second, &secondText, minute, &minuteText, hour, &hourText, day, &dayText, year, &yearText)
+        
+        return adaptTextToReturn(year, yearText, day, dayText, hour, hourText, minute, minuteText, second, secondText)
+    }
+    
+    func calculateTheProgress() -> [String] {
+        
+        let totalTimeInSeconds = Double(timeData[0]) + Double(timeData[1]) * 60.0 + Double(timeData[2]) * 60.0 * 60.0 + Double(timeData[3]) * 60.0 * 60.0 * 24.0 + Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.2422
+        
+        let animalSaved = convertDailyDataToSeconds(1.0) * totalTimeInSeconds
+        let grainSaved = convertDailyDataToSeconds(18.1) * totalTimeInSeconds
+        let waterSaved = convertDailyDataToSeconds(4163.9) * totalTimeInSeconds
+        let forestSaved = convertDailyDataToSeconds(2.8) * totalTimeInSeconds
+        let CO2saved = convertDailyDataToSeconds(9.1) * totalTimeInSeconds
+        
+        progressCalculated = [animalSaved, grainSaved, waterSaved, forestSaved, CO2saved]
+        
+        return [
+            convertToStringFrom(floor(animalSaved)), convertToStringFrom(grainSaved), convertToStringFrom(waterSaved), convertToStringFrom(forestSaved), convertToStringFrom(CO2saved)
+        ]
+    }
+    
+    // MARK: - private properties
+    
+    // MARK: - private functions
+    private func convertToStringFrom(_ number: Double) -> String{
+        return String(format: "%.\(String(0))f", number)
+    }
+    
+    private func convertDailyDataToSeconds(_ dailyObjective: Double) -> Double {
+        return dailyObjective / 24 / 60 / 60
+    }
+    
+    private func checkIfPluralIsRequired(_ second: Int, _ secondText: inout String, _ minute: Int, _ minuteText: inout String, _ hour: Int, _ hourText: inout String, _ day: Int, _ dayText: inout String, _ year: Int, _ yearText: inout String) {
         if second > 1 { secondText += "s" }
         if minute > 1 { minuteText += "s" }
         if hour > 1 { hourText += "s" }
         if day > 1 { dayText += "s" }
         if year > 1 { yearText += "s" }
-        
+    }
+    
+    private func adaptTextToReturn(_ year: Int, _ yearText: String, _ day: Int, _ dayText: String, _ hour: Int, _ hourText: String, _ minute: Int, _ minuteText: String, _ second: Int, _ secondText: String) -> [String] {
         if year >= 1 {
             return ["\(year)\n\(yearText)", "\(day)\n\(dayText)", "\(hour)\n\(hourText)"]
         } else if day < 1 {
@@ -55,56 +114,4 @@ class ProgressCalculator {
             return ["\(day)\n\(dayText)", "\(hour)\n\(hourText)", "\(minute)\n\(minuteText)"]
         }
     }
-    
-    func calculateTheProgress() -> [String] {
-        let savedAnimalPerSecond = convertDailyDataToSeconds(1.0)
-        let savedGrainPerSecond = convertDailyDataToSeconds(18.1)
-        let savedWaterPerSecond = convertDailyDataToSeconds(4163.9)
-        let savedForestPerSecond = convertDailyDataToSeconds(2.8)
-        let savedCO2PerSecond = convertDailyDataToSeconds(9.1)
-        
-        let elapsedTimeInSecondsFromMinutes = Double(timeData[1]) * 60.0
-        let elapsedTimeInSecondsFromHours = Double(timeData[2]) * 60.0 * 60.0
-        let elapsedTimeInSecondsFromDays = Double(timeData[3]) * 60.0 * 60.0 * 24.0
-        let elapsedTimeInSecondsFromYears = Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.2422
-        
-        let totalTimeInSeconds = Double(timeData[0]) + elapsedTimeInSecondsFromMinutes + elapsedTimeInSecondsFromHours + elapsedTimeInSecondsFromDays + elapsedTimeInSecondsFromYears
-        
-        /// To update progressBar
-        animalSaved = savedAnimalPerSecond * totalTimeInSeconds
-        
-        let animalSavedToString = convertToStringFrom(floor(savedAnimalPerSecond * totalTimeInSeconds), numberOfDecimal: 0)
-        let grainSavedToString = convertToStringFrom(savedGrainPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
-        let waterSavedToString = convertToStringFrom(savedWaterPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
-        let forestSavedToString = convertToStringFrom(savedForestPerSecond * totalTimeInSeconds, numberOfDecimal: 0)
-        let CO2savedToString = convertToStringFrom(savedCO2PerSecond * totalTimeInSeconds, numberOfDecimal: 0)
-        
-        let animalSaved = savedAnimalPerSecond * totalTimeInSeconds
-        let grainSaved = savedGrainPerSecond * totalTimeInSeconds
-        let waterSaved = savedWaterPerSecond * totalTimeInSeconds
-        let forestSaved = savedForestPerSecond * totalTimeInSeconds
-        let CO2saved = savedCO2PerSecond * totalTimeInSeconds
-        
-        progressCalculated = [animalSaved,
-                              grainSaved,
-                              waterSaved,
-                              forestSaved,
-                              CO2saved]
-        
-        return [
-            animalSavedToString, grainSavedToString, waterSavedToString, forestSavedToString, CO2savedToString
-        ]
-    }
-    
-    // MARK: - private properties
-    
-    // MARK: - private functions
-    private func convertToStringFrom(_ number: Double, numberOfDecimal: Int) -> String{
-        return String(format: "%.\(String(numberOfDecimal))f", number)
-    }
-    
-    private func convertDailyDataToSeconds(_ dailyObjective: Double) -> Double {
-        return dailyObjective / 24 / 60 / 60
-    }
-    
 }

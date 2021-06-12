@@ -70,3 +70,8 @@
 
 "create_account" = "Create an account";
 "ask_user_to_create_an_account" = "Do you want to create an account ?";
+
+// Firestore operations
+"unable_to_create_account" = "Unable to create your account";
+"unable_to_retrieve_account_data" = "Unable to retrieve your account data";
+"unable_to_recover_your_account" = "Unable to recover your account";

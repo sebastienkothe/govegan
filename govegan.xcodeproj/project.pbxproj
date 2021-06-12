@@ -30,7 +30,6 @@
 		836A9ECE264D4722002158FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECD264D4722002158FD /* Assets.xcassets */; };
 		836A9ED1264D4722002158FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECF264D4722002158FD /* LaunchScreen.storyboard */; };
 		836A9EDC264D4722002158FD /* ProgressCalculatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */; };
-		836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */; };
 		83777176266A896800923AA5 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83777175266A896800923AA5 /* FirestoreManager.swift */; };
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
@@ -41,11 +40,12 @@
 		83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB42669047E0087B727 /* UIAlertService.swift */; };
 		83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */; };
 		83F3A0732656A3D40030929D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3A0722656A3D40030929D /* String.swift */; };
+		83F651532670F71B00CEFE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83F651522670F71B00CEFE9B /* GoogleService-Info.plist */; };
+		83F651552672C30300CEFE9B /* XCTestCase+Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F651542672C30300CEFE9B /* XCTestCase+Firestore.swift */; };
+		83F651572672C41F00CEFE9B /* FirestoreManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F651562672C41F00CEFE9B /* FirestoreManagerTestCase.swift */; };
 		83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
-		83FD4593266A8755009A409A /* FirestoreReferenceManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */; };
 		83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */; };
-		83FF51AA2657AB0E00AA2174 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF51A92657AB0E00AA2174 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,6 @@
 		836A9ED7264D4722002158FD /* goveganTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goveganTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorTestCase.swift; sourceTree = "<group>"; };
 		836A9EDD264D4722002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83777175266A896800923AA5 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
@@ -102,11 +101,12 @@
 		83DEAEB42669047E0087B727 /* UIAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertService.swift; sourceTree = "<group>"; };
 		83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegate.swift; sourceTree = "<group>"; };
 		83F3A0722656A3D40030929D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		83F651522670F71B00CEFE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83F651542672C30300CEFE9B /* XCTestCase+Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Firestore.swift"; sourceTree = "<group>"; };
+		83F651562672C41F00CEFE9B /* FirestoreManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManagerTestCase.swift; sourceTree = "<group>"; };
 		83F8D88026591C5E00EE96C4 /* ProgressCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellElementsProvider.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
-		83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreReferenceManagerDelegate.swift; sourceTree = "<group>"; };
 		83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryViewController.swift; sourceTree = "<group>"; };
-		83FF51A92657AB0E00AA2174 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84FDF25E8ECAF305CE0B12C7 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3F18795D87B3FC440394CFC /* Pods-govegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.release.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.release.xcconfig"; sourceTree = "<group>"; };
 		F8767AC7FA767291D5E2772A /* libPods-govegan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-govegan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */,
-				83FD4592266A8755009A409A /* FirestoreReferenceManagerDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -240,9 +239,10 @@
 		836A9EDA264D4722002158FD /* goveganTests */ = {
 			isa = PBXGroup;
 			children = (
-				836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */,
-				833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */,
+				83F651592672C6E900CEFE9B /* Tests */,
+				83F651582672C6D700CEFE9B /* Protocol */,
 				836A9EDD264D4722002158FD /* Info.plist */,
+				83F651542672C30300CEFE9B /* XCTestCase+Firestore.swift */,
 			);
 			path = goveganTests;
 			sourceTree = "<group>";
@@ -254,7 +254,6 @@
 				83DEAEAF2668FFD30087B727 /* Helpers */,
 				83573E5F265D39B80021B738 /* Protocol */,
 				83F8D87D265917CD00EE96C4 /* Data */,
-				83FF51A92657AB0E00AA2174 /* User.swift */,
 				83244D83265D237700A76F3A /* ProgressCalculator.swift */,
 			);
 			path = Model;
@@ -292,12 +291,12 @@
 		839DAEC0265008DD009E29F6 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				83F651522670F71B00CEFE9B /* GoogleService-Info.plist */,
 				836A9EC4264D471F002158FD /* AppDelegate.swift */,
 				836A9EC6264D471F002158FD /* SceneDelegate.swift */,
 				836A9ECD264D4722002158FD /* Assets.xcassets */,
 				834861E2264D7DB30006A527 /* govegan.entitlements */,
 				836A9ED2264D4722002158FD /* Info.plist */,
-				836A9F0C264D4EAB002158FD /* GoogleService-Info.plist */,
 				830902602656B36E0052D36C /* Localizable.strings */,
 			);
 			path = "Supporting files";
@@ -318,6 +317,23 @@
 				83DEAEB42669047E0087B727 /* UIAlertService.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		83F651582672C6D700CEFE9B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		83F651592672C6E900CEFE9B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */,
+				83F651562672C41F00CEFE9B /* FirestoreManagerTestCase.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		83F8D87D265917CD00EE96C4 /* Data */ = {
@@ -428,10 +444,10 @@
 			files = (
 				836A9ED1264D4722002158FD /* LaunchScreen.storyboard in Resources */,
 				8309025E2656B36E0052D36C /* Localizable.strings in Resources */,
-				836A9F0D264D4EAB002158FD /* GoogleService-Info.plist in Resources */,
 				831D0FCD2653B92700817B5A /* PickUpUserInformationView.xib in Resources */,
 				836A9ECE264D4722002158FD /* Assets.xcassets in Resources */,
 				836A9ECC264D471F002158FD /* Main.storyboard in Resources */,
+				83F651532670F71B00CEFE9B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +531,6 @@
 			files = (
 				836A9EC9264D471F002158FD /* LoginViewController.swift in Sources */,
 				833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */,
-				83FD4593266A8755009A409A /* FirestoreReferenceManagerDelegate.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
 				833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */,
@@ -541,7 +556,6 @@
 				83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */,
 				8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,
-				83FF51AA2657AB0E00AA2174 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +565,8 @@
 			files = (
 				836A9EDC264D4722002158FD /* ProgressCalculatorTestCase.swift in Sources */,
 				833E6302266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift in Sources */,
+				83F651552672C30300CEFE9B /* XCTestCase+Firestore.swift in Sources */,
+				83F651572672C41F00CEFE9B /* FirestoreManagerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

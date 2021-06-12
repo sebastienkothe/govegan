@@ -18,12 +18,15 @@ class ProgressViewController: UIViewController {
         
         // Get the document based on the user ID
         firestoreManager.getValueFromDocument(userID: userID, valueToReturn: firestoreManager.veganStartDateKey) { [weak self] (result) in
-            guard let strongSelf = self else { return }
-            guard let veganStartDate = result else { return }
+            guard let self = self else { return }
             
-            guard let convertedDate = strongSelf.progressCalculator.convertDate(veganStartDate) else { return }
-            
-            Timer.scheduledTimer(timeInterval: 0.1, target: strongSelf, selector: #selector(self?.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+            switch result {
+            case .success(let veganStartDate):
+                guard let convertedDate = self.progressCalculator.convertDate(veganStartDate) else { return }
+                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+            case .failure(let error):
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            }
         }
     }
     
@@ -31,9 +34,7 @@ class ProgressViewController: UIViewController {
         super.viewDidLoad()
         
         progressCalculator.delegate = self
-        guard let userID = Auth.auth().currentUser?.uid else {
-            return
-        }
+        guard let userID = Auth.auth().currentUser?.uid else { return }
         
         fetchVeganStartDateFrom(userID)
     }
@@ -46,7 +47,7 @@ class ProgressViewController: UIViewController {
     
     // MARK: - private properties
     private let progressCellElementsProvider = ProgressCellElementsProvider()
-    private let firestoreManager = FirestoreManager()
+    private let firestoreManager = FirestoreManager.shared
     private var progressByCategory: [String] = [] {
         didSet {
             progressCollectionView.reloadData()
@@ -62,10 +63,9 @@ class ProgressViewController: UIViewController {
     
     @objc private func updateUserInterface(_ timer: Timer) {
         guard let veganStartDate = timer.userInfo as? Date else { return }
-        let userCalendar = Calendar.current
         
         //Change the seconds to days, hours, minutes and seconds
-        let timeElapsed = userCalendar.dateComponents([.year, .day, .hour, .minute, .second], from: veganStartDate, to: Date())
+        let timeElapsed = Calendar.current.dateComponents([.year, .day, .hour, .minute, .second], from: veganStartDate, to: Date())
         
         // Manage the time to display
         let timeToDisplay = progressCalculator.checkTheTimeToDisplay(timeElapsed: timeElapsed)
@@ -112,8 +112,8 @@ extension ProgressViewController: UICollectionViewDelegateFlowLayout {
 
 extension ProgressViewController: ProgressCalculatorDelegate {
     func progressCanBeUpdated(data: [Double]) {
-        let achievementViewController = tabBarController?.viewControllers?[1] as? AchievementViewController
-        achievementViewController?.progressCalculated = data
+        guard let achievementViewController = tabBarController?.viewControllers?[1] as? AchievementViewController else { return }
+        achievementViewController.calculatedProgress = data
     }
 }
 

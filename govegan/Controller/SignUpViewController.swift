@@ -18,7 +18,6 @@ class SignUpViewController: UIViewController {
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        firestoreManager.delegate = self
     }
     
     // MARK: - IBOutlets
@@ -41,7 +40,7 @@ class SignUpViewController: UIViewController {
             UIAlertService.showAlert(style: .alert, title: "password_required".localized, message: "request_user_password".localized)
             return
         }
-     
+        
         createAccountFrom(email, password)
     }
     
@@ -50,7 +49,7 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Private properties
-    private let firestoreManager = FirestoreManager()
+    private let firestoreManager = FirestoreManager.shared
     
     // MARK: - Private functions
     
@@ -61,17 +60,25 @@ class SignUpViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
                 
-                guard error == nil else {
-                    guard let error = error else { return }
+                // Handle the error
+                if let error = error {
                     UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.localizedDescription)
-                    return
                 }
+                
                 
                 guard let username = self?.userData?[0], let veganStartDate = self?.userData?[1], let userID = result?.user.uid else {
                     return
                 }
                 
-                self?.firestoreManager.addDocumentWith(userID: userID, username: username, veganStartDate: veganStartDate, email: email)
+                self?.firestoreManager.addDocumentWith(userID: userID, username: username, veganStartDate: veganStartDate, email: email, completion: { [weak self] (result) in
+                    
+                    switch result {
+                    case .success:
+                        self?.performSegue(withIdentifier: .segueToTabBarFromSignUp, sender: nil)
+                    case .failure(let error):
+                        UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+                    }
+                })
             }
         }
         
@@ -82,18 +89,5 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
-    }
-}
-
-extension SignUpViewController: FirestoreManagerDelegate {
-    func operationFirestoreCompletedWith(error: Error?) {
-        
-        guard error == nil else {
-            guard let error = error else { return }
-            UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.localizedDescription)
-            return
-        }
-        
-        performSegue(withIdentifier: .segueToTabBarFromSignUp, sender: nil)
     }
 }

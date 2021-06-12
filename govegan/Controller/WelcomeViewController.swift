@@ -17,6 +17,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Redirection management based on connection status
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: .segueToTabBarFromWelcome, sender: nil)
         }
@@ -27,26 +28,14 @@ class WelcomeViewController: UIViewController {
         setupLoginButton()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !animationHasBeenShown {
-            switchLogoGoVeganToTheTop()
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        if !animationHasBeenShown { switchLogoGoVeganToTheTop() }
     }
     
     // MARK: - Outlets
     @IBOutlet private weak var welcomeMessagesStackView: UIStackView!
     @IBOutlet private weak var loginButton: UIButton!
-    
-    // MARK: - IBActions
     
     // MARK: - Private properties
     

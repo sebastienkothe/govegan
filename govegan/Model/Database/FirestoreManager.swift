@@ -8,52 +8,81 @@
 import Foundation
 import Firebase
 
-class FirestoreManager {
-    weak var delegate: FirestoreManagerDelegate?
+enum FirestoreManagerError: Error, CaseIterable {
+    case unableToCreateAccount
+    case unableToRetrieveAccountData
+    case unableToRecoverYourAccount
     
-    let collectionName = "users"
+    var title: String {
+        switch self {
+        case .unableToCreateAccount: return "unable_to_create_account".localized
+        case .unableToRetrieveAccountData: return "unable_to_retrieve_account_data".localized
+        case .unableToRecoverYourAccount: return "unable_to_recover_your_account".localized
+        }
+    }
+}
+
+class FirestoreManager {
+    
+    // MARK: - Internal properties
     
     // root = Firestore.firestore().collection(environment)
+    let collectionName = "users"
     let usernameKey = "username"
     let veganStartDateKey = "veganStartDate"
     let emailKey = "email"
     
-    func referenceForUserData(userID: String) -> DocumentReference {
-        return Firestore.firestore().collection(collectionName)
-            .document(userID)
-    }
+    static let shared = FirestoreManager()
+    private init() {}
     
-    func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String) {
+    typealias AddDocumentWithCompletionHandler = (Result<Bool, FirestoreManagerError>) -> Void
+    typealias GetValueFromDocumentCompletionHandler = (Result<String, FirestoreManagerError>) -> Void
+    
+    // MARK: - Internal functions
+    
+    /// Used to add document to the database
+    func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, completion: @escaping AddDocumentWithCompletionHandler) {
         referenceForUserData(userID: userID).setData([
             usernameKey: username,
             veganStartDateKey: veganStartDate,
             emailKey: email
-        ]) { [weak self] (error) in
-            self?.delegate?.operationFirestoreCompletedWith(error: error)
-        }
-    }
-    
-    func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping ((String?) -> ()))   {
-        let docRef = referenceForUserData(userID: userID)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                guard let data = document.data() as? [String: String] else { return }
-                let valueToReturn = data[valueToReturn]
-                completion(valueToReturn)
-            } else {
-                print("Document does not exist")
-                completion(nil)
+        ]) { error in
+            
+            guard error == nil else {
+                return completion(.failure(.unableToCreateAccount))
             }
+            
+            // Adding the document was successful
+            completion(.success(true))
         }
     }
     
-    func checkIfDocumentExistsFrom(userID: String) -> Bool {
-        let docRef = Firestore.firestore().collection(collectionName).document(userID)
-        var documentIsAvailable: Bool = false
-        
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists { documentIsAvailable = true}
+    
+    /// Used to fetch document from the database
+    func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler)   {
+        referenceForUserData(userID: userID).getDocument { document, error in
+            guard let document = document, document.exists else {
+                completion(.failure(.unableToRecoverYourAccount))
+                return
+            }
+            
+            guard let data = document.data() as? [String: String] else {
+                completion(.failure(.unableToRetrieveAccountData))
+                return
+            }
+            
+            guard let valueToReturn = data[valueToReturn] else { return }
+            
+            // Searching the document was successful
+            completion(.success(valueToReturn))
         }
-        return documentIsAvailable
+    }
+    
+    // MARK: - Private properties
+    
+    // MARK: - Private functions
+    private func referenceForUserData(userID: String) -> DocumentReference {
+        return Firestore.firestore().collection(collectionName)
+            .document(userID)
     }
 }
