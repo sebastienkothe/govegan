@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Checking if unit tests are running
     private func checkIfUnitTestsAreRunning() {
         if ProcessInfo.processInfo.environment["unit_tests"] == "true" {
-            print("Setting up Firebase emulator localhost:6060")
+            print("Setting up Firebase emulator localhost:8020")
             let settings = Firestore.firestore().settings
-            settings.host = "localhost:6060"
+            settings.host = "localhost:8020"
             settings.isPersistenceEnabled = false
             settings.isSSLEnabled = false
             Firestore.firestore().settings = settings

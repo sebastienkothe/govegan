@@ -42,19 +42,17 @@ class FirestoreManager {
     
     /// Used to add document to the database
     func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, completion: @escaping AddDocumentWithCompletionHandler) {
-        referenceForUserData(userID: userID).setData([
-            usernameKey: username,
-            veganStartDateKey: veganStartDate,
-            emailKey: email
-        ]) { error in
-            
-            guard error == nil else {
-                return completion(.failure(.unableToCreateAccount))
+        
+        do {
+            referenceForUserData(userID: userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email]) { error in
+                guard error == nil else {
+                    return completion(.failure(.unableToCreateAccount))
+                }
             }
-            
-            // Adding the document was successful
-            completion(.success(true))
         }
+        
+        // Adding the document was successful
+        completion(.success(true))
     }
     
     
