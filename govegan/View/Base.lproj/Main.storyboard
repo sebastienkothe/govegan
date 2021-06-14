@@ -556,6 +556,10 @@
                                     <outlet property="delegate" destination="FDf-JP-j91" id="5LR-51-kD9"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HZh-7D-XGC">
+                                <rect key="frame" x="141.5" y="255.5" width="37" height="37"/>
+                                <color key="color" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UCE-iX-Gmv"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -563,8 +567,10 @@
                             <constraint firstItem="UCE-iX-Gmv" firstAttribute="bottom" secondItem="pQL-rY-omO" secondAttribute="bottom" constant="20" id="00j-2g-PsZ"/>
                             <constraint firstItem="UCE-iX-Gmv" firstAttribute="trailing" secondItem="pQL-rY-omO" secondAttribute="trailing" constant="20" id="BKv-m4-SbK"/>
                             <constraint firstItem="xcB-hC-Llk" firstAttribute="top" secondItem="UCE-iX-Gmv" secondAttribute="top" constant="20" id="DP7-O3-Rkj"/>
+                            <constraint firstItem="HZh-7D-XGC" firstAttribute="centerY" secondItem="Xj3-9V-X71" secondAttribute="centerY" id="Rid-QD-5JO"/>
                             <constraint firstItem="pQL-rY-omO" firstAttribute="top" secondItem="rfU-YL-iX2" secondAttribute="bottom" constant="20" id="UPz-b1-fED"/>
                             <constraint firstItem="pQL-rY-omO" firstAttribute="leading" secondItem="UCE-iX-Gmv" secondAttribute="leading" constant="20" id="VUE-n4-30w"/>
+                            <constraint firstItem="HZh-7D-XGC" firstAttribute="centerX" secondItem="Xj3-9V-X71" secondAttribute="centerX" id="abK-Vg-uVd"/>
                             <constraint firstItem="rfU-YL-iX2" firstAttribute="leading" secondItem="UCE-iX-Gmv" secondAttribute="leading" constant="20" id="cwS-27-JhP"/>
                             <constraint firstItem="xcB-hC-Llk" firstAttribute="leading" secondItem="UCE-iX-Gmv" secondAttribute="leading" constant="20" id="fon-aZ-jmQ"/>
                             <constraint firstItem="rfU-YL-iX2" firstAttribute="top" secondItem="xcB-hC-Llk" secondAttribute="bottom" constant="20" id="qvR-To-Wa3"/>
@@ -575,6 +581,7 @@
                     <tabBarItem key="tabBarItem" title="Progress" image="loading-bar" id="kFo-7p-aj9"/>
                     <navigationItem key="navigationItem" id="C6m-hZ-dNP"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="HZh-7D-XGC" id="nq5-gn-2Up"/>
                         <outlet property="progressCollectionView" destination="pQL-rY-omO" id="F8i-yV-nLv"/>
                         <outletCollection property="timeLabels" destination="leZ-IZ-zDb" collectionClass="NSMutableArray" id="hkL-uE-wfj"/>
                         <outletCollection property="timeLabels" destination="rK9-fH-XWj" collectionClass="NSMutableArray" id="AAT-9b-jPz"/>

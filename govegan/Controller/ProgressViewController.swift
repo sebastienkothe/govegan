@@ -14,24 +14,6 @@ class ProgressViewController: UIViewController {
     let progressCalculator = ProgressCalculator()
     
     // MARK: - Internal functions
-    
-    /// Attempting to retrieve the date the user became vegan to start the timer with
-    private func fetchVeganStartDateFrom(_ userID: String) {
-        
-        // Get the document based on the user ID
-        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: firestoreManager.veganStartDateKey) { [weak self] (result) in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let veganStartDate):
-                guard let convertedDate = self.progressCalculator.convertDate(veganStartDate) else { return }
-                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
-            case .failure(let error):
-                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +26,7 @@ class ProgressViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet var timeLabels: [UILabel]!
     @IBOutlet weak var progressCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - private properties
     private let progressCellElementsProvider = ProgressCellElementsProvider()
@@ -55,10 +38,40 @@ class ProgressViewController: UIViewController {
     }
     
     // MARK: - private functions
+    
+    /// Attempting to retrieve the date the user became vegan to start the timer with
+    private func fetchVeganStartDateFrom(_ userID: String) {
+        
+        handleActivityIndicator(isHidden: false)
+        
+        // Get the document based on the user ID
+        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: firestoreManager.veganStartDateKey) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            self.handleActivityIndicator(isHidden: true)
+            
+            switch result {
+            case .success(let veganStartDate):
+                guard let convertedDate = self.progressCalculator.convertDate(veganStartDate) else { return }
+                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+            case .failure(let error):
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            }
+        }
+    }
+    
     private func editTheTextOfTimeLabelsFrom(_ timeToDisplay: [String]) {
         timeLabels.forEach({ (timeLabel) in
             timeLabel.text = timeToDisplay[timeLabel.tag]
         })
+    }
+    
+    /// Modify the interface according to the data load
+    private func handleActivityIndicator(isHidden: Bool) {
+        for subview in view.subviews {
+            subview.isHidden = !isHidden
+        }
+        activityIndicator.isHidden = isHidden
     }
     
     /// Updates the user interface with updated data
