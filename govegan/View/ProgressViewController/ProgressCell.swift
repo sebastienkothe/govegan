@@ -9,8 +9,6 @@ import UIKit
 
 class ProgressCell: UICollectionViewCell {
     
-    // MARK: - Internal properties
-    
     // MARK: - Internal functions
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,10 +22,6 @@ class ProgressCell: UICollectionViewCell {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var progressStackView: UIStackView!
     @IBOutlet weak var shadowView: UIView!
-    
-    // MARK: - IBActions
-    
-    // MARK: - Private properties
     
     // MARK: - Private functions
     private func setupShadow() {

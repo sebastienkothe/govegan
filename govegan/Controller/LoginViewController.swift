@@ -10,8 +10,6 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
-    // MARK: - Internal properties
-    
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +46,6 @@ class LoginViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    // MARK: - Private properties
-    
     // MARK: - Private functions
     
     /// Allows the user to connect with his email address and password
@@ -66,6 +62,7 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)

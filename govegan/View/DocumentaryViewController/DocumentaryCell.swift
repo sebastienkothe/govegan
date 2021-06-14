@@ -9,8 +9,6 @@ import UIKit
 
 class DocumentaryCell: UITableViewCell {
     
-    // MARK: - Internal properties
-    
     // MARK: - Internal functions
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +43,7 @@ class DocumentaryCell: UITableViewCell {
     private let documentaryCellElementsProvider = DocumentaryCellElementsProvider()
     
     // MARK: - Private functions
+    
     /// Used to open youtube video
     private func watchVideoFrom(youtubeID: String) {
         

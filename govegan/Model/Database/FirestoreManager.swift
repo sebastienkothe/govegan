@@ -8,20 +8,6 @@
 import Foundation
 import Firebase
 
-enum FirestoreManagerError: Error, CaseIterable {
-    case unableToCreateAccount
-    case unableToRetrieveAccountData
-    case unableToRecoverYourAccount
-    
-    var title: String {
-        switch self {
-        case .unableToCreateAccount: return "unable_to_create_account".localized
-        case .unableToRetrieveAccountData: return "unable_to_retrieve_account_data".localized
-        case .unableToRecoverYourAccount: return "unable_to_recover_your_account".localized
-        }
-    }
-}
-
 class FirestoreManager {
     
     // MARK: - Internal properties
@@ -43,16 +29,15 @@ class FirestoreManager {
     /// Used to add document to the database
     func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, completion: @escaping AddDocumentWithCompletionHandler) {
         
-        do {
-            referenceForUserData(userID: userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email]) { error in
-                guard error == nil else {
-                    return completion(.failure(.unableToCreateAccount))
-                }
+        referenceForUserData(userID: userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email]) { error in
+            
+            guard error == nil else {
+                return completion(.failure(.unableToCreateAccount))
             }
+            
+            // Adding the document was successful
+            completion(.success(true))
         }
-        
-        // Adding the document was successful
-        completion(.success(true))
     }
     
     
@@ -64,19 +49,15 @@ class FirestoreManager {
                 return
             }
             
-            guard let data = document.data() as? [String: String] else {
-                completion(.failure(.unableToRetrieveAccountData))
+            guard let data = document.data() as? [String: String], let valueToReturn = data[valueToReturn] else {
+                completion(.failure(.noData))
                 return
             }
-            
-            guard let valueToReturn = data[valueToReturn] else { return }
             
             // Searching the document was successful
             completion(.success(valueToReturn))
         }
     }
-    
-    // MARK: - Private properties
     
     // MARK: - Private functions
     private func referenceForUserData(userID: String) -> DocumentReference {

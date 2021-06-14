@@ -17,8 +17,6 @@ class NextButton: UIButton {
     }
     
     // MARK: - Private functions
-    
-    /// 
     private func roundedCorner() {
         self.layer.cornerRadius = self.frame.height / 2
     }

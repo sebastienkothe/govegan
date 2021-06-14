@@ -12,6 +12,7 @@
 		8307A712266D5F850086D869 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8307A710266D5F850086D869 /* SignUpViewController.swift */; };
 		8309025E2656B36E0052D36C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 830902602656B36E0052D36C /* Localizable.strings */; };
 		830B021F26637063003EB990 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B021E26637063003EB990 /* SettingViewController.swift */; };
+		831160762677889D003C5FED /* FirestoreManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831160752677889D003C5FED /* FirestoreManagerError.swift */; };
 		831D0FCD2653B92700817B5A /* PickUpUserInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */; };
 		831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */; };
 		831D0FD72653DAF100817B5A /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831D0FD62653DAF100817B5A /* NextButton.swift */; };
@@ -68,6 +69,7 @@
 		8309025F2656B36E0052D36C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		830902642656B3760052D36C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		830B021E26637063003EB990 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		831160752677889D003C5FED /* FirestoreManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManagerError.swift; sourceTree = "<group>"; };
 		831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickUpUserInformationView.xib; sourceTree = "<group>"; };
 		831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationView.swift; sourceTree = "<group>"; };
 		831D0FD62653DAF100817B5A /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				83777175266A896800923AA5 /* FirestoreManager.swift */,
+				831160752677889D003C5FED /* FirestoreManagerError.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
 				833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */,
 				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
+				831160762677889D003C5FED /* FirestoreManagerError.swift in Sources */,
 				8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */,
 				83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,

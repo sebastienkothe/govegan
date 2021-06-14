@@ -26,11 +26,4 @@ class AchievementCell: UITableViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var objectiveLabel: UILabel!
-    
-    
-    // MARK: - IBActions
-    
-    // MARK: - Private properties
-    
-    // MARK: - Private functions
 }

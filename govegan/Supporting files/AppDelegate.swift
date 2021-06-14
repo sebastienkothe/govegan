@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Setting up Firebase emulator localhost:8020")
             let settings = Firestore.firestore().settings
             settings.host = "localhost:8020"
-            settings.isPersistenceEnabled = false
+            settings.isPersistenceEnabled = true
             settings.isSSLEnabled = false
             Firestore.firestore().settings = settings
         }

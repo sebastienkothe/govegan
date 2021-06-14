@@ -13,13 +13,15 @@ class PickUpUserInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGestureRecognizer)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         pickUpUserInformationView.onMainButtonTapped = { [weak self] (userData) in
+            
+            // Retrieving the controller and changing the value of its "userData" property
             let storyBoard = UIStoryboard(name: .mainStoryboard, bundle: nil)
             let viewController =  storyBoard.instantiateViewController(withIdentifier: .signUpViewController) as! SignUpViewController
             viewController.userData = userData
+            
             self?.navigationController?.pushViewController(viewController, animated: true)
         }
         
@@ -37,6 +39,4 @@ class PickUpUserInformationViewController: UIViewController {
     @IBAction func dismissKeyboard(_ sender: Any) {
         view.endEditing(true)
     }
-    
-    // MARK: - Private function
 }

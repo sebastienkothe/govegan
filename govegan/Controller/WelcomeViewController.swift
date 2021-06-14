@@ -10,10 +10,7 @@ import Firebase
 
 class WelcomeViewController: UIViewController {
     
-    // MARK: - Internal properties
-    
     // MARK: - Internal functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +27,8 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // Animates the logo under condition
         if !animationHasBeenShown { switchLogoGoVeganToTheTop() }
     }
     

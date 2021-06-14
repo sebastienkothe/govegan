@@ -31,6 +31,4 @@ class SettingViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-    // MARK: - Private properties
 }

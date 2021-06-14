@@ -9,12 +9,10 @@ import UIKit
 
 class DocumentaryViewController: UIViewController {
     
-    // MARK: - Internal properties
+    // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    // MARK: - Internal functions
     
     // MARK: - IBOutlets
     @IBOutlet weak var documentaryTableView: UITableView!
@@ -23,10 +21,9 @@ class DocumentaryViewController: UIViewController {
     
     // MARK: - private properties
     private let documentaryCellElementsProvider = DocumentaryCellElementsProvider()
-    
-    // MARK: - private functions
 }
 
+// MARK: - UITableViewDataSource
 extension DocumentaryViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,4 +58,5 @@ extension DocumentaryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension DocumentaryViewController: UITableViewDelegate {}

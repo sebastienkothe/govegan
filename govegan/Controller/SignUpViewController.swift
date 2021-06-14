@@ -15,11 +15,6 @@ class SignUpViewController: UIViewController {
     /// Contains manually entered user data
     var userData: [String]?
     
-    // MARK: - Internal functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -86,6 +81,7 @@ class SignUpViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)

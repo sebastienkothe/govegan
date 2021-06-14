@@ -16,7 +16,6 @@ class LoginButton: UIButton {
     }
     
     // MARK: - Private functions
-    
     private func setup() {
         layer.cornerRadius = 10
     }

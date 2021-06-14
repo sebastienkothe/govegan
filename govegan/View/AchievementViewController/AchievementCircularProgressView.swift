@@ -57,10 +57,4 @@ class AchievementCircularProgressView: UIView {
         progressLayer.strokeEnd = 0.1
         layer.addSublayer(progressLayer)
     }
-    
-    // MARK: - IBOutlets
-    // MARK: - IBActions
-    // MARK: - Private properties
-    // MARK: - Private functions
-    
 }

@@ -20,19 +20,14 @@ class AchievementViewController: UIViewController {
         }
     }
     
-    // MARK: - Internal functions
-    
     // MARK: - IBOutlets
     @IBOutlet weak var achievementTableView: UITableView!
     
-    // MARK: - IBActions
-    
     // MARK: - Private properties
     private let achievementCellElementsProvider = AchievementCellElementsProvider()
-    
-    // MARK: - Private functions
 }
 
+// MARK: - UITableViewDataSource
 extension AchievementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calculatedProgress.count
@@ -43,7 +38,7 @@ extension AchievementViewController: UITableViewDataSource {
         
         var additionalText = " \(achievementCellElementsProvider.objectiveInformations[indexPath.item])"
         if progressCalculator.objectives[0] > 1 && indexPath.item == 0 { additionalText += "s"}
-                
+        
         achievementCell.categoryImageView.image = achievementCellElementsProvider.categoryImages[indexPath.item]
         achievementCell.objectiveLabel.attributedText = progressCalculator.provideComposedText(indexPath.item, additionalText)
         achievementCell.circularProgressView.progressLayer.strokeEnd = progressCalculator.updateProgressLayer(index: indexPath.item, calculatedProgress: calculatedProgress[indexPath.item])
@@ -58,4 +53,5 @@ extension AchievementViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension AchievementViewController: UITableViewDelegate {}

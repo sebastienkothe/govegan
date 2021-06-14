@@ -14,6 +14,8 @@ class ProgressViewController: UIViewController {
     let progressCalculator = ProgressCalculator()
     
     // MARK: - Internal functions
+    
+    /// Attempting to retrieve the date the user became vegan to start the timer with
     private func fetchVeganStartDateFrom(_ userID: String) {
         
         // Get the document based on the user ID
@@ -43,8 +45,6 @@ class ProgressViewController: UIViewController {
     @IBOutlet var timeLabels: [UILabel]!
     @IBOutlet weak var progressCollectionView: UICollectionView!
     
-    // MARK: - IBActions
-    
     // MARK: - private properties
     private let progressCellElementsProvider = ProgressCellElementsProvider()
     private let firestoreManager = FirestoreManager.shared
@@ -61,6 +61,7 @@ class ProgressViewController: UIViewController {
         })
     }
     
+    /// Updates the user interface with updated data
     @objc private func updateUserInterface(_ timer: Timer) {
         guard let veganStartDate = timer.userInfo as? Date else { return }
         
@@ -76,7 +77,7 @@ class ProgressViewController: UIViewController {
     }
 }
 
-// MARK: Data source
+// MARK: UICollectionViewDataSource
 extension ProgressViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return progressCellElementsProvider.images.count
@@ -96,8 +97,7 @@ extension ProgressViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: Flow layout delegate
-
+// MARK: UICollectionViewDelegateFlowLayout
 extension ProgressViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -110,6 +110,7 @@ extension ProgressViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: ProgressCalculatorDelegate
 extension ProgressViewController: ProgressCalculatorDelegate {
     func progressCanBeUpdated(data: [Double]) {
         guard let achievementViewController = tabBarController?.viewControllers?[1] as? AchievementViewController else { return }

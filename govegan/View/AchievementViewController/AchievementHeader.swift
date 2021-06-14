@@ -25,6 +25,8 @@ class AchievementHeader: UITableViewHeaderFooterView {
     let stackView = UIStackView()
     
     // MARK: - Internal functions
+    
+    /// Configure the constraints and texts to display
     func configureContents() {
         
         stackView.distribution = .fillEqually
@@ -48,8 +50,6 @@ class AchievementHeader: UITableViewHeaderFooterView {
         setupLabel(label: goalLabel, text: "goal".localized, alignement: .center)
         setupLabel(label: progressLabel, text: "progress".localized, alignement: .right)
     }
-    
-    // MARK: - Private properties
     
     // MARK: - Private functions
     private func setupLabel(label: UILabel, text: String, alignement: NSTextAlignment) {

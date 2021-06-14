@@ -53,6 +53,7 @@ class ProgressCalculator {
         return dateFormatter.date(from: dateAsAString)
     }
     
+    /// Returns the time to display
     func checkTheTimeToDisplay(timeElapsed: DateComponents) -> [String] {
         guard let second = timeElapsed.second, let minute = timeElapsed.minute, let hour = timeElapsed.hour, let day = timeElapsed.day, let year = timeElapsed.year else { return [] }
         
@@ -69,6 +70,7 @@ class ProgressCalculator {
         return adaptTextToReturn(year, yearText, day, dayText, hour, hourText, minute, minuteText, second, secondText)
     }
     
+    /// Returns the current progress for each category
     func calculateTheProgress() -> [String] {
         
         let totalTimeInSeconds = Double(timeData[0]) + Double(timeData[1]) * 60.0 + Double(timeData[2]) * 60.0 * 60.0 + Double(timeData[3]) * 60.0 * 60.0 * 24.0 + Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.2422
@@ -86,8 +88,6 @@ class ProgressCalculator {
         ]
     }
     
-    // MARK: - private properties
-    
     // MARK: - private functions
     private func convertToStringFrom(_ number: Double) -> String{
         return String(format: "%.\(String(0))f", number)
@@ -97,6 +97,7 @@ class ProgressCalculator {
         return dailyObjective / 24 / 60 / 60
     }
     
+    /// Checks if the test must be taken in the plural
     private func checkIfPluralIsRequired(_ second: Int, _ secondText: inout String, _ minute: Int, _ minuteText: inout String, _ hour: Int, _ hourText: inout String, _ day: Int, _ dayText: inout String, _ year: Int, _ yearText: inout String) {
         if second > 1 { secondText += "s" }
         if minute > 1 { minuteText += "s" }
@@ -105,6 +106,7 @@ class ProgressCalculator {
         if year > 1 { yearText += "s" }
     }
     
+    /// Returns the text to display based on the date the user became vegan
     private func adaptTextToReturn(_ year: Int, _ yearText: String, _ day: Int, _ dayText: String, _ hour: Int, _ hourText: String, _ minute: Int, _ minuteText: String, _ second: Int, _ secondText: String) -> [String] {
         if year >= 1 {
             return ["\(year)\n\(yearText)", "\(day)\n\(dayText)", "\(hour)\n\(hourText)"]
