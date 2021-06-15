@@ -22,7 +22,7 @@
 "back_button" = "Retour";
 
 // Progress title from progressCell
-"animal_lives" = "Vies animales";
+"animal_lives" = "Animaux sauvés";
 "kg_of_grain" = "Kg de céréales";
 "litres_of_water" = "Litres d'eau";
 "sqm_of_forest" = "M² de forêt";

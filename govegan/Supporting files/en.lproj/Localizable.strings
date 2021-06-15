@@ -53,6 +53,7 @@
 "let_it_go" = "Let's go!";
 "cancel" = "Cancel";
 "watch" = "Watch ";
+"why_go_vegan" = "Why go vegan ?";
 
 // LoginViewController && SignUpViewController
 "mail_required" = "Email address required";
