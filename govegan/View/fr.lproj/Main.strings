@@ -58,7 +58,7 @@
 "qhD-W8-Vj2.text" = "Déjà enregistré ?";
 
 /* Class = "UILabel"; text = "Login"; ObjectID = "kTL-Is-F6a"; */
-"kTL-Is-F6a.text" = "Se connecter";
+"kTL-Is-F6a.text" = "Connexion";
 
 /* Class = "UITextField"; placeholder = "Password..."; ObjectID = "w6W-bD-pWf"; */
 "w6W-bD-pWf.placeholder" = "Mot de passe...";

@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     // MARK: - IBOutlets
     // MARK: - IBActions
     // MARK: - Private properties
-    // MARK: - Private functions
+    
     
     // MARK: - Internal functions
     override func viewDidLoad() {
@@ -23,12 +23,29 @@ class SettingViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func didTapOnSignOutButton() {
+        HandleLogOut()
+    }
+    
+    // MARK: - Private functions
+    
+    ///Displays an alert and acts according to the user's wish
+    private func HandleLogOut() {
+        let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
+        let okay = UIAlertAction(title: "yes".localized, style: .default) { [weak self] _ in
+            self?.disconnectUserFromApp()
+        }
+        
+        UIAlertService.showAlert(style: .alert, title: nil, message: "disconnection_question".localized, actions: [okay, cancel], completion: nil)
+    }
+    
+    /// Try to log the user out of the app
+    private func disconnectUserFromApp() {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            navigationController?.popToRootViewController(animated: true)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_log_out".localized)
         }
     }
 }

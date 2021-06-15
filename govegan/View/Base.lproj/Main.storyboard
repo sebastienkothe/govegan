@@ -244,7 +244,7 @@
             <objects>
                 <viewController id="Qzz-29-mtg" customClass="DocumentaryViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gcv-tu-VOb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documentaries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlv-Qi-C80">
@@ -258,7 +258,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6T7-kY-4U1">
-                                <rect key="frame" x="20" y="75" width="280" height="404"/>
+                                <rect key="frame" x="20" y="75" width="280" height="424"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.41960784309999999" green="0.86274509799999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -352,7 +352,7 @@
             <objects>
                 <viewController id="wyh-Hz-l9P" customClass="SettingViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HMb-sQ-mWT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60X-zW-Nyp">
@@ -366,7 +366,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-8L-eNz">
-                                <rect key="frame" x="137" y="259" width="46" height="30"/>
+                                <rect key="frame" x="137" y="269" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="didTapOnSignOutButton" destination="wyh-Hz-l9P" eventType="touchUpInside" id="Scc-dO-Ne8"/>
@@ -394,7 +394,7 @@
             <objects>
                 <viewController id="FDf-JP-j91" customClass="ProgressViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xj3-9V-X71">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcB-hC-Llk">
@@ -466,7 +466,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pQL-rY-omO">
-                                <rect key="frame" x="20" y="216.5" width="280" height="262.5"/>
+                                <rect key="frame" x="20" y="216.5" width="280" height="282.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="EMz-5u-STe">
                                     <size key="itemSize" width="315" height="327"/>
@@ -557,7 +557,7 @@
                                 </connections>
                             </collectionView>
                             <activityIndicatorView opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HZh-7D-XGC">
-                                <rect key="frame" x="141.5" y="255.5" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                         </subviews>
@@ -597,7 +597,7 @@
             <objects>
                 <viewController id="AjN-fr-wmO" customClass="AchievementViewController" customModule="govegan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RGb-K9-rep">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggn-LD-W7S">
@@ -611,7 +611,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FXh-cu-kyK">
-                                <rect key="frame" x="20" y="85" width="280" height="394"/>
+                                <rect key="frame" x="20" y="85" width="280" height="414"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AchievementCell" id="UGs-L5-0La" customClass="AchievementCell" customModule="govegan" customModuleProvider="target">
@@ -742,7 +742,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3l-Q8-epm">
+                            <button opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3l-Q8-epm">
                                 <rect key="frame" x="70.5" y="468" width="179" height="50"/>
                                 <color key="backgroundColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -756,8 +756,8 @@
                                     <segue destination="GVl-rI-p5c" kind="show" id="ikD-w0-cTF"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="4kZ-Rn-zBx">
-                                <rect key="frame" x="50" y="299" width="220" height="90.5"/>
+                            <stackView opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="4kZ-Rn-zBx">
+                                <rect key="frame" x="50" y="424" width="220" height="90.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-b1-974">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="27.5"/>
@@ -773,7 +773,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="m8c-Pq-etE">
+                            <stackView opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="m8c-Pq-etE">
                                 <rect key="frame" x="72.5" y="528" width="175.5" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already registered ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhD-W8-Vj2">
@@ -797,22 +797,34 @@
                                     <constraint firstAttribute="height" constant="30" id="l0f-IZ-jgB"/>
                                 </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="govegan" translatesAutoresizingMaskIntoConstraints="NO" id="ihH-4Q-dDT">
+                                <rect key="frame" x="20" y="144" width="280" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="ihH-4Q-dDT" secondAttribute="width" id="RD6-8h-cf5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dDw-7N-kE7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ihH-4Q-dDT" firstAttribute="centerY" secondItem="DqH-BS-wm9" secondAttribute="centerY" priority="999" id="0xH-LH-Djt"/>
                             <constraint firstItem="4kZ-Rn-zBx" firstAttribute="leading" secondItem="dDw-7N-kE7" secondAttribute="leading" constant="50" id="2HJ-st-rj6"/>
                             <constraint firstItem="m8c-Pq-etE" firstAttribute="top" secondItem="h3l-Q8-epm" secondAttribute="bottom" constant="10" id="5x6-Vz-6Su"/>
                             <constraint firstAttribute="bottom" secondItem="m8c-Pq-etE" secondAttribute="bottom" constant="10" id="M3B-wH-AZA"/>
+                            <constraint firstItem="dDw-7N-kE7" firstAttribute="trailing" secondItem="ihH-4Q-dDT" secondAttribute="trailing" constant="20" id="SHt-As-peN"/>
                             <constraint firstItem="h3l-Q8-epm" firstAttribute="centerX" secondItem="dDw-7N-kE7" secondAttribute="centerX" id="VbV-mn-EPB"/>
-                            <constraint firstItem="4kZ-Rn-zBx" firstAttribute="centerY" secondItem="DqH-BS-wm9" secondAttribute="centerY" constant="60" id="dQJ-Bs-ko9"/>
-                            <constraint firstItem="4kZ-Rn-zBx" firstAttribute="centerX" secondItem="DqH-BS-wm9" secondAttribute="centerX" id="gdo-4P-oyd"/>
-                            <constraint firstAttribute="trailing" secondItem="4kZ-Rn-zBx" secondAttribute="trailing" constant="50" id="nHF-Iy-9iw"/>
+                            <constraint firstItem="4kZ-Rn-zBx" firstAttribute="top" secondItem="ihH-4Q-dDT" secondAttribute="bottom" id="bxQ-zd-6X1"/>
+                            <constraint firstItem="ihH-4Q-dDT" firstAttribute="leading" secondItem="dDw-7N-kE7" secondAttribute="leading" constant="20" id="cwr-Jc-PrZ"/>
+                            <constraint firstItem="4kZ-Rn-zBx" firstAttribute="centerX" secondItem="dDw-7N-kE7" secondAttribute="centerX" id="gdo-4P-oyd"/>
+                            <constraint firstItem="dDw-7N-kE7" firstAttribute="trailing" secondItem="4kZ-Rn-zBx" secondAttribute="trailing" constant="50" id="nHF-Iy-9iw"/>
                             <constraint firstItem="m8c-Pq-etE" firstAttribute="centerX" secondItem="DqH-BS-wm9" secondAttribute="centerX" id="ueX-Pi-OcX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2nt-sj-L1e"/>
                     <connections>
+                        <outlet property="footerStackView" destination="m8c-Pq-etE" id="9gw-6b-wUW"/>
+                        <outlet property="goButton" destination="h3l-Q8-epm" id="PJs-hS-rbJ"/>
+                        <outlet property="goVeganLogo" destination="ihH-4Q-dDT" id="Tum-R9-iOD"/>
                         <outlet property="loginButton" destination="ZHY-Cr-shL" id="Pob-GD-g67"/>
                         <outlet property="welcomeMessagesStackView" destination="4kZ-Rn-zBx" id="rz5-n8-ECt"/>
                         <segue destination="svi-8A-yCd" kind="show" identifier="segueToTabBarFromWelcome" id="G1o-Nd-SD7"/>
@@ -845,12 +857,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sLT-sQ-vCF"/>
+        <segue reference="G1o-Nd-SD7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circled-play" width="30" height="30"/>
         <image name="clock" width="24" height="24"/>
         <image name="earthlings" width="648" height="670"/>
+        <image name="govegan" width="2000" height="2000"/>
         <image name="loading-bar" width="40" height="40"/>
         <image name="pig-80" width="80" height="80"/>
         <image name="settings" width="28" height="28"/>

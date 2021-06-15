@@ -76,3 +76,8 @@
 "unable_to_retrieve_account_data" = "Impossible de récupérer les données de votre compte";
 "unable_to_recover_your_account" = "Impossible de récupérer votre compte";
 "no_data" = "Pas de données";
+
+// SettingViewController
+"disconnection_question" = "Se déconnecter de l'application ?";
+"yes" = "Oui";
+"unable_to_log_out" = "Impossible de vous déconnecter";
