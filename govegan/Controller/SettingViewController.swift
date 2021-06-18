@@ -61,7 +61,7 @@ class SettingViewController: UIViewController {
     
     /// Removes user authentication and data
     private func handleUserDeletion() {
-        handleUserDeletionFromDatabase()
+        let currentUserID = authenticationService.getCurrentUser()?.uid
         
         authenticationService.deleteUserAuthentication { [weak self] error in
             if let error = error {
@@ -69,14 +69,15 @@ class SettingViewController: UIViewController {
                 return
             }
             
+            self?.handleUserDeletionFromDatabase(userID: currentUserID)
             self?.navigationController?.popToRootViewController(animated: true)
             UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
         }
     }
     
     /// Call the appropriate method and display an error if necessary
-    private func handleUserDeletionFromDatabase() {
-        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
+    private func handleUserDeletionFromDatabase(userID: String?) {
+        guard let userID = userID else { return }
         self.firestoreManager.deleteADocument(userID: userID, completion: { error in
             if let error = error {
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
