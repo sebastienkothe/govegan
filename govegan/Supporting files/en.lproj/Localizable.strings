@@ -82,3 +82,11 @@
 "disconnection_question" = "Log out of the application ?";
 "yes" = "Yes";
 "unable_to_log_out" = "Unable to log out";
+"unable_to_delete_account" = "Unable to delete account";
+"delete_account_request" = "Delete your account?";
+"reauthentication_failed" = "Reauthentication failed";
+"unable_to_delete_account" = "Unable to delete your account";
+"unable_to_remove_user_from_database" = "Cannot delete your account from the database";
+"security" = "Security";
+"log_in_before_deleting_the_account" = "Log in again before deleting the account";
+"deleted_account" = "Your account has been deleted";

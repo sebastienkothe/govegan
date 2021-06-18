@@ -23,6 +23,8 @@
 		833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320B26653E240027E965 /* DocumentaryCell.swift */; };
 		833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */; };
 		833E6302266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */; };
+		834C212E267BFB1F005456E0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C212D267BFB1F005456E0 /* AuthenticationService.swift */; };
+		834C2130267BFBBB005456E0 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C212F267BFBBB005456E0 /* AuthenticationServiceError.swift */; };
 		835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835ECAD82658158100BF3E00 /* ProgressViewController.swift */; };
 		836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC4264D471F002158FD /* AppDelegate.swift */; };
 		836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EC6264D471F002158FD /* SceneDelegate.swift */; };
@@ -81,6 +83,8 @@
 		833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCellElementsProvider.swift; sourceTree = "<group>"; };
 		833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegateMock.swift; sourceTree = "<group>"; };
 		834861E2264D7DB30006A527 /* govegan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = govegan.entitlements; sourceTree = "<group>"; };
+		834C212D267BFB1F005456E0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		834C212F267BFBBB005456E0 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		835ECAD82658158100BF3E00 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		836A9EC1264D471F002158FD /* govegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = govegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836A9EC4264D471F002158FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +202,15 @@
 			path = DocumentaryViewController;
 			sourceTree = "<group>";
 		};
+		834C212C267BFAE4005456E0 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				834C212D267BFB1F005456E0 /* AuthenticationService.swift */,
+				834C212F267BFBBB005456E0 /* AuthenticationServiceError.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		83573E5F265D39B80021B738 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,7 @@
 		839DAEBD265008CA009E29F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				834C212C267BFAE4005456E0 /* Authentication */,
 				83FD458B266A21A6009A409A /* Database */,
 				83DEAEAF2668FFD30087B727 /* Helpers */,
 				83573E5F265D39B80021B738 /* Protocol */,
@@ -543,12 +557,14 @@
 				8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */,
 				83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
+				834C2130267BFBBB005456E0 /* AuthenticationServiceError.swift in Sources */,
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
 				83777176266A896800923AA5 /* FirestoreManager.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
+				834C212E267BFB1F005456E0 /* AuthenticationService.swift in Sources */,
 				8307A712266D5F850086D869 /* SignUpViewController.swift in Sources */,
 				83F8D88126591C5E00EE96C4 /* ProgressCellElementsProvider.swift in Sources */,
 				83CA58F82661119D00186C6B /* AchievementCircularProgressView.swift in Sources */,

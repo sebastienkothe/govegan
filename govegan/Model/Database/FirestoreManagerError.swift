@@ -11,12 +11,14 @@ enum FirestoreManagerError: Error, CaseIterable {
     case unableToCreateAccount
     case unableToRecoverYourAccount
     case noData
+    case unableToRemoveUserFromDatabase
     
     var title: String {
         switch self {
         case .unableToCreateAccount: return "unable_to_create_account".localized
         case .unableToRecoverYourAccount: return "unable_to_recover_your_account".localized
         case .noData: return "no_data".localized
+        case .unableToRemoveUserFromDatabase: return "unable_to_remove_user_from_database".localized
         }
     }
 }

@@ -69,3 +69,12 @@
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "zhs-9A-ktE"; */
 "zhs-9A-ktE.normalTitle" = "Envoyer";
 
+/* Class = "UIButton"; normalTitle = "Sign out"; ObjectID = "KVy-8L-eNz"; */
+"KVy-8L-eNz.normalTitle" = "Se déconnecter";
+
+/* Class = "UIButton"; normalTitle = "Delete account"; ObjectID = "BKB-2k-yIy"; */
+"BKB-2k-yIy.normalTitle" = "Supprimer le compte";
+
+/* Class = "UIButton"; normalTitle = "Statistics source"; ObjectID = "mEI-26-YuY"; */
+"mEI-26-YuY.normalTitle" = "Source des statistiques";
+

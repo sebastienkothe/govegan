@@ -365,25 +365,60 @@
                                 <color key="textColor" red="0.031372549020000001" green="0.1176470588" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-8L-eNz">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="didTapOnSignOutButton" destination="wyh-Hz-l9P" eventType="touchUpInside" id="Scc-dO-Ne8"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="51F-hT-4xr">
+                                <rect key="frame" x="20" y="75" width="280" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-8L-eNz">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="7qg-uZ-6Ab"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Sign out">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingButtonTapped:" destination="wyh-Hz-l9P" eventType="touchUpInside" id="uU1-hM-9CR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKB-2k-yIy">
+                                        <rect key="frame" x="0.0" y="44" width="118" height="44"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Delete account">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingButtonTapped:" destination="wyh-Hz-l9P" eventType="touchUpInside" id="O4l-5J-CFr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEI-26-YuY">
+                                        <rect key="frame" x="0.0" y="88" width="123" height="44"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Statistics source">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingButtonTapped:" destination="wyh-Hz-l9P" eventType="touchUpInside" id="DLI-Wf-f7B"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jmu-aq-B93"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jmu-aq-B93" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="60X-zW-Nyp" secondAttribute="trailing" symbolic="YES" id="6Ii-iQ-upw"/>
-                            <constraint firstItem="KVy-8L-eNz" firstAttribute="centerY" secondItem="HMb-sQ-mWT" secondAttribute="centerY" id="Epm-Ly-9HY"/>
+                            <constraint firstItem="51F-hT-4xr" firstAttribute="top" secondItem="60X-zW-Nyp" secondAttribute="bottom" constant="20" id="CPM-Sg-jZV"/>
+                            <constraint firstItem="jmu-aq-B93" firstAttribute="trailing" secondItem="51F-hT-4xr" secondAttribute="trailing" constant="20" id="ekQ-g5-F4H"/>
                             <constraint firstItem="60X-zW-Nyp" firstAttribute="top" secondItem="jmu-aq-B93" secondAttribute="top" constant="20" id="f3z-Ir-V2P"/>
-                            <constraint firstItem="KVy-8L-eNz" firstAttribute="centerX" secondItem="HMb-sQ-mWT" secondAttribute="centerX" id="gmI-me-FwO"/>
                             <constraint firstItem="60X-zW-Nyp" firstAttribute="leading" secondItem="jmu-aq-B93" secondAttribute="leading" constant="20" id="oSp-uY-mFc"/>
+                            <constraint firstItem="51F-hT-4xr" firstAttribute="leading" secondItem="jmu-aq-B93" secondAttribute="leading" constant="20" id="vgv-1T-Arw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="eNz-Jd-g3d"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueToLoginFromSetting" id="r27-xc-awl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEf-MI-3t2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -858,6 +893,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="G1o-Nd-SD7"/>
+        <segue reference="r27-xc-awl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circled-play" width="30" height="30"/>

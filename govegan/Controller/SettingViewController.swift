@@ -6,46 +6,79 @@
 //
 
 import UIKit
-import Firebase
 
 class SettingViewController: UIViewController {
-    // MARK: - Internal properties
-    // MARK: - Internal functions
-    // MARK: - IBOutlets
+    
     // MARK: - IBActions
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
+        if sender.tag == 0 {
+            handleRequest(tag: sender.tag)
+        } else if sender.tag == 1 {
+            handleRequest(tag: sender.tag)
+        } else {
+            
+        }
+    }
+    
     // MARK: - Private properties
-    
-    
-    // MARK: - Internal functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    // MARK: - IBActions
-    @IBAction func didTapOnSignOutButton() {
-        HandleLogOut()
-    }
+    private let firestoreManager = FirestoreManager.shared
+    private let authenticationService = AuthenticationService()
     
     // MARK: - Private functions
     
-    ///Displays an alert and acts according to the user's wish
-    private func HandleLogOut() {
+    /// Displays the appropriate alert based on the button pressed
+    private func handleRequest(tag: Int) {
         let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
         let okay = UIAlertAction(title: "yes".localized, style: .default) { [weak self] _ in
-            self?.disconnectUserFromApp()
+            tag == 0 ? self?.handleDisconnection() : self?.handleUserDeletion()
         }
         
-        UIAlertService.showAlert(style: .alert, title: nil, message: "disconnection_question".localized, actions: [okay, cancel], completion: nil)
+        let messages = ["disconnection_question", "delete_account_request"]
+        UIAlertService.showAlert(style: .alert, title: nil, message: messages[tag].localized, actions: [okay, cancel], completion: nil)
     }
     
-    /// Try to log the user out of the app
-    private func disconnectUserFromApp() {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            self.navigationController?.popToRootViewController(animated: true)
-        } catch {
-            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_log_out".localized)
+    private func handleDisconnection() {
+        authenticationService.disconnectUserFromApp { [weak self] error in
+            
+            if let error = error {
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+                return
+            }
+            
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    private func handleUserDeletionWith(_ error: AuthenticationServiceError) {
+        if error == .logInBeforeDeletingTheAccount {
+            self.performSegue(withIdentifier: .segueToLoginFromSetting, sender: nil)
+            UIAlertService.showAlert(style: .alert, title: "security".localized, message: error.title)
+        } else {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+        }
+    }
+    
+    /// Call the appropriate method and display an error if necessary
+    private func handleUserDeletionFromDatabase() {
+        self.authenticationService.deleteUserFromDatabase { error in
+            if let error = error {
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            }
+        }
+    }
+    
+    /// Removes user authentication and data
+    private func handleUserDeletion() {
+        handleUserDeletionFromDatabase()
+        
+        authenticationService.deleteUserAuthentication { [weak self] error in
+            if let error = error {
+                self?.handleUserDeletionWith(error)
+                return
+            }
+            
+            self?.navigationController?.popToRootViewController(animated: true)
+            UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
         }
     }
 }

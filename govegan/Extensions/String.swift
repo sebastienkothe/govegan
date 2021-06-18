@@ -26,6 +26,7 @@ extension String {
     static let segueToLoginFromWelcome = "segueToLoginFromWelcome"
     static let segueToTabBarFromWelcome = "segueToTabBarFromWelcome"
     static let segueToTabBarFromSignUp = "segueToTabBarFromSignUp"
+    static let segueToLoginFromSetting = "segueToLoginFromSetting"
     
     // Cell
     static let progressCell = "ProgressCell"

@@ -17,19 +17,21 @@ class FirestoreManager {
     let usernameKey = "username"
     let veganStartDateKey = "veganStartDate"
     let emailKey = "email"
+    let passwordKey = "password"
     
     static let shared = FirestoreManager()
     private init() {}
     
     typealias AddDocumentWithCompletionHandler = (Result<Bool, FirestoreManagerError>) -> Void
     typealias GetValueFromDocumentCompletionHandler = (Result<String, FirestoreManagerError>) -> Void
+    typealias DeleteADocumentCompletionHandler = (FirestoreManagerError?) -> Void
     
     // MARK: - Internal functions
     
     /// Used to add document to the database
-    func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, completion: @escaping AddDocumentWithCompletionHandler) {
+    func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, password: String, completion: @escaping AddDocumentWithCompletionHandler) {
         
-        referenceForUserData(userID: userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email]) { error in
+        referenceForUserData(userID: userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email, passwordKey: password]) { error in
             
             guard error == nil else {
                 return completion(.failure(.unableToCreateAccount))
@@ -42,7 +44,7 @@ class FirestoreManager {
     
     
     /// Used to fetch document from the database
-    func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler)   {
+    func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler) {
         referenceForUserData(userID: userID).getDocument { document, error in
             guard let document = document, document.exists else {
                 completion(.failure(.unableToRecoverYourAccount))
@@ -56,6 +58,19 @@ class FirestoreManager {
             
             // Searching the document was successful
             completion(.success(valueToReturn))
+        }
+    }
+    
+    /// Delete a document from the firestore database
+    func deleteADocument(userID: String, completion: @escaping DeleteADocumentCompletionHandler) {
+        
+        referenceForUserData(userID: userID).delete() { error in
+            guard error == nil else {
+                completion(.unableToRemoveUserFromDatabase)
+                return
+            }
+            
+            completion(nil)
         }
     }
     
