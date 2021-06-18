@@ -17,8 +17,6 @@ class DocumentaryViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var documentaryTableView: UITableView!
     
-    // MARK: - IBActions
-    
     // MARK: - private properties
     private let documentaryCellElementsProvider = DocumentaryCellElementsProvider()
 }

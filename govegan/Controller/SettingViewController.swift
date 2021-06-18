@@ -9,6 +9,15 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    // MARK: - Internal functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateLabelText()
+    }
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var logInWithLabel: UILabel!
+    
     // MARK: - IBActions
     @IBAction func settingButtonTapped(_ sender: UIButton) {
         if sender.tag == 0 {
@@ -16,7 +25,7 @@ class SettingViewController: UIViewController {
         } else if sender.tag == 1 {
             handleRequest(tag: sender.tag)
         } else {
-            
+            showStatistics()
         }
     }
     
@@ -37,6 +46,7 @@ class SettingViewController: UIViewController {
         UIAlertService.showAlert(style: .alert, title: nil, message: messages[tag].localized, actions: [okay, cancel], completion: nil)
     }
     
+    /// Try to log out the user
     private func handleDisconnection() {
         authenticationService.disconnectUserFromApp { [weak self] error in
             
@@ -46,24 +56,6 @@ class SettingViewController: UIViewController {
             }
             
             self?.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-    
-    private func handleUserDeletionWith(_ error: AuthenticationServiceError) {
-        if error == .logInBeforeDeletingTheAccount {
-            self.performSegue(withIdentifier: .segueToLoginFromSetting, sender: nil)
-            UIAlertService.showAlert(style: .alert, title: "security".localized, message: error.title)
-        } else {
-            UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-        }
-    }
-    
-    /// Call the appropriate method and display an error if necessary
-    private func handleUserDeletionFromDatabase() {
-        self.authenticationService.deleteUserFromDatabase { error in
-            if let error = error {
-                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-            }
         }
     }
     
@@ -80,5 +72,42 @@ class SettingViewController: UIViewController {
             self?.navigationController?.popToRootViewController(animated: true)
             UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
         }
+    }
+    
+    /// Call the appropriate method and display an error if necessary
+    private func handleUserDeletionFromDatabase() {
+        self.authenticationService.deleteUserFromDatabase { error in
+            if let error = error {
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            }
+        }
+    }
+    
+    /// Handles the display of potential errors returned by the deleteUserAuthentication method
+    private func handleUserDeletionWith(_ error: AuthenticationServiceError) {
+        if error == .logInBeforeDeletingTheAccount {
+            self.performSegue(withIdentifier: .segueToLoginFromSetting, sender: nil)
+            UIAlertService.showAlert(style: .alert, title: "security".localized, message: error.title)
+        } else {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+        }
+    }
+    
+    /// Open the browser to display the site where the statistics come from
+    private func showStatistics() {
+        if let url = URL(string: .facts) {
+            UIApplication.shared.open(url) { success in
+                guard success else {
+                    UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_open_url".localized)
+                    return
+                }
+            }
+        }
+    }
+    
+    /// Used to show the email adress for the current connected user
+    private func updateLabelText() {
+        guard let userEmail = authenticationService.getCurrentUser()?.email else { return }
+        logInWithLabel.text = "logged_with".localized + " " + userEmail
     }
 }

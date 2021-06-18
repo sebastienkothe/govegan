@@ -70,6 +70,7 @@
 
 "create_account" = "Créer un compte";
 "ask_user_to_create_an_account" = "Voulez-vous créer un compte ?";
+"unable_to_connect_user" = "Connexion impossible";
 
 // Firestore operations
 "unable_to_create_account" = "Impossible de créer votre compte";
@@ -81,7 +82,6 @@
 "disconnection_question" = "Se déconnecter de l'application ?";
 "yes" = "Oui";
 "unable_to_log_out" = "Impossible de vous déconnecter";
-"unable_to_delete_account" = "Impossible de supprimer le compte";
 "delete_account_request" = "Supprimer votre compte ?";
 "reauthentication_failed" = "Échec de la réauthentification";
 "unable_to_delete_account" = "Impossible de supprimer votre compte";
@@ -89,3 +89,5 @@
 "security" = "Sécurité";
 "log_in_before_deleting_the_account" = "Connectez-vous à nouveau avant de supprimer votre compte";
 "deleted_account" = "Votre compte a bien été supprimé";
+"unable_to_open_url" = "Impossible d'ouvrir le lien";
+"logged_with" = "Connecté(e) avec:";

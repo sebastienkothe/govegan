@@ -6,14 +6,8 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: UIViewController {
-    
-    // MARK: - Internal functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
@@ -39,26 +33,28 @@ class LoginViewController: UIViewController {
             return
         }
         
-        connectUserWith(email, password)
+        handleUserConnection(email: email, password: password)
     }
     
     @IBAction func backButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    // MARK: - Private properties
+    private let authenticationService = AuthenticationService()
+    
     // MARK: - Private functions
     
-    /// Allows the user to connect with his email address and password
-    private func connectUserWith(_ email: String, _ password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-            guard error == nil else {
-                guard let error = error else { return }
-                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.localizedDescription)
-                return
-            }
+    /// Try to log in the user
+    private func handleUserConnection(email: String, password: String) {
+        authenticationService.connectUserWith(email, and: password, completion: { [weak self] error in
             
-            self?.performSegue(withIdentifier: .segueToTabBarFromLogin, sender: nil)
-        }
+            if let error = error {
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            } else {
+                self?.performSegue(withIdentifier: .segueToTabBarFromLogin, sender: nil)
+            }
+        })
     }
 }
 

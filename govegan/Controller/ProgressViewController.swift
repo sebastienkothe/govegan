@@ -18,7 +18,7 @@ class ProgressViewController: UIViewController {
         super.viewDidLoad()
         
         progressCalculator.delegate = self
-        guard let userID = Auth.auth().currentUser?.uid else { return }
+        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
         
         fetchVeganStartDateFrom(userID)
     }
@@ -31,6 +31,8 @@ class ProgressViewController: UIViewController {
     // MARK: - private properties
     private let progressCellElementsProvider = ProgressCellElementsProvider()
     private let firestoreManager = FirestoreManager.shared
+    private let authenticationService = AuthenticationService()
+    
     private var progressByCategory: [String] = [] {
         didSet {
             progressCollectionView.reloadData()
@@ -130,8 +132,3 @@ extension ProgressViewController: ProgressCalculatorDelegate {
         achievementViewController.calculatedProgress = data
     }
 }
-
-
-
-
-

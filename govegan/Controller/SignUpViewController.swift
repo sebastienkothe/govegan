@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        createAccountFrom(email, password)
+        handleAccountCreationWith(email, and: password)
     }
     
     @IBAction func homeButtonTapped() {
@@ -45,41 +45,46 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Private properties
     private let firestoreManager = FirestoreManager.shared
+    private let authenticationService = AuthenticationService()
     
     // MARK: - Private functions
     
     /// Used to create an account
-    private func createAccountFrom(_ email: String, _ password: String) {
+    private func handleAccountCreationWith(_ email: String, and password: String) {
         let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
         let okay = UIAlertAction(title: "continue".localized, style: .default) { [weak self] _ in
             
-            Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
-                
-                // Handle the error
-                if let error = error {
-                    UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.localizedDescription)
-                }
-                
-                
-                guard let username = self?.userData?[0], let veganStartDate = self?.userData?[1], let userID = result?.user.uid else {
-                    return
-                }
-                
-                self?.firestoreManager.addDocumentWith(userID: userID, username: username, veganStartDate: veganStartDate, email: email, password: password, completion: { [weak self] (result) in
-                    
+            self?.authenticationService.createAccountFrom(email, password, completion: { [weak self] result in
                     switch result {
-                    case .success:
-                        self?.performSegue(withIdentifier: .segueToTabBarFromSignUp, sender: nil)
+                    case .success(let authDataResult):
+                        self?.handleDatabaseRegistration(userID: authDataResult?.user.uid, email: email, password: password)
                     case .failure(let error):
                         UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
                     }
                 })
-            }
         }
         
         UIAlertService.showAlert(style: .alert, title: "create_account".localized, message: "ask_user_to_create_an_account".localized, actions: [okay, cancel], completion: nil)
     }
+    
+    /// Used to add user to the database
+    private func handleDatabaseRegistration(userID: String?, email: String, password: String) {
+        guard let username = self.userData?[0], let veganStartDate = self.userData?[1], let userID = userID else {
+            return
+        }
+        
+        firestoreManager.addDocumentWith(userID: userID, username: username, veganStartDate: veganStartDate, email: email, password: password, completion: { [weak self] (result) in
+            
+            switch result {
+            case .success:
+                self?.performSegue(withIdentifier: .segueToTabBarFromSignUp, sender: nil)
+            case .failure(let error):
+                UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+            }
+        })
+    }
 }
+
 
 // MARK: - UITextFieldDelegate
 extension SignUpViewController: UITextFieldDelegate {

@@ -60,6 +60,7 @@
 "request_user_mail" = "Enter your e-mail adress";
 "password_required" = "Password required";
 "request_user_password" = "Enter your password";
+"unable_to_connect_user" = "Unable to log in";
 
 // User actions
 "cancel" = "Cancel";
@@ -82,7 +83,6 @@
 "disconnection_question" = "Log out of the application ?";
 "yes" = "Yes";
 "unable_to_log_out" = "Unable to log out";
-"unable_to_delete_account" = "Unable to delete account";
 "delete_account_request" = "Delete your account?";
 "reauthentication_failed" = "Reauthentication failed";
 "unable_to_delete_account" = "Unable to delete your account";
@@ -90,3 +90,5 @@
 "security" = "Security";
 "log_in_before_deleting_the_account" = "Log in again before deleting the account";
 "deleted_account" = "Your account has been deleted";
+"unable_to_open_url" = "Unable to open link";
+"logged_with" = "Logged with:";

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class WelcomeViewController: UIViewController {
     
@@ -15,7 +14,8 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Redirection management based on connection status
-        if Auth.auth().currentUser != nil {
+        
+        if authenticationService.getCurrentUser() != nil {
             performSegue(withIdentifier: .segueToTabBarFromWelcome, sender: nil)
         }
         
@@ -40,6 +40,7 @@ class WelcomeViewController: UIViewController {
     
     /// Used to know if the animation of the govegan logo has already been used
     private var animationHasBeenShown = false
+    private let authenticationService = AuthenticationService()
     
     // MARK: - Private functions
     

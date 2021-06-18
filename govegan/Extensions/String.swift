@@ -38,4 +38,7 @@ extension String {
     
     // Main storyboard file base name
     static let mainStoryboard = "Main"
+    
+    // URL
+    static let facts = "https://www.cowspiracy.com/facts"
 }
