@@ -76,12 +76,14 @@ class SettingViewController: UIViewController {
     
     /// Call the appropriate method and display an error if necessary
     private func handleUserDeletionFromDatabase() {
-        self.authenticationService.deleteUserFromDatabase { error in
+        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
+        self.firestoreManager.deleteADocument(userID: userID, completion: { error in
             if let error = error {
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
             }
-        }
+        })
     }
+    
     
     /// Handles the display of potential errors returned by the deleteUserAuthentication method
     private func handleUserDeletionWith(_ error: AuthenticationServiceError) {

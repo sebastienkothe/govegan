@@ -51,22 +51,6 @@ class AuthenticationService {
         }
     }
     
-    /// Delete user's data
-    func deleteUserFromDatabase(completion: @escaping DeleteUserFromDatabaseCompletionHandler) {
-        
-        guard let userID = getCurrentUser()?.uid else { return }
-        
-        /// Delete firestore entry
-        self.firestoreManager.deleteADocument(userID: userID) { error in
-            guard error == nil else {
-                completion(error)
-                return
-            }
-            
-            completion(nil)
-        }
-    }
-    
     /// Allows the user to connect with his email address and password
     func connectUserWith(_ email: String, and password: String, completion: @escaping ConnectUserWithCompletionHandler) {
         Auth.auth().signIn(withEmail: email, password: password) { _ , error in
@@ -96,7 +80,4 @@ class AuthenticationService {
     func getCurrentUser() -> User?  {
         return Auth.auth().currentUser
     }
-    
-    // MARK: - Private properties
-    private let firestoreManager = FirestoreManager.shared
 }
