@@ -9,6 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Internal properties
+    var accountDeletionIsInitiated = false
+    
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -48,11 +51,17 @@ class LoginViewController: UIViewController {
     /// Try to log in the user
     private func handleUserConnection(email: String, password: String) {
         authenticationService.connectUserWith(email, and: password, completion: { [weak self] error in
+            guard let self = self else { return }
             
             if let error = error {
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
             } else {
-                self?.performSegue(withIdentifier: .segueToTabBarFromLogin, sender: nil)
+                guard !self.accountDeletionIsInitiated else {
+                    self.accountDeletionIsInitiated = false
+                    NotificationCenter.default.post(name: .accountCanBeDeletedSafely, object: nil)
+                    return
+                }
+                self.performSegue(withIdentifier: .segueToTabBarFromLogin, sender: nil)
             }
         })
     }

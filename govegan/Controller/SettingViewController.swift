@@ -13,6 +13,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabelText()
+        
+        // Used to handle the safely account deletion
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUserDeletion), name: .accountCanBeDeletedSafely, object: nil)
     }
     
     // MARK: - IBOutlets
@@ -59,22 +62,6 @@ class SettingViewController: UIViewController {
         }
     }
     
-    /// Removes user authentication and data
-    private func handleUserDeletion() {
-        let currentUserID = authenticationService.getCurrentUser()?.uid
-        
-        authenticationService.deleteUserAuthentication { [weak self] error in
-            if let error = error {
-                self?.handleUserDeletionWith(error)
-                return
-            }
-            
-            self?.handleUserDeletionFromDatabase(userID: currentUserID)
-            self?.navigationController?.popToRootViewController(animated: true)
-            UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
-        }
-    }
-    
     /// Call the appropriate method and display an error if necessary
     private func handleUserDeletionFromDatabase(userID: String?) {
         guard let userID = userID else { return }
@@ -112,5 +99,31 @@ class SettingViewController: UIViewController {
     private func updateLabelText() {
         guard let userEmail = authenticationService.getCurrentUser()?.email else { return }
         logInWithLabel.text = "logged_with".localized + " " + userEmail
+    }
+    
+    /// Removes user authentication and data
+    @objc private func handleUserDeletion() {
+        let currentUserID = authenticationService.getCurrentUser()?.uid
+        
+        authenticationService.deleteUserAuthentication { [weak self] error in
+            if let error = error {
+                self?.handleUserDeletionWith(error)
+                return
+            }
+            
+            self?.handleUserDeletionFromDatabase(userID: currentUserID)
+            self?.navigationController?.popToRootViewController(animated: true)
+            UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
+        }
+    }
+}
+
+// MARK: - Segue
+extension SettingViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let loginViewController = segue.destination as? LoginViewController else { return }
+        loginViewController.accountDeletionIsInitiated = true
     }
 }
