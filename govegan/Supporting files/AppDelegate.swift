@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         
         setupFirebase()
-        checkIfUnitTestsAreRunning()
     }
     
     // MARK: - Internal properties
@@ -29,19 +28,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Setting up the firebase instance
     private func setupFirebase() {
         FirebaseApp.configure()
-    }
-    
-    // Setting up Firebase local emulator connection only for tests
-    
-    /// Checking if unit tests are running
-    private func checkIfUnitTestsAreRunning() {
-        if ProcessInfo.processInfo.environment["unit_tests"] == "true" {
-            print("Setting up Firebase emulator localhost:8020")
-            let settings = Firestore.firestore().settings
-            settings.host = "localhost:8020"
-            settings.isPersistenceEnabled = true
-            settings.isSSLEnabled = false
-            Firestore.firestore().settings = settings
-        }
     }
 }

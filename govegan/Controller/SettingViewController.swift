@@ -51,14 +51,16 @@ class SettingViewController: UIViewController {
     
     /// Try to log out the user
     private func handleDisconnection() {
-        authenticationService.disconnectUserFromApp { [weak self] error in
+        authenticationService.disconnectUserFromApp { [weak self] result in
             
-            if let error = error {
+            switch result {
+            case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-                return
+            case .success:
+                self?.navigationController?.popToRootViewController(animated: true)
             }
-            
-            self?.navigationController?.popToRootViewController(animated: true)
+         
+           
         }
     }
     
@@ -105,15 +107,19 @@ class SettingViewController: UIViewController {
     @objc private func handleUserDeletion() {
         let currentUserID = authenticationService.getCurrentUser()?.uid
         
-        authenticationService.deleteUserAuthentication { [weak self] error in
-            if let error = error {
+        authenticationService.deleteUserAuthentication { [weak self] result in
+            switch result {
+            case .failure(let error):
                 self?.handleUserDeletionWith(error)
                 return
+                
+            case .success:
+                self?.handleUserDeletionFromDatabase(userID: currentUserID)
+                self?.navigationController?.popToRootViewController(animated: true)
+                UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
             }
+        
             
-            self?.handleUserDeletionFromDatabase(userID: currentUserID)
-            self?.navigationController?.popToRootViewController(animated: true)
-            UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
         }
     }
 }

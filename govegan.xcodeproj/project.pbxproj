@@ -34,6 +34,7 @@
 		836A9ED1264D4722002158FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 836A9ECF264D4722002158FD /* LaunchScreen.storyboard */; };
 		836A9EDC264D4722002158FD /* ProgressCalculatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */; };
 		836E7C94267D459800278CFD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E7C93267D459800278CFD /* Notification.swift */; };
+		836E7C96267D56E800278CFD /* AuthenticationServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */; };
 		83777176266A896800923AA5 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83777175266A896800923AA5 /* FirestoreManager.swift */; };
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
@@ -99,6 +100,7 @@
 		836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorTestCase.swift; sourceTree = "<group>"; };
 		836A9EDD264D4722002158FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836E7C93267D459800278CFD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTestCase.swift; sourceTree = "<group>"; };
 		83777175266A896800923AA5 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			children = (
 				836A9EDB264D4722002158FD /* ProgressCalculatorTestCase.swift */,
 				83F651562672C41F00CEFE9B /* FirestoreManagerTestCase.swift */,
+				836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				833E6302266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift in Sources */,
 				83F651552672C30300CEFE9B /* XCTestCase+Firestore.swift in Sources */,
 				83F651572672C41F00CEFE9B /* FirestoreManagerTestCase.swift in Sources */,
+				836E7C96267D56E800278CFD /* AuthenticationServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

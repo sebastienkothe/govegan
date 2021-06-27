@@ -14,33 +14,19 @@ class FirestoreManagerTestCase: XCTestCase {
     
     var firestoreManager: FirestoreManager!
     
-    override func setUpWithError() throws {
+    override func setUp() {
         firestoreManager = FirestoreManager.shared
+        firestoreManager.firestore = FirestoreMock()
+        firestoreManager.collectionReference = CollectionReferenceMock()
+        firestoreManager.documentReference = DocumentReferenceMock()
     }
     
-    override func tearDownWithError() throws {
-        firestoreManager = nil
-        //        clearFirestore()
-    }
-    
-    func test_GivenUserInformationHasBeenRetrieved_WhenAddDocumentWithIsCalled_ThenShouldReturnSuccessCase() {
-        
-//        let expectation = expectation(description: "Waiting for async operation")
-        
-        // Given
-        firestoreManager.addDocumentWith(userID: "0", username: "", veganStartDate: "01/01/2021 00:00", email: "", completion: { result in
-            
-//            switch result {
-//            case .success(let isASuccess):
-//                XCTAssertTrue(isASuccess)
-//            default: XCTFail()
-//            }
+//    func test_GivenUserInformationHasBeenRetrieved_WhenAddDocumentWithIsCalled_ThenShouldReturnSuccessCase() {
 //
-//            expectation.fulfill()
-        })
-        
-//        waitForExpectations(timeout: 3, handler: nil)
-    }
+//        // Given
+//        firestoreManager.addDocumentWith(userID: "0", username: "", veganStartDate: "01/01/2021 00:00", email: "", password: "", completion: { result in
+//        })
+//    }
     
     func test_GivenUserIsPresentInDatabase_WhenGetValueFromDocumentIsCalled_ThenShouldReturnHisVeganStartDate() {
         
@@ -49,7 +35,6 @@ class FirestoreManagerTestCase: XCTestCase {
         // When
         firestoreManager.getValueFromDocument(userID: "0", valueToReturn: firestoreManager.veganStartDateKey, completion: { result in
             
-            print("Je suis passé dans getValueFromDocument")
             switch result {
             case .success(let result):
                 XCTAssertNotNil(result)
@@ -62,7 +47,7 @@ class FirestoreManagerTestCase: XCTestCase {
             expectation.fulfill()
         })
         
-        waitForExpectations(timeout: 3, handler: nil)
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserIsPresentButUserIDIsWrong_WhenGetValueFromDocumentIsCalled_ThenShouldReturnAnError() {
@@ -80,7 +65,7 @@ class FirestoreManagerTestCase: XCTestCase {
             expectation.fulfill()
         })
         
-        waitForExpectations(timeout: 3, handler: nil)
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenKeyForDataIsWrong_WhenGetValueFromDocumentIsCalled_ThenShouldReturnAnError() {
@@ -98,6 +83,43 @@ class FirestoreManagerTestCase: XCTestCase {
             expectation.fulfill()
         })
         
-        waitForExpectations(timeout: 3, handler: nil)
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
+    
+    func test_GivenUserHasAnAccountInTheDatabase_WhenDeleteADocumentIsCalled_ThenShouldReturnAnError() {
+        let expectation = expectation(description: "Waiting for async operation")
+        
+        // When
+        firestoreManager.deleteADocument(userID: "0", completion: { error in
+            
+            if let error = error {
+                XCTAssertEqual(error, .unableToRemoveUserFromDatabase)
+            } else {
+                XCTFail()
+            }
+                
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
+    
+    func test_GivenUserHasAnAccountInTheDatabase_WhenDeleteADocumentIsCalled_ThenShouldNotReturnAnError() {
+        
+        firestoreManager.firestore = FirestoreSuccessMock()
+        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
+        firestoreManager.documentReference = DocumentReferenceSuccessMock()
+        
+        let expectation = expectation(description: "Waiting for async operation")
+        
+        // When
+        firestoreManager.deleteADocument(userID: "0", completion: { error in
+            
+            XCTAssertNil(error)
+                
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

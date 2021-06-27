@@ -8,22 +8,82 @@
 import Foundation
 import Firebase
 
-class AuthenticationService {
+
+protocol AuthProtocol {
+    var currentUser: User? { get }
     
-    // MARK: - Internal properties
+    func signOut() throws
+
+    func signIn(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
     
+    func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
+}
+
+protocol UserProtocol {
+    func delete(completion: ((Error?) -> Void)?)
+}
+
+extension User: UserProtocol {}
+
+extension Auth: AuthProtocol { }
+
+enum MockError: Error {
+    case error
+}
+
+class MockAuth: AuthProtocol {
+    var currentUser: User?
+    
+    func signOut() throws {
+        throw MockError.error
+    }
+    
+    func signIn(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
+        completion!(nil, MockError.error)
+    }
+    
+    func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
+        completion!(nil, MockError.error)
+    }
+}
+
+class MockAuthSuccessCases: AuthProtocol {
+    var currentUser: User?
+    
+    func signOut() throws {}
+    
+    func signIn(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
+        completion!(nil, nil)
+    }
+    
+    func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
+        completion!(nil, nil)
+    }
+}
+
+protocol AuthenticationDeleterServiceProtocol {
+    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void)
+}
+
+class AuthenticationDeleterServiceMock: AuthenticationDeleterServiceProtocol {
+    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void) {
+        completion(.unableToDeleteAccount)
+    }
+}
+
+class AuthenticationDeleterServiceSuccessMock: AuthenticationDeleterServiceProtocol {
+    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void) {
+        completion(nil)
+    }
+}
+
+class AuthenticationDeleterService: AuthenticationDeleterServiceProtocol {
     typealias DeleteUserAuthenticationCompletionHandler = (AuthenticationServiceError?) -> Void
-    typealias DisconnectUserFromAppCompletionHandler = (AuthenticationServiceError?) -> Void
-    typealias DeleteUserFromDatabaseCompletionHandler = (FirestoreManagerError?) -> Void
-    typealias ConnectUserWithCompletionHandler = (AuthenticationServiceError?) -> Void
-    typealias CreateAccountFromCompletionHandler = (Result<AuthDataResult?, AuthenticationServiceError>) -> Void
-    
-    // MARK: - Internal functions
     
     /// Delete user authentication
-    func deleteUserAuthentication(completion: @escaping DeleteUserAuthenticationCompletionHandler) {
-        getCurrentUser()?.delete { error in
-            
+    func deleteUserAuthentication(user: UserProtocol, completion: @escaping DeleteUserAuthenticationCompletionHandler) {
+        user.delete { error in
+    
             guard error == nil else {
                 guard let error = error else { return }
                 guard let errorCode = AuthErrorCode(rawValue: error._code) else { return }
@@ -34,38 +94,74 @@ class AuthenticationService {
                 } else {
                     completion(.unableToDeleteAccount)
                 }
+                
                 return
             }
             
             completion(nil)
+        }
+    }
+}
+
+class AuthenticationService {
+
+    init(
+        auth: AuthProtocol = Auth.auth(),
+        authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()
+    ) {
+        self.auth = auth
+        self.authenticationDeleterService = authenticationDeleterService
+    }
+    
+    // MARK: - Internal properties
+    typealias DisconnectUserFromAppCompletionHandler = (Result<Void, AuthenticationServiceError>) -> Void
+    typealias ConnectUserWithCompletionHandler = (Result<Void, AuthenticationServiceError>) -> Void
+    typealias CreateAccountFromCompletionHandler = (Result<AuthDataResult?, AuthenticationServiceError>) -> Void
+    
+    // MARK: - Internal functions
+    
+    /// Remove user authentication
+    func deleteUserAuthentication(completion: @escaping (Result<Void, AuthenticationServiceError>) -> Void) {
+        
+        guard let currentUser = auth.currentUser else {
+            completion(.failure(.unableToDeleteAccount))
+            return
+        }
+        
+        authenticationDeleterService.deleteUserAuthentication(user: currentUser) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(()))
         }
     }
     
     /// Try to log the user out of the app
     func disconnectUserFromApp(completion: @escaping DisconnectUserFromAppCompletionHandler) {
         do {
-            try Auth.auth().signOut()
-            completion(nil)
+            try auth.signOut()
+            completion(.success(()))
         } catch {
-            completion(.unableToLogOut)
+            completion(.failure(.unableToLogOut))
         }
     }
     
     /// Allows the user to connect with his email address and password
     func connectUserWith(_ email: String, and password: String, completion: @escaping ConnectUserWithCompletionHandler) {
-        Auth.auth().signIn(withEmail: email, password: password) { _ , error in
+        auth.signIn(withEmail: email, password: password) { _ , error in
             guard error == nil else {
-                completion(.unableToConnectUser)
+                completion(.failure(.unableToConnectUser))
                 return
             }
             
-            completion(nil)
+            completion(.success(()))
         }
     }
     
     /// Used to create an account
     func createAccountFrom(_ email: String, _ password: String, completion: @escaping CreateAccountFromCompletionHandler) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        auth.createUser(withEmail: email, password: password) { result, error in
             
             guard error == nil else {
                 completion(.failure(.unableToCreateAccount))
@@ -78,6 +174,10 @@ class AuthenticationService {
     
     /// Try to retrieve the currently logged in user
     func getCurrentUser() -> User?  {
-        return Auth.auth().currentUser
+        return auth.currentUser
     }
+    
+    // MARK: - Private properties
+    private let auth: AuthProtocol
+    private let authenticationDeleterService: AuthenticationDeleterServiceProtocol
 }
