@@ -95,6 +95,7 @@ class AuthenticationServiceTestCase: XCTestCase {
         let testMock = AuthenticationDeleterServiceSuccessMock()
         
         authenticationService = AuthenticationService(
+            auth: MockAuthSuccessCases(),
             authenticationDeleterService: testMock
         )
         

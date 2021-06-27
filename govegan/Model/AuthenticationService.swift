@@ -62,17 +62,17 @@ class MockAuthSuccessCases: AuthProtocol {
 }
 
 protocol AuthenticationDeleterServiceProtocol {
-    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void)
+    func deleteUserAuthentication(user: UserProtocol?, completion: @escaping (AuthenticationServiceError?) -> Void)
 }
 
 class AuthenticationDeleterServiceMock: AuthenticationDeleterServiceProtocol {
-    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void) {
+    func deleteUserAuthentication(user: UserProtocol?, completion: @escaping (AuthenticationServiceError?) -> Void) {
         completion(.unableToDeleteAccount)
     }
 }
 
 class AuthenticationDeleterServiceSuccessMock: AuthenticationDeleterServiceProtocol {
-    func deleteUserAuthentication(user: UserProtocol, completion: @escaping (AuthenticationServiceError?) -> Void) {
+    func deleteUserAuthentication(user: UserProtocol?, completion: @escaping (AuthenticationServiceError?) -> Void) {
         completion(nil)
     }
 }
@@ -81,8 +81,8 @@ class AuthenticationDeleterService: AuthenticationDeleterServiceProtocol {
     typealias DeleteUserAuthenticationCompletionHandler = (AuthenticationServiceError?) -> Void
     
     /// Delete user authentication
-    func deleteUserAuthentication(user: UserProtocol, completion: @escaping DeleteUserAuthenticationCompletionHandler) {
-        user.delete { error in
+    func deleteUserAuthentication(user: UserProtocol?, completion: @escaping DeleteUserAuthenticationCompletionHandler) {
+        user?.delete { error in
     
             guard error == nil else {
                 guard let error = error else { return }
@@ -123,12 +123,7 @@ class AuthenticationService {
     /// Remove user authentication
     func deleteUserAuthentication(completion: @escaping (Result<Void, AuthenticationServiceError>) -> Void) {
         
-        guard let currentUser = auth.currentUser else {
-            completion(.failure(.unableToDeleteAccount))
-            return
-        }
-        
-        authenticationDeleterService.deleteUserAuthentication(user: currentUser) { error in
+        authenticationDeleterService.deleteUserAuthentication(user: auth.currentUser) { error in
             if let error = error {
                 completion(.failure(error))
                 return

@@ -97,59 +97,18 @@ class FirestoreManager {
     }
 }
 
+// MARK: - DocumentSnapshotProtocol
 protocol DocumentSnapshotProtocol {
     
 }
 
-extension DocumentSnapshot: DocumentSnapshotProtocol {}
-
 class DocumentSnapshotMock: DocumentSnapshotProtocol {}
 
+extension DocumentSnapshot: DocumentSnapshotProtocol {}
 
-
+// MARK: - FirestoreProtocol
 protocol FirestoreProtocol {
     func collection(_ collectionPath: String) -> CollectionReferenceProtocol
-}
-
-protocol CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol
-}
-
-
-extension CollectionReference: CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol {
-        return (document(documentPath) as DocumentReference) as DocumentReferenceProtocol
-    }
-}
-
-extension Firestore: FirestoreProtocol {
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
-        return (collection(collectionPath) as CollectionReference) as CollectionReferenceProtocol
-    }
-}
-
-class FirestoreSuccessMock: FirestoreProtocol {
-    let collectionName = "users"
-    
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
-        return CollectionReferenceSuccessMock()
-    }
-}
-
-class CollectionReferenceSuccessMock: CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol {
-        return DocumentReferenceSuccessMock()
-    }
-}
-
-class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
-    func getDocument(completion: @escaping FIRDocumentSnapshotBlock) {
-        completion(nil, nil)
-    }
-    
-    func delete(completion: DocumentDeleteCompletion?) {
-        completion!(nil)
-    }
 }
 
 class FirestoreMock: FirestoreProtocol {
@@ -161,29 +120,73 @@ class FirestoreMock: FirestoreProtocol {
     }
 }
 
+class FirestoreSuccessMock: FirestoreProtocol {
+    let collectionName = "users"
+    
+    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
+        return CollectionReferenceSuccessMock()
+    }
+}
+
+extension Firestore: FirestoreProtocol {
+    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
+        return (collection(collectionPath) as CollectionReference) as CollectionReferenceProtocol
+    }
+}
+
+// MARK: - CollectionReferenceProtocol
+protocol CollectionReferenceProtocol {
+    func document(_ documentPath: String) -> DocumentReferenceProtocol
+}
+
 class CollectionReferenceMock: CollectionReferenceProtocol {
     func document(_ documentPath: String) -> DocumentReferenceProtocol {
         return DocumentReferenceMock()
     }
 }
 
+class CollectionReferenceSuccessMock: CollectionReferenceProtocol {
+    func document(_ documentPath: String) -> DocumentReferenceProtocol {
+        return DocumentReferenceSuccessMock()
+    }
+}
+
+extension CollectionReference: CollectionReferenceProtocol {
+    func document(_ documentPath: String) -> DocumentReferenceProtocol {
+        return (document(documentPath) as DocumentReference) as DocumentReferenceProtocol
+    }
+}
+
+// MARK: - CollectionReferenceProtocol
+
 typealias DocumentDeleteCompletion = (_ error: Error?) -> Void
- 
+typealias GetDocumentCompletion = (DocumentSnapshot?, Error?) -> Void
+
 protocol DocumentReferenceProtocol {
     func delete(completion: DocumentDeleteCompletion?)
-    func getDocument(completion: @escaping FIRDocumentSnapshotBlock)
+    func getDocument(completion: @escaping GetDocumentCompletion)
     
 //    func setData()
 //    func getDocument()
 }
 
 class DocumentReferenceMock : DocumentReferenceProtocol {
-    func getDocument(completion: @escaping FIRDocumentSnapshotBlock) {
+    func getDocument(completion: @escaping GetDocumentCompletion) {
         completion(nil, MockError.error)
     }
     
     func delete(completion: DocumentDeleteCompletion?) {
         completion!(MockError.error)
+    }
+}
+
+class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
+    func getDocument(completion: @escaping GetDocumentCompletion) {
+        completion(nil, nil)
+    }
+    
+    func delete(completion: DocumentDeleteCompletion?) {
+        completion!(nil)
     }
 }
 
