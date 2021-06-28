@@ -21,12 +21,35 @@ class FirestoreManagerTestCase: XCTestCase {
         firestoreManager.documentReference = DocumentReferenceMock()
     }
     
-//    func test_GivenUserInformationHasBeenRetrieved_WhenAddDocumentWithIsCalled_ThenShouldReturnSuccessCase() {
-//
-//        // Given
-//        firestoreManager.addDocumentWith(userID: "0", username: "", veganStartDate: "01/01/2021 00:00", email: "", password: "", completion: { result in
-//        })
-//    }
+    func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldReturnAnError() {
+        
+        // Given
+        firestoreManager.addDocumentWith(userID: "", username: "", veganStartDate: "", email: "", password: "", completion: { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .unableToCreateAccount)
+            }
+        })
+    }
+    
+    func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldNotReturnAnError() {
+        
+        firestoreManager.firestore = FirestoreSuccessMock()
+        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
+        firestoreManager.documentReference = DocumentReferenceSuccessMock()
+        
+        // Given
+        firestoreManager.addDocumentWith(userID: "0938420284702", username: "Sébastien", veganStartDate: "20/01/1988 00:00", email: "sebastien.kothe@icloud.com", password: "Mododueznd2@", completion: { result in
+            switch result {
+            case .success(let success):
+                XCTAssertTrue(success)
+            case .failure:
+                XCTFail()
+            }
+        })
+    }
     
     func test_GivenUserIsPresentInDatabase_WhenGetValueFromDocumentIsCalled_ThenShouldReturnHisVeganStartDate() {
         
@@ -97,7 +120,7 @@ class FirestoreManagerTestCase: XCTestCase {
             } else {
                 XCTFail()
             }
-                
+            
             expectation.fulfill()
         })
         
@@ -116,7 +139,7 @@ class FirestoreManagerTestCase: XCTestCase {
         firestoreManager.deleteADocument(userID: "0", completion: { error in
             
             XCTAssertNil(error)
-                
+            
             expectation.fulfill()
         })
         

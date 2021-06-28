@@ -22,7 +22,6 @@ class FirestoreManager {
     var userID = ""
     
     var firestore: FirestoreProtocol = Firestore.firestore()
-    var authenticationService = AuthenticationService()
     var collectionReference: CollectionReferenceProtocol {
         get { return firestore.collection(collectionName) }
         set {}
@@ -45,7 +44,7 @@ class FirestoreManager {
     /// Used to add document to the database
     func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, password: String, completion: @escaping AddDocumentWithCompletionHandler) {
         self.userID = userID
-        Firestore.firestore().collection(collectionName).document(userID).setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email, passwordKey: password]) { error in
+        referenceForUserData()?.setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email, passwordKey: password]) { error in
 
             guard error == nil else {
                 return completion(.failure(.unableToCreateAccount))
@@ -165,12 +164,14 @@ typealias GetDocumentCompletion = (DocumentSnapshot?, Error?) -> Void
 protocol DocumentReferenceProtocol {
     func delete(completion: DocumentDeleteCompletion?)
     func getDocument(completion: @escaping GetDocumentCompletion)
-    
-//    func setData()
-//    func getDocument()
+    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?)
 }
 
 class DocumentReferenceMock : DocumentReferenceProtocol {
+    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
+        completion!(MockError.error)
+    }
+    
     func getDocument(completion: @escaping GetDocumentCompletion) {
         completion(nil, MockError.error)
     }
@@ -181,6 +182,10 @@ class DocumentReferenceMock : DocumentReferenceProtocol {
 }
 
 class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
+    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
+        completion!(nil)
+    }
+    
     func getDocument(completion: @escaping GetDocumentCompletion) {
         completion(nil, nil)
     }
