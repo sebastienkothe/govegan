@@ -53,6 +53,10 @@ class FirestoreManagerTestCase: XCTestCase {
     
     func test_GivenUserIsPresentInDatabase_WhenGetValueFromDocumentIsCalled_ThenShouldReturnHisVeganStartDate() {
         
+        firestoreManager.firestore = FirestoreSuccessMock()
+        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
+        firestoreManager.documentReference = DocumentReferenceSuccessMock()
+        
         let expectation = expectation(description: "Waiting for async operation")
         
         // When

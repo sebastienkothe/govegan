@@ -11,29 +11,22 @@ import Firebase
 class FirestoreManager {
     
     // MARK: - Internal properties
+    static let shared = FirestoreManager()
+    private init() {}
     
-    // root = Firestore.firestore().collection(environment)
-    let collectionName = "users"
-    let usernameKey = "username"
     let veganStartDateKey = "veganStartDate"
-    let emailKey = "email"
-    let passwordKey = "password"
-    
-    var userID = ""
-    
     var firestore: FirestoreProtocol = Firestore.firestore()
+    
     var collectionReference: CollectionReferenceProtocol {
         get { return firestore.collection(collectionName) }
         set {}
     }
+    
     var documentReference: DocumentReferenceProtocol? {
         get { return collectionReference.document(userID) }
         set {}
+
     }
-    
-    static let shared = FirestoreManager()
-    
-    private init() {}
     
     typealias AddDocumentWithCompletionHandler = (Result<Bool, FirestoreManagerError>) -> Void
     typealias GetValueFromDocumentCompletionHandler = (Result<String, FirestoreManagerError>) -> Void
@@ -54,7 +47,6 @@ class FirestoreManager {
             completion(.success(true))
         }
     }
-    
     
     /// Used to fetch document from the database
     func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler) {
@@ -89,6 +81,13 @@ class FirestoreManager {
         }
     }
     
+    // MARK: - Private properties
+    private let collectionName = "users"
+    private let usernameKey = "username"
+    private let emailKey = "email"
+    private let passwordKey = "password"
+    private var userID = ""
+    
     // MARK: - Private functions
     private func referenceForUserData() -> DocumentReferenceProtocol? {
         guard let documentReference = documentReference else { return nil}
@@ -98,101 +97,16 @@ class FirestoreManager {
 
 // MARK: - DocumentSnapshotProtocol
 protocol DocumentSnapshotProtocol {
-    
+    var exists: Bool { get }
+    func data() -> [String : Any]?
 }
 
-class DocumentSnapshotMock: DocumentSnapshotProtocol {}
+class DocumentSnapshotMock: DocumentSnapshotProtocol {
+    func data() -> [String : Any]? {
+        return ["veganStartDate" : "01/01/2021 00:00"]
+    }
+
+    var exists: Bool = true
+}
 
 extension DocumentSnapshot: DocumentSnapshotProtocol {}
-
-// MARK: - FirestoreProtocol
-protocol FirestoreProtocol {
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol
-}
-
-class FirestoreMock: FirestoreProtocol {
-    
-    let collectionName = "users"
-    
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
-        return CollectionReferenceMock()
-    }
-}
-
-class FirestoreSuccessMock: FirestoreProtocol {
-    let collectionName = "users"
-    
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
-        return CollectionReferenceSuccessMock()
-    }
-}
-
-extension Firestore: FirestoreProtocol {
-    func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
-        return (collection(collectionPath) as CollectionReference) as CollectionReferenceProtocol
-    }
-}
-
-// MARK: - CollectionReferenceProtocol
-protocol CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol
-}
-
-class CollectionReferenceMock: CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol {
-        return DocumentReferenceMock()
-    }
-}
-
-class CollectionReferenceSuccessMock: CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol {
-        return DocumentReferenceSuccessMock()
-    }
-}
-
-extension CollectionReference: CollectionReferenceProtocol {
-    func document(_ documentPath: String) -> DocumentReferenceProtocol {
-        return (document(documentPath) as DocumentReference) as DocumentReferenceProtocol
-    }
-}
-
-// MARK: - CollectionReferenceProtocol
-
-typealias DocumentDeleteCompletion = (_ error: Error?) -> Void
-typealias GetDocumentCompletion = (DocumentSnapshot?, Error?) -> Void
-
-protocol DocumentReferenceProtocol {
-    func delete(completion: DocumentDeleteCompletion?)
-    func getDocument(completion: @escaping GetDocumentCompletion)
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?)
-}
-
-class DocumentReferenceMock : DocumentReferenceProtocol {
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
-        completion!(MockError.error)
-    }
-    
-    func getDocument(completion: @escaping GetDocumentCompletion) {
-        completion(nil, MockError.error)
-    }
-    
-    func delete(completion: DocumentDeleteCompletion?) {
-        completion!(MockError.error)
-    }
-}
-
-class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
-        completion!(nil)
-    }
-    
-    func getDocument(completion: @escaping GetDocumentCompletion) {
-        completion(nil, nil)
-    }
-    
-    func delete(completion: DocumentDeleteCompletion?) {
-        completion!(nil)
-    }
-}
-
-extension DocumentReference: DocumentReferenceProtocol {}
