@@ -54,7 +54,8 @@ class ProgressViewController: UIViewController {
             
             switch result {
             case .success(let veganStartDate):
-                guard let convertedDate = self.progressCalculator.convertDate(veganStartDate) else { return }
+                guard let userVeganDate = veganStartDate as? String else { return }
+                guard let convertedDate = self.progressCalculator.convertDate(userVeganDate) else { return }
                 Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)

@@ -29,7 +29,7 @@ class FirestoreManager {
     }
     
     typealias AddDocumentWithCompletionHandler = (Result<Bool, FirestoreManagerError>) -> Void
-    typealias GetValueFromDocumentCompletionHandler = (Result<String, FirestoreManagerError>) -> Void
+    typealias GetValueFromDocumentCompletionHandler = (Result<Any?, FirestoreManagerError>) -> Void
     typealias DeleteADocumentCompletionHandler = (FirestoreManagerError?) -> Void
     
     // MARK: - Internal functions
@@ -52,18 +52,16 @@ class FirestoreManager {
     func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler) {
         self.userID = userID
         referenceForUserData()?.getDocument { document, error in
-            guard let document = document, document.exists else {
+            
+            guard error == nil else {
                 completion(.failure(.unableToRecoverYourAccount))
                 return
             }
             
-            guard let data = document.data() as? [String: String], let valueToReturn = data[valueToReturn] else {
-                completion(.failure(.noData))
-                return
-            }
+            let data = document?.data() as? [String: String]
             
             // Searching the document was successful
-            completion(.success(valueToReturn))
+            completion(.success(data?[valueToReturn]))
         }
     }
     
@@ -94,19 +92,3 @@ class FirestoreManager {
         return documentReference
     }
 }
-
-// MARK: - DocumentSnapshotProtocol
-protocol DocumentSnapshotProtocol {
-    var exists: Bool { get }
-    func data() -> [String : Any]?
-}
-
-class DocumentSnapshotMock: DocumentSnapshotProtocol {
-    func data() -> [String : Any]? {
-        return ["veganStartDate" : "01/01/2021 00:00"]
-    }
-
-    var exists: Bool = true
-}
-
-extension DocumentSnapshot: DocumentSnapshotProtocol {}
