@@ -67,6 +67,7 @@ protocol DocumentReferenceProtocol {
     func delete(completion: DocumentDeleteCompletion?)
     func getDocument(completion: @escaping GetDocumentCompletion)
     func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?)
+    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?)
 }
 
 class DocumentReferenceMock : DocumentReferenceProtocol {
@@ -81,6 +82,10 @@ class DocumentReferenceMock : DocumentReferenceProtocol {
     func delete(completion: DocumentDeleteCompletion?) {
         completion!(MockError.error)
     }
+    
+    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?) {
+        completion!(MockError.error)
+    }
 }
 
 class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
@@ -93,6 +98,10 @@ class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
     }
     
     func delete(completion: DocumentDeleteCompletion?) {
+        completion!(nil)
+    }
+    
+    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?) {
         completion!(nil)
     }
 }

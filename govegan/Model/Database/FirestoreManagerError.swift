@@ -12,6 +12,7 @@ enum FirestoreManagerError: Error, CaseIterable {
     case unableToRecoverYourAccount
     case noData
     case unableToRemoveUserFromDatabase
+    case unableToUpdateData
     
     var title: String {
         switch self {
@@ -19,6 +20,7 @@ enum FirestoreManagerError: Error, CaseIterable {
         case .unableToRecoverYourAccount: return "unable_to_recover_your_account".localized
         case .noData: return "no_data".localized
         case .unableToRemoveUserFromDatabase: return "unable_to_remove_user_from_database".localized
+        case .unableToUpdateData: return "unable_to_update_your_data".localized
         }
     }
 }

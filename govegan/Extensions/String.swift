@@ -46,5 +46,4 @@ extension String {
     static let veganStartDateKey = "veganStartDate"
     static let usernameKey = "username"
     static let emailKey = "email"
-    static let passwordKey = "password"
 }

@@ -23,7 +23,7 @@ class FirestoreManagerTestCase: XCTestCase {
     
     func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldReturnAnError() {
         
-        let data: [String: String] = [.usernameKey : "", .veganStartDateKey: "", .emailKey: "", .passwordKey: ""]
+        let data: [String: String] = [.usernameKey : "", .veganStartDateKey: "", .emailKey: ""]
         
         // Given
         firestoreManager.addDocumentWith(userID: "", userData: data, completion: { result in
@@ -42,7 +42,7 @@ class FirestoreManagerTestCase: XCTestCase {
         firestoreManager.collectionReference = CollectionReferenceSuccessMock()
         firestoreManager.documentReference = DocumentReferenceSuccessMock()
         
-        let data: [String: String] = [.usernameKey : "Sébastien", .veganStartDateKey: "20/01/1988 00:00", .emailKey: "sebastien.kothe@icloud.com", .passwordKey: "Mododueznd2@"]
+        let data: [String: String] = [.usernameKey : "Sébastien", .veganStartDateKey: "20/01/1988 00:00", .emailKey: "sebastien.kothe@icloud.com"]
         
         // Given
         firestoreManager.addDocumentWith(userID: "0938420284702", userData: data, completion: { result in
@@ -126,6 +126,51 @@ class FirestoreManagerTestCase: XCTestCase {
         firestoreManager.deleteADocument(userID: "0", completion: { error in
             
             XCTAssertNil(error)
+            
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
+    
+    func test_GivenUserWantsToUpdateHisVeganStartDate_WhenUpdateADocumentIsCalled_ThenShouldNotReturnAnError() {
+        
+        firestoreManager.firestore = FirestoreSuccessMock()
+        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
+        firestoreManager.documentReference = DocumentReferenceSuccessMock()
+        
+        let expectation = expectation(description: "Waiting for async operation")
+        
+        let data: [String: String] = [.veganStartDateKey: "22/07/2021 03:05"]
+        // When
+        firestoreManager.updateADocument(userID: "0", userData: data, completion: { result in
+            switch result {
+            case .success(let success):
+                XCTAssertNotNil(success)
+            case .failure:
+                XCTFail()
+            }
+            
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
+    
+    func test_GivenUserWantsToUpdateHisVeganStartDate_WhenUpdateADocumentIsCalled_ThenShouldReturnAnError() {
+        
+        let expectation = expectation(description: "Waiting for async operation")
+        
+        let data: [String: String] = [.veganStartDateKey: "22/07/2021 03:05"]
+        
+        // When
+        firestoreManager.updateADocument(userID: "0", userData: data, completion: { result in
+            switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(error, .unableToUpdateData)
+            }
             
             expectation.fulfill()
         })

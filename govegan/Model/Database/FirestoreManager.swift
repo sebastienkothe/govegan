@@ -77,6 +77,21 @@ class FirestoreManager {
         }
     }
     
+    /// Used to update an entry in the document like vegan start date
+    func updateADocument(userID: String, userData: [String: String], completion: @escaping ((Result<Void, FirestoreManagerError>) -> Void)) {
+        self.userID = userID
+        
+        referenceForUserData()?.updateData(userData, completion: { error in
+            
+            guard error == nil else {
+                completion(.failure(.unableToUpdateData))
+                return
+            }
+            
+            completion(.success(()))
+        })
+    }
+    
     // MARK: - Private properties
     private let collectionName = "users"
     private var userID = ""

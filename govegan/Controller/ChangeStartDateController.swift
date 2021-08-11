@@ -72,12 +72,12 @@ class ChangeStartDateController: UIViewController {
         guard let userID = authenticationService.getCurrentUser()?.uid else { return }
         guard let newVeganStartDate = dateService.convertDateToStringFrom(datePicker) else { return }
         
-        firestoreManager.addDocumentWith(userID: userID, userData: [.veganStartDateKey : newVeganStartDate], completion: { [weak self] (result) in
+        firestoreManager.updateADocument(userID: userID, userData: [.veganStartDateKey : newVeganStartDate], completion: { [weak self] (result) in
             
             var successResult = false
             
             switch result {
-            case .success(let success): successResult = success
+            case .success: successResult = !successResult
             case .failure: break
             }
             

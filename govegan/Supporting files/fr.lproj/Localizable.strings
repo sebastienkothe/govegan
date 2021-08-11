@@ -92,6 +92,8 @@
 "change_date" = "Changement de date";
 "change_date_confirmation" = "Remplacer la date actuelle par la nouvelle ?";
 
+"unable_to_update_your_data" = "Impossible de mettre à jour vos données";
+
 // SettingViewController
 "disconnection_question" = "Se déconnecter de l'application ?";
 "yes" = "Oui";
