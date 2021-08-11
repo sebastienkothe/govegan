@@ -86,6 +86,12 @@
 "unable_to_recover_your_account" = "Unable to recover your account";
 "no_data" = "No data";
 
+"date_updated" = "Date correctly updated";
+"date_updated_error" = "Unable to update the date";
+
+"change_date" = "Date change";
+"change_date_confirmation" = "Replace the current date with the new one ?";
+
 // SettingViewController
 "disconnection_question" = "Log out of the application ?";
 "yes" = "Yes";

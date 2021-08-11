@@ -73,7 +73,9 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        firestoreManager.addDocumentWith(userID: userID, username: username, veganStartDate: veganStartDate, email: email, password: password, completion: { [weak self] (result) in
+        let data: [String: String] = [.usernameKey : username, .veganStartDateKey: veganStartDate, .emailKey: email, .passwordKey: password]
+        
+        firestoreManager.addDocumentWith(userID: userID, userData: data, completion: { [weak self] (result) in
             
             switch result {
             case .success:

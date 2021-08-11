@@ -14,7 +14,6 @@ class FirestoreManager {
     static let shared = FirestoreManager()
     private init() {}
     
-    let veganStartDateKey = "veganStartDate"
     var firestore: FirestoreProtocol = Firestore.firestore()
     
     var collectionReference: CollectionReferenceProtocol {
@@ -35,10 +34,9 @@ class FirestoreManager {
     // MARK: - Internal functions
     
     /// Used to add document to the database
-    func addDocumentWith(userID: String, username: String, veganStartDate: String, email: String, password: String, completion: @escaping AddDocumentWithCompletionHandler) {
+    func addDocumentWith(userID: String, userData: [String: String], completion: @escaping AddDocumentWithCompletionHandler) {
         self.userID = userID
-        referenceForUserData()?.setData([usernameKey: username, veganStartDateKey: veganStartDate, emailKey: email, passwordKey: password]) { error in
-
+        referenceForUserData()?.setData(userData) { error in
             guard error == nil else {
                 return completion(.failure(.unableToCreateAccount))
             }
@@ -81,9 +79,6 @@ class FirestoreManager {
     
     // MARK: - Private properties
     private let collectionName = "users"
-    private let usernameKey = "username"
-    private let emailKey = "email"
-    private let passwordKey = "password"
     private var userID = ""
     
     // MARK: - Private functions

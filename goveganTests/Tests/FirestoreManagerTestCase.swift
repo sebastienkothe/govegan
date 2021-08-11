@@ -23,8 +23,10 @@ class FirestoreManagerTestCase: XCTestCase {
     
     func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldReturnAnError() {
         
+        let data: [String: String] = [.usernameKey : "", .veganStartDateKey: "", .emailKey: "", .passwordKey: ""]
+        
         // Given
-        firestoreManager.addDocumentWith(userID: "", username: "", veganStartDate: "", email: "", password: "", completion: { result in
+        firestoreManager.addDocumentWith(userID: "", userData: data, completion: { result in
             switch result {
             case .success:
                 XCTFail()
@@ -40,8 +42,10 @@ class FirestoreManagerTestCase: XCTestCase {
         firestoreManager.collectionReference = CollectionReferenceSuccessMock()
         firestoreManager.documentReference = DocumentReferenceSuccessMock()
         
+        let data: [String: String] = [.usernameKey : "Sébastien", .veganStartDateKey: "20/01/1988 00:00", .emailKey: "sebastien.kothe@icloud.com", .passwordKey: "Mododueznd2@"]
+        
         // Given
-        firestoreManager.addDocumentWith(userID: "0938420284702", username: "Sébastien", veganStartDate: "20/01/1988 00:00", email: "sebastien.kothe@icloud.com", password: "Mododueznd2@", completion: { result in
+        firestoreManager.addDocumentWith(userID: "0938420284702", userData: data, completion: { result in
             switch result {
             case .success(let success):
                 XCTAssertTrue(success)
@@ -60,7 +64,7 @@ class FirestoreManagerTestCase: XCTestCase {
         let expectation = expectation(description: "Waiting for async operation")
         
         // When
-        firestoreManager.getValueFromDocument(userID: "0", valueToReturn: firestoreManager.veganStartDateKey, completion: { result in
+        firestoreManager.getValueFromDocument(userID: "0", valueToReturn: .veganStartDateKey, completion: { result in
             
             switch result {
             case .failure(let error):
@@ -79,7 +83,7 @@ class FirestoreManagerTestCase: XCTestCase {
         let expectation = expectation(description: "Waiting for async operation")
         
         // When
-        firestoreManager.getValueFromDocument(userID: "1", valueToReturn: firestoreManager.veganStartDateKey, completion: { result in
+        firestoreManager.getValueFromDocument(userID: "1", valueToReturn: .veganStartDateKey, completion: { result in
             
             switch result {
             case .failure(let error):

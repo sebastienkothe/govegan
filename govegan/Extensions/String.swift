@@ -41,4 +41,10 @@ extension String {
     
     // URL
     static let facts = "https://www.cowspiracy.com/facts"
+    
+    // FirestoreManager
+    static let veganStartDateKey = "veganStartDate"
+    static let usernameKey = "username"
+    static let emailKey = "email"
+    static let passwordKey = "password"
 }

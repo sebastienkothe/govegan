@@ -47,7 +47,7 @@ class ProgressViewController: UIViewController {
         handleActivityIndicator(isHidden: false)
         
         // Get the document based on the user ID
-        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: firestoreManager.veganStartDateKey) { [weak self] (result) in
+        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: .veganStartDateKey) { [weak self] (result) in
             guard let self = self else { return }
             
             self.handleActivityIndicator(isHidden: true)
