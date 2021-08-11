@@ -82,7 +82,7 @@
 "Zda-wM-vBW.normalTitle" = "Changer la date de début";
 
 /* Class = "UILabel"; text = "Current date:"; ObjectID = "FdQ-yQ-pFa"; */
-"FdQ-yQ-pFa.text" = "Date actuelle:";
+"FdQ-yQ-pFa.text" = "Date précédente:";
 
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "vDK-ha-qDP"; */
 "vDK-ha-qDP.normalTitle" = "Retour";
