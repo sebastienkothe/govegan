@@ -78,3 +78,14 @@
 /* Class = "UIButton"; normalTitle = "Statistics source"; ObjectID = "mEI-26-YuY"; */
 "mEI-26-YuY.normalTitle" = "Source des statistiques";
 
+/* Class = "UIButton"; normalTitle = "Change start date"; ObjectID = "Zda-wM-vBW"; */
+"Zda-wM-vBW.normalTitle" = "Changer la date de début";
+
+/* Class = "UILabel"; text = "Current date:"; ObjectID = "FdQ-yQ-pFa"; */
+"FdQ-yQ-pFa.text" = "Date actuelle:";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "vDK-ha-qDP"; */
+"vDK-ha-qDP.normalTitle" = "Retour";
+
+/* Class = "UILabel"; text = "How many days do you want to deduct?"; ObjectID = "DPx-V9-tp9"; */
+"DPx-V9-tp9.text" = "Combien de jours voulez-vous déduire ?";

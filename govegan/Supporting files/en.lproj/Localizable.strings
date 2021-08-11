@@ -58,15 +58,22 @@
 // LoginViewController && SignUpViewController
 "mail_required" = "Email address required";
 "request_user_mail" = "Enter your e-mail adress";
+"request_user_mail_password_reset" = "Enter your email address to recover your account";
 "password_required" = "Password required";
 "request_user_password" = "Enter your password";
 "unable_to_connect_user" = "Unable to log in";
+
+"account_recovery" = "Account recovery";
+"log_in" = "Log in ?";
+"connection" = "Login";
+"forgot_your_password" = "Forgot your password ?";
 
 // User actions
 "cancel" = "Cancel";
 "continue" = "Continue";
 "okay" = "Okay";
 "submit" = "Submit";
+"send" = "Send";
 
 "error" = "Error";
 
@@ -92,3 +99,7 @@
 "deleted_account" = "Your account has been deleted";
 "unable_to_open_url" = "Unable to open link";
 "logged_with" = "Logged with:";
+
+// AuthenticationService
+"unable_to_reset_password" = "Unable to reset your password";
+"check_your_mailbox" = "Check out your mailbox to recover your account";

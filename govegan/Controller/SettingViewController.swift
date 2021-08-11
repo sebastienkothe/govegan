@@ -27,8 +27,10 @@ class SettingViewController: UIViewController {
             handleRequest(tag: sender.tag)
         } else if sender.tag == 1 {
             handleRequest(tag: sender.tag)
-        } else {
+        } else if sender.tag == 2 {
             showStatistics()
+        } else {
+            
         }
     }
     
@@ -41,7 +43,7 @@ class SettingViewController: UIViewController {
     /// Displays the appropriate alert based on the button pressed
     private func handleRequest(tag: Int) {
         let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
-        let okay = UIAlertAction(title: "yes".localized, style: .default) { [weak self] _ in
+        let okay = UIAlertAction(title: "yes".localized, style: tag == 1 ? .destructive : .default) { [weak self] _ in
             tag == 0 ? self?.handleDisconnection() : self?.handleUserDeletion()
         }
         

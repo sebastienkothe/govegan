@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 class AuthenticationService {
-
+    
     init(
         auth: AuthProtocol = Auth.auth(),
         authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()
@@ -22,6 +22,7 @@ class AuthenticationService {
     typealias DisconnectUserFromAppCompletionHandler = (Result<Void, AuthenticationServiceError>) -> Void
     typealias ConnectUserWithCompletionHandler = (Result<Void, AuthenticationServiceError>) -> Void
     typealias CreateAccountFromCompletionHandler = (Result<AuthDataResult?, AuthenticationServiceError>) -> Void
+    typealias ResetPasswordCompletionHandler = (Result<Void, AuthenticationServiceError>) -> Void
     
     // MARK: - Internal functions
     
@@ -69,6 +70,18 @@ class AuthenticationService {
             }
             
             completion(.success(result))
+        }
+    }
+    
+    /// Used to reset user's password
+    func resetPassword(email: String, completion: @escaping ResetPasswordCompletionHandler) {
+        auth.sendPasswordReset(withEmail: email) { error in
+            guard error == nil else {
+                completion(.failure(.unableToResetPassword))
+                return
+            }
+            
+            completion(.success(()))
         }
     }
     

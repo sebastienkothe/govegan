@@ -58,19 +58,27 @@
 // LoginViewController
 "mail_required" = "Adresse email requise";
 "request_user_mail" = "Entrez votre adresse e-mail";
+"request_user_mail_password_reset" = "Entrez votre adresse e-mail pour récupérer votre compte";
 "password_required" = "Mot de passe requis";
 "request_user_password" = "Entrer un mot de passe";
 
+// User actions
 "cancel" = "Annuler";
 "continue" = "Continuer";
 "okay" = "Ok";
 "submit" = "Soumettre";
+"send" = "Envoyer";
 
 "error" = "Erreur";
 
 "create_account" = "Créer un compte";
 "ask_user_to_create_an_account" = "Voulez-vous créer un compte ?";
 "unable_to_connect_user" = "Connexion impossible";
+
+"account_recovery" = "Récupération du compte";
+"log_in" = "Se connecter ?";
+"connection" = "Connexion";
+"forgot_your_password" = "Mot de passe oublié ?";
 
 // Firestore operations
 "unable_to_create_account" = "Impossible de créer votre compte";
@@ -91,3 +99,7 @@
 "deleted_account" = "Votre compte a bien été supprimé";
 "unable_to_open_url" = "Impossible d'ouvrir le lien";
 "logged_with" = "Connecté(e) avec:";
+
+// AuthenticationService
+"unable_to_reset_password" = "Impossible de réinitialiser votre mot de passe";
+"check_your_mailbox" = "Regardez votre boite mail pour récupérer votre compte";

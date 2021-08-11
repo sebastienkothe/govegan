@@ -164,7 +164,6 @@ class PickUpUserInformationView: UIView {
         dateComponent.year = -100
         
         guard let currentDateMinusOneHundredYears = Calendar.current.date(byAdding: dateComponent, to: Date()) else { return }
-        print(currentDateMinusOneHundredYears)
         datePicker.minimumDate = currentDateMinusOneHundredYears
     }
     

@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var forgotPasswordBtn: UIButton!
+    @IBOutlet weak var screenTitleLbl: UILabel!
     
     // MARK: - IBActions
     
@@ -27,6 +29,21 @@ class LoginViewController: UIViewController {
     @IBAction func didTapOnLoginButton(_ sender: UIButton) {
         guard let email = emailTextField.text, email.trimmingCharacters(in: .whitespaces) != "" else {
             UIAlertService.showAlert(style: .alert, title: "mail_required".localized, message: "request_user_mail".localized)
+            return
+        }
+        
+        if shouldResetPassword {
+            authenticationService.resetPassword(email: email) { result in
+                switch result {
+                
+                case .success:
+                    UIAlertService.showAlert(style: .alert, title: nil, message: "check_your_mailbox".localized)
+                    self.handlePasswordRecoveryRequest()
+                    
+                case .failure(let error):
+                    UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+                }
+            }
             return
         }
         
@@ -43,8 +60,14 @@ class LoginViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    @IBAction func resetPasswordBtnTapped() {
+        handlePasswordRecoveryRequest()
+    }
+    
+    
     // MARK: - Private properties
     private let authenticationService = AuthenticationService()
+    private var shouldResetPassword = false
     
     // MARK: - Private functions
     
@@ -66,10 +89,23 @@ class LoginViewController: UIViewController {
                 
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-                
             }
-            
         })
+    }
+    
+    /// Handle activation and setup the password text field
+    private func handlePasswordRecoveryRequest() {
+        shouldResetPassword = !shouldResetPassword
+        passwordTextField.isEnabled = !passwordTextField.isEnabled
+        
+        if shouldResetPassword {
+            UIAlertService.showAlert(style: .alert, title: nil, message: "request_user_mail_password_reset".localized)
+            screenTitleLbl.text = "account_recovery".localized
+            forgotPasswordBtn.setTitle("log_in".localized, for: .normal)
+        } else {
+            screenTitleLbl.text = "connection".localized
+            forgotPasswordBtn.setTitle("forgot_your_password".localized, for: .normal)
+        }
     }
 }
 

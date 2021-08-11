@@ -189,4 +189,34 @@ class AuthenticationServiceTestCase: XCTestCase {
         
         wait(for: [expectation], timeout: 0.1)
     }
+    
+    func test_GivenUserEnterACorrectMailAdress_WhenResetPasswordIsCalled_ThenShouldNotReturnAnError() {
+        let expectation = XCTestExpectation()
+        authenticationService = AuthenticationService(auth: MockAuthSuccessCases())
+        authenticationService.resetPassword(email: "sebastien.kothe@icloud.com") { result in
+            switch result {
+            case .failure:
+                XCTFail()
+            case .success(let result):
+                XCTAssertNotNil(result)
+            }
+            
+            expectation.fulfill()
+        }
+    }
+    
+    func test_GivenEmailAdressDoesNotExistInTheDB_WhenResetPasswordIsCalled_ThenShouldReturnAnError() {
+        let expectation = XCTestExpectation()
+        
+        authenticationService.resetPassword(email: "sebastien.kothe@icloud.com") { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertEqual(error, .unableToResetPassword)
+            case .success():
+                XCTFail()
+            }
+            
+            expectation.fulfill()
+        }
+    }
 }

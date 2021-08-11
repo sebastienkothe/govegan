@@ -16,6 +16,8 @@ protocol AuthProtocol {
     func signIn(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
     
     func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
+    
+    func sendPasswordReset(withEmail email: String, completion: ((Error?) -> Void)?)
 }
 
 extension Auth: AuthProtocol { }
@@ -25,6 +27,7 @@ enum MockError: Error {
 }
 
 class MockAuth: AuthProtocol {
+    
     var currentUser: User?
     
     func signOut() throws {
@@ -37,6 +40,10 @@ class MockAuth: AuthProtocol {
     
     func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
         completion!(nil, MockError.error)
+    }
+    
+    func sendPasswordReset(withEmail email: String, completion: ((Error?) -> Void)?) {
+        completion!(MockError.error)
     }
 }
 
@@ -51,5 +58,9 @@ class MockAuthSuccessCases: AuthProtocol {
     
     func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
         completion!(nil, nil)
+    }
+    
+    func sendPasswordReset(withEmail email: String, completion: ((Error?) -> Void)?) {
+        completion!(nil)
     }
 }

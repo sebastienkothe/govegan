@@ -13,6 +13,7 @@ enum AuthenticationServiceError: Error, CaseIterable {
     case unableToLogOut
     case unableToConnectUser
     case unableToCreateAccount
+    case unableToResetPassword
     
     var title: String {
         switch self {
@@ -21,6 +22,7 @@ enum AuthenticationServiceError: Error, CaseIterable {
         case .unableToLogOut: return "unable_to_log_out".localized
         case .unableToConnectUser: return "unable_to_connect_user".localized
         case .unableToCreateAccount: return "unable_to_create_account".localized
+        case .unableToResetPassword: return "unable_to_reset_password".localized
         }
     }
 }
