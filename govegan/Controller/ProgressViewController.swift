@@ -10,9 +10,6 @@ import Firebase
 
 class ProgressViewController: UIViewController {
     
-    // MARK: - Internal properties
-    let progressCalculator = ProgressCalculator()
-    
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +18,9 @@ class ProgressViewController: UIViewController {
         guard let userID = authenticationService.getCurrentUser()?.uid else { return }
         
         fetchVeganStartDateFrom(userID)
+        
+        // Used to refresh interface with new vegan start date
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVeganStartDate), name: .veganStartDateHasBeenChanged, object: nil)
     }
     
     // MARK: - IBOutlets
@@ -32,7 +32,8 @@ class ProgressViewController: UIViewController {
     private let progressCellElementsProvider = ProgressCellElementsProvider()
     private let firestoreManager = FirestoreManager.shared
     private let authenticationService = AuthenticationService()
-    
+    private let progressCalculator = ProgressCalculator()
+    private var timer = Timer()
     private var progressByCategory: [String] = [] {
         didSet {
             progressCollectionView.reloadData()
@@ -56,7 +57,7 @@ class ProgressViewController: UIViewController {
             case .success(let veganStartDate):
                 guard let userVeganDate = veganStartDate as? String else { return }
                 guard let convertedDate = self.progressCalculator.convertDate(userVeganDate) else { return }
-                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
             }
@@ -90,6 +91,14 @@ class ProgressViewController: UIViewController {
         
         // Retrieve the user's current progress
         progressByCategory = progressCalculator.calculateTheProgress()
+    }
+    
+    /// Used to refresh interface after user's vegan start date change
+    @objc private func updateVeganStartDate() {
+        timer.invalidate()
+        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
+        
+        fetchVeganStartDateFrom(userID)
     }
 }
 

@@ -40,6 +40,8 @@ class ChangeStartDateController: UIViewController {
     private let dateService = DateService()
     
     // MARK: - Private methods
+    
+    /// Handle the request to change user's password
     private func handleChangePasswordRequest() {
         
         let cancel = UIAlertAction(title: "cancel".localized, style: .cancel)
@@ -68,6 +70,7 @@ class ChangeStartDateController: UIViewController {
         }
     }
     
+    /// Used to handle the request to change vegan start date
     private func updateVeganStartDate() {
         guard let userID = authenticationService.getCurrentUser()?.uid else { return }
         guard let newVeganStartDate = dateService.convertDateToStringFrom(datePicker) else { return }
@@ -78,6 +81,7 @@ class ChangeStartDateController: UIViewController {
             
             switch result {
             case .success: successResult = !successResult
+                NotificationCenter.default.post(name: .veganStartDateHasBeenChanged, object: nil)
             case .failure: break
             }
             
