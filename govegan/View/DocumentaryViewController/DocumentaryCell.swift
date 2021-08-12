@@ -12,18 +12,17 @@ class DocumentaryCell: UITableViewCell {
     // MARK: - Internal functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = #colorLiteral(red: 0.674947679, green: 0.755489707, blue: 0.9283690453, alpha: 0.2065405435)
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 10
-        selectedBackgroundView = backgroundView
-        
-        documentaryImage.translatesAutoresizingMaskIntoConstraints = false
-        documentaryImage.heightAnchor.constraint(equalTo: documentaryImage.widthAnchor).isActive = true
+        setupSubviews()
     }
-
+    
+    /// Configure the reusable cell
+    func setup(index: Int) {
+        documentaryImage.image = documentaries[index].image
+        title.text = documentaries[index].title
+        contentLabel.text = documentaries[index].description
+        tag = index
+    }
+    
     // MARK: - IBOutlets
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var documentaryImage: UIImageView!
@@ -31,16 +30,14 @@ class DocumentaryCell: UITableViewCell {
     
     // MARK: - IBActions
     @IBAction func didTapOnWatchButton() {
-        var videos = documentaryCellElementsProvider.englishVideoID
         
-        let language = NSLocale.preferredLanguages[0]
-        if language == "fr-FR" { videos = documentaryCellElementsProvider.frenchVideoID }
+        let videoID = NSLocale.preferredLanguages[0] == "fr-FR" ? documentaries[tag].frenchVideoID : documentaries[tag].englishVideoID
         
-        watchVideoFrom(youtubeID: videos[tag])
+        watchVideoFrom(youtubeID: videoID)
     }
     
     // MARK: - Private properties
-    private let documentaryCellElementsProvider = DocumentaryCellElementsProvider()
+    private let documentaries = DocumentariesProvider().documentaries
     
     // MARK: - Private functions
     
@@ -55,5 +52,16 @@ class DocumentaryCell: UITableViewCell {
             localYoutubeUrl : browserYoutubeUrl
         
         UIApplication.shared.open(youtubeUrl, options: [:], completionHandler: nil)
+    }
+    
+    private func setupSubviews() {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = #colorLiteral(red: 0.674947679, green: 0.755489707, blue: 0.9283690453, alpha: 0.2065405435)
+        backgroundView.clipsToBounds = true
+        backgroundView.layer.cornerRadius = 10
+        selectedBackgroundView = backgroundView
+        
+        documentaryImage.translatesAutoresizingMaskIntoConstraints = false
+        documentaryImage.heightAnchor.constraint(equalTo: documentaryImage.widthAnchor).isActive = true
     }
 }

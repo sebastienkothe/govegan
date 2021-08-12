@@ -7,25 +7,13 @@
 
 import UIKit
 
-class DocumentaryViewController: UIViewController {
-    
-    // MARK: - Internal functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var documentaryTableView: UITableView!
-    
-    // MARK: - private properties
-    private let documentaryCellElementsProvider = DocumentaryCellElementsProvider()
-}
+class DocumentaryViewController: UIViewController {}
 
 // MARK: - UITableViewDataSource
 extension DocumentaryViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        documentaryCellElementsProvider.images.count
+        DocumentariesProvider().documentaries.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,10 +35,7 @@ extension DocumentaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let documentaryCell = tableView.dequeueReusableCell(withIdentifier: .documentaryCell, for: indexPath) as? DocumentaryCell else { return UITableViewCell() }
         
-        documentaryCell.documentaryImage.image = documentaryCellElementsProvider.images[indexPath.section]
-        documentaryCell.title.text = documentaryCellElementsProvider.titles[indexPath.section]
-        documentaryCell.contentLabel.text = documentaryCellElementsProvider.description[indexPath.section]
-        documentaryCell.tag = indexPath.section
+        documentaryCell.setup(index: indexPath.section)
         
         return documentaryCell
     }

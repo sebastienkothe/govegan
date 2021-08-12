@@ -19,7 +19,6 @@ class WelcomeViewController: UIViewController {
             performSegue(withIdentifier: .segueToTabBarFromWelcome, sender: nil)
         }
         
-        setupLoginButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,11 +29,8 @@ class WelcomeViewController: UIViewController {
     }
     
     // MARK: - Outlets
-    @IBOutlet private weak var welcomeMessagesStackView: UIStackView!
-    @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet weak var goVeganLogo: UIImageView!
-    @IBOutlet weak var goButton: UIButton!
-    @IBOutlet weak var footerStackView: UIStackView!
+    @IBOutlet weak var goVeganLogoCenterYConstraint: NSLayoutConstraint!
     
     // MARK: - Private properties
     
@@ -51,10 +47,7 @@ class WelcomeViewController: UIViewController {
         } completion: { [weak self] _ in
             self?.animationHasBeenShown = true
             self?.slowlyDisplayWelcomeMessages()
-            
-            // Update goVeganImageView constraint
-            guard let centerYAnchorView = self?.view.centerYAnchor else { return }
-            self?.goVeganLogo.centerYAnchor.constraint(equalTo: (centerYAnchorView), constant: -150).isActive = true
+            self?.goVeganLogoCenterYConstraint.constant = -150
         }
     }
     
@@ -66,16 +59,5 @@ class WelcomeViewController: UIViewController {
                 subview.alpha = 1.0
             }
         }
-    }
-    
-    /// Adds a tapGestureRecognizer and an associated action
-    private func setupLoginButton() {
-        let loginButtonTap = UITapGestureRecognizer(target: self, action: #selector(didTapOnLoginButton))
-        loginButton.addGestureRecognizer(loginButtonTap)
-    }
-    
-    /// User redirection based on their connection status
-    @objc private func didTapOnLoginButton(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: .segueToLoginFromWelcome, sender: nil)
     }
 }

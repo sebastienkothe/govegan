@@ -14,16 +14,6 @@ class PickUpUserInfoTextField: UITextField {
     var currentDateButtonTapped: (() -> (String))?
     
     // MARK: - Internal methods
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        //        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        //        setup()
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         

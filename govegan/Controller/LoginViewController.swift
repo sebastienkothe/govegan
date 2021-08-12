@@ -10,6 +10,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: - Internal properties
+    
+    /// Used to launch allow posting of a notification and allow the user to delete their account
     var accountDeletionIsInitiated = false
     
     // MARK: - IBOutlets

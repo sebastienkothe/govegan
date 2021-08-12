@@ -9,47 +9,21 @@ import UIKit
 
 class AchievementHeader: UITableViewHeaderFooterView {
     
+    // MARK: - Internal methods
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         configureContents()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
-    // MARK: - Internal properties
-    let categoryLabel = UILabel()
-    let goalLabel = UILabel()
-    let progressLabel = UILabel()
-    let stackView = UIStackView()
-    
-    // MARK: - Internal functions
-    
-    /// Configure the constraints and texts to display
-    func configureContents() {
-        
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        
-        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        goalLabel.translatesAutoresizingMaskIntoConstraints = false
-        progressLabel.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        ])
-        
-        setupLabel(label: categoryLabel, text: "category".localized, alignement: .left)
-        setupLabel(label: goalLabel, text: "goal".localized, alignement: .center)
-        setupLabel(label: progressLabel, text: "progress".localized, alignement: .right)
-    }
+    // MARK: - Private properties
+    private let categoryLabel = UILabel()
+    private let goalLabel = UILabel()
+    private let progressLabel = UILabel()
+    private let stackView = UIStackView()
     
     // MARK: - Private functions
     private func setupLabel(label: UILabel, text: String, alignement: NSTextAlignment) {
@@ -58,5 +32,30 @@ class AchievementHeader: UITableViewHeaderFooterView {
         label.text = text
         label.textAlignment = alignement
         stackView.addArrangedSubview(label)
+    }
+    
+    private func definitionOfStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor)
+        ])
+    }
+    
+    /// Configure the constraints and texts to display
+    private func configureContents() {
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        
+        contentView.addSubview(stackView)
+        
+        definitionOfStackViewConstraints()
+        
+        setupLabel(label: categoryLabel, text: "category".localized, alignement: .left)
+        setupLabel(label: goalLabel, text: "goal".localized, alignement: .center)
+        setupLabel(label: progressLabel, text: "progress".localized, alignement: .right)
     }
 }

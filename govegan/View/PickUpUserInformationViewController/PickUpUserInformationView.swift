@@ -70,7 +70,7 @@ class PickUpUserInformationView: UIView {
         
         answerTextField.setupTextField(datePicker: datePicker)
     }
-        
+    
     @IBAction private func didTapOnBackButton() {
         if questionLabel.text == "vegan_start_date_question".localized {
             questionLabel.text = "what_is_your_name_question".localized

@@ -18,7 +18,7 @@ class ProgressCalculator {
         }
     }
     
-    var objectives: [Double] = [1, 20, 4500, 10, 35]
+    var objectives: [Double] = AchievementsProvider.basicGoals
     
     var timeData: [Int] = []
     

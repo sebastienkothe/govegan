@@ -17,7 +17,7 @@ class ProgressCalculatorTestCase: XCTestCase {
     var timeElapsed: DateComponents!
     var fromDate: Date!
     var toDate: Date!
-    var achievementCellElementsProvider: AchievementCellElementsProvider!
+    var achievements: [Achievement]!
     
     
     override func setUp() {
@@ -26,7 +26,7 @@ class ProgressCalculatorTestCase: XCTestCase {
         progressCalculatorDelegateMock = ProgressCalculatorDelegateMock()
         progressCalculator.delegate = progressCalculatorDelegateMock
         userCalendar = Calendar.current
-        achievementCellElementsProvider = AchievementCellElementsProvider()
+        achievements = AchievementsProvider().achievements
     }
     
     func testGivenProgressCalculatedIsEmpty_WhenProgressCalculatedIsChanged_ThenDelegateShouldGetTheNewValue() {
@@ -180,7 +180,7 @@ class ProgressCalculatorTestCase: XCTestCase {
     func testGivenDefaultGoalsAreSet_WhenWeCallUpdateProgressLayer_ThenShouldReturnAConsistentGoalAndPercentageProgression() {
         
         // Given
-        progressCalculator.objectives = [1, 20, 4500, 10, 35]
+        progressCalculator.objectives = AchievementsProvider.basicGoals
         
         // When
         let expectedPercentage = [0.55, 0.7730769230769231, 0.7692478632478633, 0.7769230769230769, 0.7630434782608696]
@@ -204,7 +204,7 @@ class ProgressCalculatorTestCase: XCTestCase {
         for (index, _) in progressCalculator.objectives.enumerated() {
             
             let firstPartOfText = String(format: "%.\(String(0))f", progressCalculator.objectives[index].rounded(.towardZero))
-            let additionalText = " \(achievementCellElementsProvider.objectiveInformations[index])"
+            let additionalText = " \(achievements[index].unitOfMeasure)"
             
             // The,
             XCTAssertEqual(progressCalculator.provideComposedText(index, additionalText).string, "\(firstPartOfText)" + "\(additionalText)")

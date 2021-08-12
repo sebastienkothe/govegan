@@ -55,13 +55,13 @@ class SignUpViewController: UIViewController {
         let okay = UIAlertAction(title: "continue".localized, style: .default) { [weak self] _ in
             
             self?.authenticationService.createAccountFrom(email, password, completion: { [weak self] result in
-                    switch result {
-                    case .success(let authDataResult):
-                        self?.handleDatabaseRegistration(userID: authDataResult?.user.uid, email: email, password: password)
-                    case .failure(let error):
-                        UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
-                    }
-                })
+                switch result {
+                case .success(let authDataResult):
+                    self?.handleDatabaseRegistration(userID: authDataResult?.user.uid, email: email, password: password)
+                case .failure(let error):
+                    UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
+                }
+            })
         }
         
         UIAlertService.showAlert(style: .alert, title: "create_account".localized, message: "ask_user_to_create_an_account".localized, actions: [okay, cancel], completion: nil)

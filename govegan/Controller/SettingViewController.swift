@@ -23,10 +23,8 @@ class SettingViewController: UIViewController {
             handleRequest(tag: sender.tag)
         } else if sender.tag == 1 {
             handleRequest(tag: sender.tag)
-        } else if sender.tag == 2 {
-            showStatistics()
         } else {
-            
+            showStatistics()
         }
     }
     
@@ -50,15 +48,12 @@ class SettingViewController: UIViewController {
     /// Try to log out the user
     private func handleDisconnection() {
         authenticationService.disconnectUserFromApp { [weak self] result in
-            
             switch result {
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
             case .success:
                 self?.navigationController?.popToRootViewController(animated: true)
             }
-         
-           
         }
     }
     
@@ -71,7 +66,6 @@ class SettingViewController: UIViewController {
             }
         })
     }
-    
     
     /// Handles the display of potential errors returned by the deleteUserAuthentication method
     private func handleUserDeletionWith(_ error: AuthenticationServiceError) {
@@ -97,7 +91,10 @@ class SettingViewController: UIViewController {
     
     /// Removes user authentication and data
     @objc private func handleUserDeletion() {
-        let currentUserID = authenticationService.getCurrentUser()?.uid
+        guard let currentUserID = authenticationService.getCurrentUser()?.uid else {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_retrieve_account_data".localized)
+            return
+        }
         
         authenticationService.deleteUserAuthentication { [weak self] result in
             switch result {
@@ -110,8 +107,6 @@ class SettingViewController: UIViewController {
                 self?.navigationController?.popToRootViewController(animated: true)
                 UIAlertService.showAlert(style: .alert, title: nil, message: "deleted_account".localized)
             }
-        
-            
         }
     }
 }

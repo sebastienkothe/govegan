@@ -12,6 +12,15 @@ class ChangeStartDateController: UIViewController {
     // MARK: - Internal methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let userID = authenticationService.getCurrentUser()?.uid else {
+            navigationController?.popViewController(animated: true)
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_retrieve_account_data".localized)
+            return
+        }
+        
+        currentUserID = userID
+        
         getStartDate()
         veganTextField.setupTextField(datePicker: datePicker)
         
@@ -48,6 +57,7 @@ class ChangeStartDateController: UIViewController {
     private let authenticationService = AuthenticationService()
     private let progressCalculator = ProgressCalculator()
     private let datePicker = VeganStartDatePicker()
+    private var currentUserID = ""
     
     // MARK: - Private methods
     
@@ -63,9 +73,7 @@ class ChangeStartDateController: UIViewController {
     
     /// Get the current vegan start date to change it later
     private func getStartDate() {
-        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
-        
-        firestoreManager.getValueFromDocument(userID: userID, valueToReturn: .veganStartDateKey) { [weak self] result in
+        firestoreManager.getValueFromDocument(userID: currentUserID, valueToReturn: .veganStartDateKey) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -83,9 +91,7 @@ class ChangeStartDateController: UIViewController {
     
     /// Used to handle the request to change vegan start date
     private func updateVeganStartDate() {
-        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
-        
-        firestoreManager.updateADocument(userID: userID, userData: [.veganStartDateKey : datePicker.convertDateToString()], completion: { [weak self] (result) in
+        firestoreManager.updateADocument(userID: currentUserID, userData: [.veganStartDateKey : datePicker.convertDateToString()], completion: { [weak self] (result) in
             
             var successResult = false
             

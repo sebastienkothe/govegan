@@ -15,7 +15,11 @@ class ProgressViewController: UIViewController {
         super.viewDidLoad()
         
         progressCalculator.delegate = self
-        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
+        
+        guard let userID = authenticationService.getCurrentUser()?.uid else {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_retrieve_account_data".localized)
+            return
+        }
         
         fetchVeganStartDateFrom(userID)
         
@@ -29,7 +33,7 @@ class ProgressViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - private properties
-    private let progressCellElementsProvider = ProgressCellElementsProvider()
+    private let progress = ProgressProvider().progress
     private let firestoreManager = FirestoreManager.shared
     private let authenticationService = AuthenticationService()
     private let progressCalculator = ProgressCalculator()
@@ -96,8 +100,10 @@ class ProgressViewController: UIViewController {
     /// Used to refresh interface after user's vegan start date change
     @objc private func updateVeganStartDate() {
         timer.invalidate()
-        guard let userID = authenticationService.getCurrentUser()?.uid else { return }
-        
+        guard let userID = authenticationService.getCurrentUser()?.uid else {
+            UIAlertService.showAlert(style: .alert, title: "error".localized, message: "unable_to_retrieve_account_data".localized)
+            return
+        }
         fetchVeganStartDateFrom(userID)
     }
 }
@@ -105,7 +111,7 @@ class ProgressViewController: UIViewController {
 // MARK: UICollectionViewDataSource
 extension ProgressViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return progressCellElementsProvider.images.count
+        return progress.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -115,8 +121,8 @@ extension ProgressViewController: UICollectionViewDataSource {
             progressCell.counterLabel.text = "\("")\(progressByCategory[indexPath.item])"
         }
         
-        progressCell.titleForProgressionLabel.text = progressCellElementsProvider.titleForProgression[indexPath.item]
-        progressCell.imageView.image = progressCellElementsProvider.images[indexPath.item]
+        progressCell.titleForProgressionLabel.text = progress[indexPath.item].title
+        progressCell.imageView.image = progress[indexPath.item].image
         
         return progressCell
     }
