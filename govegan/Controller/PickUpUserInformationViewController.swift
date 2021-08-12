@@ -19,7 +19,7 @@ class PickUpUserInformationViewController: UIViewController {
             
             // Retrieving the controller and changing the value of its "userData" property
             let storyBoard = UIStoryboard(name: .mainStoryboard, bundle: nil)
-            let viewController =  storyBoard.instantiateViewController(withIdentifier: .signUpViewController) as! SignUpViewController
+            guard let viewController =  storyBoard.instantiateViewController(withIdentifier: .signUpViewController) as? SignUpViewController else { return }
             viewController.userData = userData
             
             self?.navigationController?.pushViewController(viewController, animated: true)

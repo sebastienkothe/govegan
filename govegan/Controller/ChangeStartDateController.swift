@@ -13,20 +13,30 @@ class ChangeStartDateController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getStartDate()
-        dateService.setDatePickerMinimumDate(datePicker)
+        veganTextField.setupTextField(datePicker: datePicker)
+        
+        datePicker.valuePickerHasBeenChanged = { [weak self] newDate in
+            self?.veganTextField.text = newDate
+        }
+        
+        veganTextField.previousYearButtonTapped = { [weak self] in
+            guard let self = self else { return "" }
+            return self.datePicker.setDateToPreviousYear()
+        }
+        
+        veganTextField.currentDateButtonTapped = { [weak self] in
+            guard let self = self else { return "" }
+            return self.datePicker.setDateToCurrentDate()
+        }
     }
     
     // MARK: - IBOutlets
     @IBOutlet weak var veganStartDateLbl: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var veganTextField: PickUpUserInfoTextField!
     
     // MARK: - IBActions
     @IBAction func backBtnTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func datePickerTouched(_ sender: UIDatePicker) {
-        datePicker.maximumDate = Date()
     }
     
     @IBAction func sendBtnTapped(_ sender: UIButton) {
@@ -37,7 +47,7 @@ class ChangeStartDateController: UIViewController {
     private let firestoreManager = FirestoreManager.shared
     private let authenticationService = AuthenticationService()
     private let progressCalculator = ProgressCalculator()
-    private let dateService = DateService()
+    private let datePicker = VeganStartDatePicker()
     
     // MARK: - Private methods
     
@@ -62,6 +72,7 @@ class ChangeStartDateController: UIViewController {
             case .success(let veganStartDate):
                 guard let userVeganDate = veganStartDate as? String else { return }
                 self.veganStartDateLbl.text = userVeganDate
+                self.veganTextField.text = userVeganDate
                 guard let convertedDate = self.progressCalculator.convertDate(userVeganDate) else { return }
                 self.datePicker.date = convertedDate
             case .failure(let error):
@@ -73,9 +84,8 @@ class ChangeStartDateController: UIViewController {
     /// Used to handle the request to change vegan start date
     private func updateVeganStartDate() {
         guard let userID = authenticationService.getCurrentUser()?.uid else { return }
-        guard let newVeganStartDate = dateService.convertDateToStringFrom(datePicker) else { return }
         
-        firestoreManager.updateADocument(userID: userID, userData: [.veganStartDateKey : newVeganStartDate], completion: { [weak self] (result) in
+        firestoreManager.updateADocument(userID: userID, userData: [.veganStartDateKey : datePicker.convertDateToString()], completion: { [weak self] (result) in
             
             var successResult = false
             

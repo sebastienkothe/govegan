@@ -82,10 +82,13 @@
 "Zda-wM-vBW.normalTitle" = "Changer la date de début";
 
 /* Class = "UILabel"; text = "Current date:"; ObjectID = "FdQ-yQ-pFa"; */
-"FdQ-yQ-pFa.text" = "Date précédente:";
+"FdQ-yQ-pFa.text" = "Date précédente";
 
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "vDK-ha-qDP"; */
 "vDK-ha-qDP.normalTitle" = "Retour";
 
 /* Class = "UILabel"; text = "How many days do you want to deduct?"; ObjectID = "DPx-V9-tp9"; */
 "DPx-V9-tp9.text" = "Combien de jours voulez-vous déduire ?";
+
+/* Class = "UILabel"; text = "Date selected:"; ObjectID = "5Uy-xr-5bj"; */
+"5Uy-xr-5bj.text" = "Date selectionnée:";

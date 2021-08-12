@@ -19,12 +19,21 @@ class PickUpUserInformationView: UIView {
         super.awakeFromNib()
         
         setupViews()
-                
-        // Avoids a constraint problem when the keyboard is open and the application is in the background
-        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-       
-        // Activates the text Field selection
-        answerTextField.becomeFirstResponder()
+        
+        datePicker.valuePickerHasBeenChanged = { [weak self] newDate in
+            self?.answerTextField.text = newDate
+        }
+        
+        answerTextField.previousYearButtonTapped = { [weak self] in
+            guard let self = self else { return "" }
+            return self.datePicker.setDateToPreviousYear()
+        }
+        
+        answerTextField.currentDateButtonTapped = { [weak self] in
+            guard let self = self else { return "" }
+            return self.datePicker.setDateToCurrentDate()
+        }
+        
     }
     
     // Load the .xib and add the content view to the view hierarchy
@@ -41,7 +50,7 @@ class PickUpUserInformationView: UIView {
     // MARK: - IBOutlets
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var questionLabel: UILabel!
-    @IBOutlet private weak var answerTextField: UITextField!
+    @IBOutlet private weak var answerTextField: PickUpUserInfoTextField!
     @IBOutlet private weak var proceedButton: NextButton!
     @IBOutlet private weak var solidLineLabel: UILabel!
     @IBOutlet private weak var backButton: UIButton!
@@ -59,12 +68,13 @@ class PickUpUserInformationView: UIView {
         
         questionLabel.text = "vegan_start_date_question".localized
         
-        createDatePickerView()
+        answerTextField.setupTextField(datePicker: datePicker)
     }
         
     @IBAction private func didTapOnBackButton() {
         if questionLabel.text == "vegan_start_date_question".localized {
-            returnToTheInitialConfigurationInterface()
+            questionLabel.text = "what_is_your_name_question".localized
+            answerTextField.returnToTheInitialConfigurationInterface()
             handleProceedButton(mustBeActivated: false)
         } else {
             backButtonTapped?()
@@ -72,8 +82,7 @@ class PickUpUserInformationView: UIView {
     }
     
     // MARK: - Private properties
-    private let datePicker = UIDatePicker()
-    private let dateService = DateService()
+    private let datePicker = VeganStartDatePicker()
     
     private var name = ""
     private var veganStartDate: String = "" {
@@ -99,26 +108,8 @@ class PickUpUserInformationView: UIView {
     
     /// Used to hide/show items
     private func handleProceedButton(mustBeActivated: Bool) {
-        
         proceedButton.isUserInteractionEnabled = mustBeActivated ? true : false
-        
-        if mustBeActivated {
-            proceedButton.backgroundColor = #colorLiteral(red: 0, green: 0.6649529934, blue: 0.2719822228, alpha: 1)
-        } else {
-            proceedButton.backgroundColor = #colorLiteral(red: 0.9025184512, green: 0.8971535563, blue: 0.9066424966, alpha: 1)
-        }
-        
-    }
-    
-    /// Go back to the original interface configuration
-    private func returnToTheInitialConfigurationInterface() {
-        questionLabel.text = "what_is_your_name_question".localized
-        
-        answerTextField.inputAccessoryView = nil
-        answerTextField.inputView = nil
-        answerTextField.reloadInputViews()
-        
-        answerTextField.text = ""
+        proceedButton.backgroundColor = mustBeActivated ? #colorLiteral(red: 0, green: 0.6649529934, blue: 0.2719822228, alpha: 1) : #colorLiteral(red: 0.9025184512, green: 0.8971535563, blue: 0.9066424966, alpha: 1)
     }
     
     /// Configure the texts to be displayed in the views
@@ -145,85 +136,7 @@ class PickUpUserInformationView: UIView {
             contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
-        
-        questionLabel.numberOfLines = 0
     }
-    
-    /// Configure the previously initialized datePicker
-    private func setupDatePicker() {
-        datePicker.datePickerMode = .dateAndTime
-        datePicker.addTarget(self, action: #selector(dateChanged), for: .allEvents)
-        datePicker.maximumDate = Date()
-        
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        dateService.setDatePickerMinimumDate(datePicker)
-    }
-    
-    private func generateToolbar() -> UIToolbar {
-        
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        
-        // Resizes the toolBar to use the most appropriate amount of space
-        toolBar.sizeToFit()
-        
-        let previousYearButton = UIBarButtonItem(title: "previous_year".localized, style: .done, target: self, action: #selector(didTapOnPreviousYearButton))
-        let currentDate = UIBarButtonItem(title: "now".localized, style: .done, target: self, action: #selector(didTapOnCurrentDateButton))
-        
-        // Used to generate a space between the two main buttons
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolBar.setItems([previousYearButton, spaceButton, currentDate], animated: true)
-        
-        toolBar.items?.forEach { (button) in
-            button.tintColor = #colorLiteral(red: 0, green: 0.7733597755, blue: 0.4907547235, alpha: 1)
-        }
-        
-        return toolBar
-    }
-    
-    private func createDatePickerView() {
-        
-        setupDatePicker()
-        
-        // Assign toolbar
-        answerTextField.inputAccessoryView = generateToolbar()
-        
-        answerTextField.text = dateService.convertDateToStringFrom(datePicker)
-        
-        // Assign date picker to the text field
-        answerTextField.inputView = datePicker
-        
-        answerTextField.reloadInputViews()
-    }
-    
-    @objc private func dateChanged() {
-        answerTextField.text = dateService.convertDateToStringFrom(datePicker)
-    }
-    
-    @objc private func didTapOnPreviousYearButton() {
-        var dateComponent = DateComponents()
-        dateComponent.year = -1
-        
-        guard let previousYear = Calendar.current.date(byAdding: dateComponent, to: datePicker.date) else { return }
-        datePicker.date = previousYear
-        answerTextField.text = dateService.convertDateToStringFrom(datePicker)
-    }
-    
-    @objc private func didTapOnCurrentDateButton() {
-        datePicker.maximumDate = Date()
-        datePicker.date = Date()
-        answerTextField.text = dateService.convertDateToStringFrom(datePicker)
-    }
-    
-    @objc private func appDidEnterBackground() {
-        answerTextField.resignFirstResponder()
-    }
-    
 }
 
 extension PickUpUserInformationView: UITextFieldDelegate {

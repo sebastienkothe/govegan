@@ -12,14 +12,10 @@ class SettingViewController: UIViewController {
     // MARK: - Internal functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLabelText()
         
         // Used to handle the safely account deletion
         NotificationCenter.default.addObserver(self, selector: #selector(handleUserDeletion), name: .accountCanBeDeletedSafely, object: nil)
     }
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var logInWithLabel: UILabel!
     
     // MARK: - IBActions
     @IBAction func settingButtonTapped(_ sender: UIButton) {
@@ -97,12 +93,6 @@ class SettingViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    /// Used to show the email adress for the current connected user
-    private func updateLabelText() {
-        guard let userEmail = authenticationService.getCurrentUser()?.email else { return }
-        logInWithLabel.text = "logged_with".localized + " " + userEmail
     }
     
     /// Removes user authentication and data

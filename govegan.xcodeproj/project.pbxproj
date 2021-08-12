@@ -21,7 +21,6 @@
 		8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8324D3BA2667C7A20069A249 /* LoginButton.swift */; };
 		832CE853264FA5D000C80925 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CE852264FA5D000C80925 /* WelcomeViewController.swift */; };
 		8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */; };
-		8339177226C44EA2002C0FFE /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339177126C44EA2002C0FFE /* DateService.swift */; };
 		833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833B320B26653E240027E965 /* DocumentaryCell.swift */; };
 		833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */; };
 		833E6302266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */; };
@@ -39,6 +38,8 @@
 		836E7C96267D56E800278CFD /* AuthenticationServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */; };
 		83777176266A896800923AA5 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83777175266A896800923AA5 /* FirestoreManager.swift */; };
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
+		8384A5AC26C530E2003818D6 /* VeganStartDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */; };
+		8384A5AE26C552EA003818D6 /* PickUpUserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
 		83CA58F62661074A00186C6B /* AchievementCellElementsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */; };
@@ -87,7 +88,6 @@
 		8324D3BA2667C7A20069A249 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		832CE852264FA5D000C80925 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8337A3F3265FBD3800B1B59D /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
-		8339177126C44EA2002C0FFE /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		833B320B26653E240027E965 /* DocumentaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCell.swift; sourceTree = "<group>"; };
 		833CAD9326663BE500E3483D /* DocumentaryCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryCellElementsProvider.swift; sourceTree = "<group>"; };
 		833E6301266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegateMock.swift; sourceTree = "<group>"; };
@@ -110,6 +110,8 @@
 		836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTestCase.swift; sourceTree = "<group>"; };
 		83777175266A896800923AA5 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
+		8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganStartDatePicker.swift; sourceTree = "<group>"; };
+		8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInfoTextField.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
 		83CA58F52661074A00186C6B /* AchievementCellElementsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCellElementsProvider.swift; sourceTree = "<group>"; };
@@ -186,6 +188,8 @@
 				831D0FCC2653B92700817B5A /* PickUpUserInformationView.xib */,
 				831D0FD12653D55800817B5A /* PickUpUserInformationView.swift */,
 				831D0FD62653DAF100817B5A /* NextButton.swift */,
+				8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */,
+				8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */,
 			);
 			path = PickUpUserInformationViewController;
 			sourceTree = "<group>";
@@ -285,7 +289,6 @@
 				83573E5F265D39B80021B738 /* Protocol */,
 				83F8D87D265917CD00EE96C4 /* Data */,
 				83244D83265D237700A76F3A /* ProgressCalculator.swift */,
-				8339177126C44EA2002C0FFE /* DateService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,8 +599,10 @@
 				833CAD9426663BE500E3483D /* DocumentaryCellElementsProvider.swift in Sources */,
 				83D08B1726C1A9DE00EBDFE7 /* AuthenticationService+Mock.swift in Sources */,
 				831D0FD22653D55800817B5A /* PickUpUserInformationView.swift in Sources */,
+				8384A5AE26C552EA003818D6 /* PickUpUserInfoTextField.swift in Sources */,
 				83F3A0732656A3D40030929D /* String.swift in Sources */,
 				833B320C26653E240027E965 /* DocumentaryCell.swift in Sources */,
+				8384A5AC26C530E2003818D6 /* VeganStartDatePicker.swift in Sources */,
 				83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */,
 				831160762677889D003C5FED /* FirestoreManagerError.swift in Sources */,
 				83D08B1B26C1AC1300EBDFE7 /* FirestoreManager+Mock.swift in Sources */,
@@ -609,7 +614,6 @@
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
 				83777176266A896800923AA5 /* FirestoreManager.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
-				8339177226C44EA2002C0FFE /* DateService.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				834C212E267BFB1F005456E0 /* AuthenticationService.swift in Sources */,
