@@ -121,8 +121,8 @@ extension ProgressViewController: UICollectionViewDataSource {
             progressCell.counterLabel.text = "\("")\(progressByCategory[indexPath.item])"
         }
         
-        progressCell.titleForProgressionLabel.text = progress[indexPath.item].title
-        progressCell.imageView.image = progress[indexPath.item].image
+        progressCell.setup(progress: progress[indexPath.item])
+        
         
         return progressCell
     }

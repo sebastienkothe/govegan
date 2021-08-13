@@ -15,6 +15,12 @@ class ProgressCell: UICollectionViewCell {
         setupShadow()
     }
     
+    /// Setup the reusable cell
+    func setup(progress: Progress) {
+        titleForProgressionLabel.text = progress.title
+        imageView.image = progress.image
+    }
+    
     // MARK: - IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleForProgressionLabel: UILabel!

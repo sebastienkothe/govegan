@@ -11,19 +11,11 @@ class ProgressCalculator {
     
     // MARK: - Internal properties
     weak var delegate: ProgressCalculatorDelegate?
-    
-    var progressCalculated: [Double] = [] {
-        didSet {
-            delegate?.progressCanBeUpdated(data: progressCalculated)
-        }
-    }
-    
     var objectives: [Double] = AchievementsProvider.basicGoals
     
-    var timeData: [Int] = []
+    // MARK: - Internal methods
     
-    // MARK: - Internal functions
-    
+    /// Determine the goal based on progress
     func updateProgressLayer(index: Int, calculatedProgress: Double) -> CGFloat {
         
         while calculatedProgress > objectives[index]  {
@@ -39,7 +31,7 @@ class ProgressCalculator {
         let text = NSMutableAttributedString()
         
         let firstPartOfTheText = String(format: "%.\(String(0))f", objectives[item].rounded(.towardZero))
-        let attributesForAdditionalText = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: .avenirNext, size: 17)]
+        let attributesForAdditionalText = [.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: .avenirNext, size: 17)]
         
         text.append(NSAttributedString(string: firstPartOfTheText, attributes: [:]))
         text.append(NSAttributedString(string: additionalText, attributes: attributesForAdditionalText as [NSAttributedString.Key : Any]))
@@ -86,6 +78,15 @@ class ProgressCalculator {
         return [
             convertToStringFrom(floor(animalSaved)), convertToStringFrom(grainSaved), convertToStringFrom(waterSaved), convertToStringFrom(forestSaved), convertToStringFrom(CO2saved)
         ]
+    }
+    
+    // MARK: - Private properties
+    private var timeData: [Int] = []
+    
+    private var progressCalculated: [Double] = [] {
+        didSet {
+            delegate?.progressCanBeUpdated(data: progressCalculated)
+        }
     }
     
     // MARK: - private functions

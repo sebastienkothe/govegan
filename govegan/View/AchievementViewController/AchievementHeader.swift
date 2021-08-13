@@ -26,6 +26,8 @@ class AchievementHeader: UITableViewHeaderFooterView {
     private let stackView = UIStackView()
     
     // MARK: - Private functions
+    
+    /// Performs the initial configuration of the labels
     private func setupLabel(label: UILabel, text: String, alignement: NSTextAlignment) {
         label.font = UIFont(name: .avenirNext, size: 17)
         label.textColor = #colorLiteral(red: 0.674947679, green: 0.755489707, blue: 0.9283690453, alpha: 1)
@@ -34,6 +36,7 @@ class AchievementHeader: UITableViewHeaderFooterView {
         stackView.addArrangedSubview(label)
     }
     
+    /// Define the constraints of the stack view
     private func definitionOfStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -45,7 +48,7 @@ class AchievementHeader: UITableViewHeaderFooterView {
         ])
     }
     
-    /// Configure the constraints and texts to display
+    /// Configure stack view and labels
     private func configureContents() {
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal

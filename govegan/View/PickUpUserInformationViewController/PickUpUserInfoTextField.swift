@@ -24,6 +24,7 @@ class PickUpUserInfoTextField: UITextField {
         becomeFirstResponder()
     }
     
+    /// Adding a toolbar and date picker to the text field input view
     func setupTextField(datePicker: VeganStartDatePicker) {
         
         // Assign toolbar
@@ -69,16 +70,18 @@ class PickUpUserInfoTextField: UITextField {
         return toolBar
     }
     
+    /// Close the keyboard when the application is in the background
     @objc private func appDidEnterBackground() {
         resignFirstResponder()
     }
     
+    /// Notifies the object using the property that the user pressed the previous year button
     @objc private func didTapOnPreviousYearButton() {
         text = previousYearButtonTapped?()
     }
     
+    /// Notifies the object using the property that the user pressed the current date button
     @objc private func didTapOnCurrentDateButton() {
         text = currentDateButtonTapped?()
     }
-    
 }
