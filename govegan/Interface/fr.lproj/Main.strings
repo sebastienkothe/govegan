@@ -1,0 +1,94 @@
+// MARK: - FRENCH
+
+/* Class = "UILabel"; text = "Vegan since"; ObjectID = "262-Py-0oW"; */
+"262-Py-0oW.text" = "Vegan depuis";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "60X-zW-Nyp"; */
+"60X-zW-Nyp.text" = "Réglages";
+
+/* Class = "UILabel"; text = "Register"; ObjectID = "7ao-J2-ieB"; */
+"7ao-J2-ieB.text" = "S'inscrire";
+
+/* Class = "UILabel"; text = "Going vegan is the best decision you've ever made!"; ObjectID = "8UE-sT-Wsq"; */
+"8UE-sT-Wsq.text" = "Devenir vegan est la meilleure décision que vous ayez jamais prise !";
+
+/* Class = "UITextField"; placeholder = "Password..."; ObjectID = "9B6-D9-0gP"; */
+"9B6-D9-0gP.placeholder" = "Mot de passe...";
+
+/* Class = "UIButton"; normalTitle = "Watch"; ObjectID = "Epe-0w-w6t"; */
+"Epe-0w-w6t.normalTitle" = "Regarder";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "IJ5-rk-0OQ"; */
+"IJ5-rk-0OQ.normalTitle" = "Retour";
+
+/* Class = "UITabBarItem"; title = "Documentaries"; ObjectID = "S9U-DX-P3p"; */
+"S9U-DX-P3p.title" = "Documentaires";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "TGe-oy-I5A"; */
+"TGe-oy-I5A.normalTitle" = "Envoyer";
+
+/* Class = "UILabel"; text = "Congratulations !"; ObjectID = "XEK-b1-974"; */
+"XEK-b1-974.text" = "Félicitations !";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "ZHY-Cr-shL"; */
+"ZHY-Cr-shL.normalTitle" = "Se connecter";
+
+/* Class = "UITabBarItem"; title = "Achievement"; ObjectID = "cCU-dI-y67"; */
+"cCU-dI-y67.title" = "Réalisations";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "eNz-Jd-g3d"; */
+"eNz-Jd-g3d.title" = "Réglages";
+
+/* Class = "UILabel"; text = "Achievements"; ObjectID = "ggn-LD-W7S"; */
+"ggn-LD-W7S.text" = "Réalisations";
+
+/* Class = "UIButton"; normalTitle = "           Let's go !           "; ObjectID = "h3l-Q8-epm"; */
+"h3l-Q8-epm.normalTitle" = "           Allons-y !           ";
+
+/* Class = "UITabBarItem"; title = "Progress"; ObjectID = "kFo-7p-aj9"; */
+"kFo-7p-aj9.title" = "Progrès";
+
+/* Class = "UILabel"; text = "Documentaries"; ObjectID = "mlv-Qi-C80"; */
+"mlv-Qi-C80.text" = "Documentaires";
+
+/* Class = "UIButton"; normalTitle = "Home"; ObjectID = "pU1-Hh-IZI"; */
+"pU1-Hh-IZI.normalTitle" = "Accueil";
+
+/* Class = "UILabel"; text = "Already registered ?"; ObjectID = "qhD-W8-Vj2"; */
+"qhD-W8-Vj2.text" = "Déjà enregistré ?";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "kTL-Is-F6a"; */
+"kTL-Is-F6a.text" = "Connexion";
+
+/* Class = "UITextField"; placeholder = "Password..."; ObjectID = "w6W-bD-pWf"; */
+"w6W-bD-pWf.placeholder" = "Mot de passe...";
+
+/* Class = "UILabel"; text = "My progress"; ObjectID = "xcB-hC-Llk"; */
+"xcB-hC-Llk.text" = "Mes progrès";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "zhs-9A-ktE"; */
+"zhs-9A-ktE.normalTitle" = "Envoyer";
+
+/* Class = "UIButton"; normalTitle = "Sign out"; ObjectID = "KVy-8L-eNz"; */
+"KVy-8L-eNz.normalTitle" = "Se déconnecter";
+
+/* Class = "UIButton"; normalTitle = "Delete account"; ObjectID = "BKB-2k-yIy"; */
+"BKB-2k-yIy.normalTitle" = "Supprimer le compte";
+
+/* Class = "UIButton"; normalTitle = "Statistics source"; ObjectID = "mEI-26-YuY"; */
+"mEI-26-YuY.normalTitle" = "Source des statistiques";
+
+/* Class = "UIButton"; normalTitle = "Change start date"; ObjectID = "Zda-wM-vBW"; */
+"Zda-wM-vBW.normalTitle" = "Changer la date de début";
+
+/* Class = "UILabel"; text = "Current date:"; ObjectID = "FdQ-yQ-pFa"; */
+"FdQ-yQ-pFa.text" = "Date précédente";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "vDK-ha-qDP"; */
+"vDK-ha-qDP.normalTitle" = "Retour";
+
+/* Class = "UILabel"; text = "How many days do you want to deduct?"; ObjectID = "DPx-V9-tp9"; */
+"DPx-V9-tp9.text" = "Combien de jours voulez-vous déduire ?";
+
+/* Class = "UILabel"; text = "Date selected:"; ObjectID = "5Uy-xr-5bj"; */
+"5Uy-xr-5bj.text" = "Date selectionnée:";

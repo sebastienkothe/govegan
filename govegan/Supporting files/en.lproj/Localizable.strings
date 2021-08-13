@@ -1,0 +1,113 @@
+/* 
+ Localizable.strings
+ govegan
+ 
+ Created by Mosma on 20/05/2021.
+ 
+ English version
+ */
+
+// PickUpUserInformationView's label
+"vegan_start_date_question" = "How long have you been a vegan ?";
+"what_is_your_name_question" = "What should we call you ?";
+
+// Toolbar buttons
+"previous_year" = "Previous year";
+"now" = "Now";
+
+// Proceed button
+"proceed" = "           Proceed           ";
+
+// Back button
+"back_button" = "Back";
+
+// Progress title from progressCell
+"animal_lives" = "Animal lives";
+"kg_of_grain" = "Kg of grain";
+"litres_of_water" = "Litres of water";
+"sqm_of_forest" = "Sqm of forest";
+"kg_of_co2" = "Kg of CO2";
+
+// Progress timer
+"second" = "second";
+"minute" = "minute";
+"hour" = "hour";
+"day" = "day";
+"year" = "year";
+
+// Header section for achievement table view
+"category" = "Category";
+"goal" = "Goal";
+"progress" = "Progress";
+
+// Additional information on the objectives
+"life" = "life";
+"sqm" = "sqm";
+
+// Documentary descriptions
+"dominion" = "Exposing the dark underbelly of modern animal agriculture through drones, hidden & handheld cameras, the feature-length film explores the morality and validity of our dominion over the animal kingdom.";
+"earthlings" = "Using hidden cameras and never-before-seen footage, EARTHLINGS chronicles the day-to-day practices of the largest industries in the world, all of which rely entirely on animals for profit. Narrated by Joaquin Phoenix.";
+"why_go_vegan_description" = "You will never see your life the same way again after watching this video. Ed Winters, known as Earthling Ed, is a vegan educator, public speaker and content creator recognised for his efforts to spread the word about kindness to all non-humans.";
+
+// Documentary VC - Alert
+"let_it_go" = "Let's go!";
+"cancel" = "Cancel";
+"watch" = "Watch ";
+"why_go_vegan" = "Why go vegan ?";
+
+// LoginViewController && SignUpViewController
+"mail_required" = "Email address required";
+"request_user_mail" = "Enter your e-mail adress";
+"request_user_mail_password_reset" = "Enter your email address to recover your account";
+"password_required" = "Password required";
+"request_user_password" = "Enter your password";
+"unable_to_connect_user" = "Unable to log in";
+
+"account_recovery" = "Account recovery";
+"log_in" = "Log in ?";
+"connection" = "Login";
+"forgot_your_password" = "Forgot your password ?";
+
+// User actions
+"cancel" = "Cancel";
+"continue" = "Continue";
+"okay" = "Okay";
+"submit" = "Submit";
+"send" = "Send";
+
+"error" = "Error";
+
+"create_account" = "Create an account";
+"ask_user_to_create_an_account" = "Do you want to create an account ?";
+
+// Firestore operations
+"unable_to_create_account" = "Unable to create your account";
+"unable_to_retrieve_account_data" = "Unable to retrieve your account data";
+"unable_to_recover_your_account" = "Unable to recover your account";
+"no_data" = "No data";
+
+"date_updated" = "Date correctly updated";
+"date_updated_error" = "Unable to update the date";
+
+"change_date" = "Date change";
+"change_date_confirmation" = "Replace the current date with the new one ?";
+
+"unable_to_update_your_data" = "Unable to update your data";
+
+// SettingViewController
+"disconnection_question" = "Log out of the application ?";
+"yes" = "Yes";
+"unable_to_log_out" = "Unable to log out";
+"delete_account_request" = "Delete your account?";
+"reauthentication_failed" = "Reauthentication failed";
+"unable_to_delete_account" = "Unable to delete your account";
+"unable_to_remove_user_from_database" = "Cannot delete your account from the database";
+"security" = "Security";
+"log_in_before_deleting_the_account" = "Log in again before deleting the account";
+"deleted_account" = "Your account has been deleted";
+"unable_to_open_url" = "Unable to open link";
+"logged_with" = "Logged with:";
+
+// AuthenticationService
+"unable_to_reset_password" = "Unable to reset your password";
+"check_your_mailbox" = "Check out your mailbox to recover your account";

@@ -1,0 +1,113 @@
+/* 
+ Localizable.strings
+ govegan
+ 
+ Created by Mosma on 20/05/2021.
+ 
+ French version
+ */
+
+// PickUpUserInformationView's label
+"vegan_start_date_question" = "Depuis quand êtes-vous vegan ?";
+"what_is_your_name_question" = "Quel est votre prénom ?";
+
+// Toolbar buttons
+"previous_year" = "Année précédente";
+"now" = "Maintenant";
+
+// Proceed button
+"proceed" = "           Continuer           ";
+
+// Back button
+"back_button" = "Retour";
+
+// Progress title from progressCell
+"animal_lives" = "Animaux sauvés";
+"kg_of_grain" = "Kg de céréales";
+"litres_of_water" = "Litres d'eau";
+"sqm_of_forest" = "M² de forêt";
+"kg_of_co2" = "Kg de CO2";
+
+// Progress timer
+"second" = "seconde";
+"minute" = "minute";
+"hour" = "heure";
+"day" = "jour";
+"year" = "année";
+
+// Header section for achievement table view
+"category" = "Catégorie";
+"goal" = "Objectif";
+"progress" = "Progression";
+
+// Additional information on the objectives
+"life" = "vie";
+"sqm" = "㎡";
+
+// Documentary descriptions
+"dominion" = "Dominion est un documentaire qui dénonce six différentes facettes de l'exploitation animale et remet en question la domination de l'espèce Homo sapiens sur le règne animal.";
+"earthlings" = "Earthlings montre ce que subissent chaque jour les animaux pour servir l'espèce humaine. Ce documentaire est connu pour avoir changé la vie de nombreuses personnes.";
+"why_go_vegan_description" = "Pourquoi devenir vegan ? C'est à cette question que répond Ed Winters en remettant en question la moralité de nos actions. Cette vidéo, qui totalise presque 4 millions de vues, ne vous laissera pas indifférent.";
+
+// Documentary VC - Alert
+"let_it_go" = "Allons-y !";
+"cancel" = "Annuler";
+"watch" = "Regarder ";
+"why_go_vegan" = "Pourquoi devenir vegan";
+
+// LoginViewController
+"mail_required" = "Adresse email requise";
+"request_user_mail" = "Entrez votre adresse e-mail";
+"request_user_mail_password_reset" = "Entrez votre adresse e-mail pour récupérer votre compte";
+"password_required" = "Mot de passe requis";
+"request_user_password" = "Entrer un mot de passe";
+
+// User actions
+"cancel" = "Annuler";
+"continue" = "Continuer";
+"okay" = "Ok";
+"submit" = "Soumettre";
+"send" = "Envoyer";
+
+"error" = "Erreur";
+
+"create_account" = "Créer un compte";
+"ask_user_to_create_an_account" = "Voulez-vous créer un compte ?";
+"unable_to_connect_user" = "Connexion impossible";
+
+"account_recovery" = "Récupération du compte";
+"log_in" = "Se connecter ?";
+"connection" = "Connexion";
+"forgot_your_password" = "Mot de passe oublié ?";
+
+// Firestore operations
+"unable_to_create_account" = "Impossible de créer votre compte";
+"unable_to_retrieve_account_data" = "Impossible de récupérer les données de votre compte";
+"unable_to_recover_your_account" = "Impossible de récupérer votre compte";
+"no_data" = "Pas de données";
+
+"date_updated" = "Date correctement mise à jour";
+"date_updated_error" = "Impossible de mettre à jour la date";
+
+"change_date" = "Changement de date";
+"change_date_confirmation" = "Remplacer la date actuelle par la nouvelle ?";
+
+"unable_to_update_your_data" = "Impossible de mettre à jour vos données";
+
+// SettingViewController
+"disconnection_question" = "Se déconnecter de l'application ?";
+"yes" = "Oui";
+"unable_to_log_out" = "Impossible de vous déconnecter";
+"delete_account_request" = "Supprimer votre compte ?";
+"reauthentication_failed" = "Échec de la réauthentification";
+"unable_to_delete_account" = "Impossible de supprimer votre compte";
+"unable_to_remove_user_from_database" = "Impossible de supprimer votre compte de la base de données";
+"security" = "Sécurité";
+"log_in_before_deleting_the_account" = "Connectez-vous à nouveau avant de supprimer votre compte";
+"deleted_account" = "Votre compte a bien été supprimé";
+"unable_to_open_url" = "Impossible d'ouvrir le lien";
+"logged_with" = "Connecté(e) avec:";
+
+// AuthenticationService
+"unable_to_reset_password" = "Impossible de réinitialiser votre mot de passe";
+"check_your_mailbox" = "Regardez votre boite mail pour récupérer votre compte";
