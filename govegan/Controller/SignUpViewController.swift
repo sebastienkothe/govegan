@@ -6,14 +6,13 @@
 //
 
 import UIKit
-import Firebase
 
 class SignUpViewController: UIViewController {
     
     // MARK: - Internal properties
     
     /// Contains manually entered user data
-    var userData: [String]?
+    var user: Guest?
     
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
@@ -44,7 +43,7 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Private properties
-    private let firestoreManager = FirestoreManager.shared
+    private let firestoreManager = FirestoreManager()
     private let authenticationService = AuthenticationService()
     
     // MARK: - Private functions
@@ -57,7 +56,8 @@ class SignUpViewController: UIViewController {
             self?.authenticationService.createAccountFrom(email, password, completion: { [weak self] result in
                 switch result {
                 case .success(let authDataResult):
-                    self?.handleDatabaseRegistration(userID: authDataResult?.user.uid, email: email, password: password)
+                    guard let userID = authDataResult?.user.uid else { return }
+                    self?.handleDatabaseRegistration(userID: userID, email: email, password: password)
                 case .failure(let error):
                     UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
                 }
@@ -68,12 +68,11 @@ class SignUpViewController: UIViewController {
     }
     
     /// Used to add user to the database
-    private func handleDatabaseRegistration(userID: String?, email: String, password: String) {
-        guard let username = self.userData?[0], let veganStartDate = self.userData?[1], let userID = userID else {
-            return
-        }
+    private func handleDatabaseRegistration(userID: String, email: String, password: String) {
+        guard let username = self.user?.username,
+              let veganStartDate = self.user?.veganStartDate else { return }
         
-        let data: [String: String] = [.usernameKey : username, .veganStartDateKey: veganStartDate, .emailKey: email]
+        let data: [String: Any] = [.usernameKey : username, .veganStartDateKey: veganStartDate, .emailKey: email]
         
         firestoreManager.addDocumentWith(userID: userID, userData: data, completion: { [weak self] (result) in
             

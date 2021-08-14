@@ -30,14 +30,16 @@ class DocumentaryCell: UITableViewCell {
     
     // MARK: - IBActions
     @IBAction func didTapOnWatchButton() {
+        guard let deviceLanguage = languageProvider.getDeviceLanguage else { return }
         
-        let videoID = NSLocale.preferredLanguages[0] == "fr-FR" ? documentaries[tag].frenchVideoID : documentaries[tag].englishVideoID
+        let videoID = deviceLanguage == "fr" ? documentaries[tag].frenchVideoID : documentaries[tag].englishVideoID
         
         watchVideoFrom(youtubeID: videoID)
     }
     
     // MARK: - Private properties
     private let documentaries = DocumentariesProvider().documentaries
+    private let languageProvider = LanguageProvider()
     
     // MARK: - Private functions
     

@@ -10,33 +10,22 @@ import Firebase
 
 class FirestoreManager {
     
-    // MARK: - Internal properties
-    static let shared = FirestoreManager()
-    private init() {}
-    
-    var firestore: FirestoreProtocol = Firestore.firestore()
-    
-    var collectionReference: CollectionReferenceProtocol {
-        get { return firestore.collection(collectionName) }
-        set {}
+    // MARK: - Initializer
+    init(with firestore: FirestoreProtocol = Firestore.firestore()) {
+        self.firestore = firestore
     }
     
-    var documentReference: DocumentReferenceProtocol? {
-        get { return collectionReference.document(userID) }
-        set {}
-
-    }
-    
+    // MARK: - Typealias
     typealias AddDocumentWithCompletionHandler = (Result<Bool, FirestoreManagerError>) -> Void
     typealias GetValueFromDocumentCompletionHandler = (Result<Any?, FirestoreManagerError>) -> Void
     typealias DeleteADocumentCompletionHandler = (FirestoreManagerError?) -> Void
     
-    // MARK: - Internal functions
+    // MARK: - Internal methods
     
     /// Used to add document to the database
-    func addDocumentWith(userID: String, userData: [String: String], completion: @escaping AddDocumentWithCompletionHandler) {
-        self.userID = userID
-        referenceForUserData()?.setData(userData) { error in
+    func addDocumentWith(userID: String, userData: [String: Any], completion: @escaping AddDocumentWithCompletionHandler) {
+        
+        firestore?.collection(.collectionName).document(userID) .setData(userData) { error in
             guard error == nil else {
                 return completion(.failure(.unableToCreateAccount))
             }
@@ -48,15 +37,15 @@ class FirestoreManager {
     
     /// Used to fetch document from the database
     func getValueFromDocument(userID: String, valueToReturn: String, completion: @escaping GetValueFromDocumentCompletionHandler) {
-        self.userID = userID
-        referenceForUserData()?.getDocument { document, error in
+        
+        firestore?.collection(.collectionName).document(userID) .getDocument { document, error in
             
             guard error == nil else {
                 completion(.failure(.unableToRecoverYourAccount))
                 return
             }
             
-            let data = document?.data() as? [String: String]
+            let data = document?.data()
             
             // Searching the document was successful
             completion(.success(data?[valueToReturn]))
@@ -65,9 +54,8 @@ class FirestoreManager {
     
     /// Delete a document from the firestore database
     func deleteADocument(userID: String, completion: @escaping DeleteADocumentCompletionHandler) {
-        self.userID = userID
         
-        referenceForUserData()?.delete() { error in
+        firestore?.collection(.collectionName).document(userID) .delete() { error in
             guard error == nil else {
                 completion(.unableToRemoveUserFromDatabase)
                 return
@@ -78,10 +66,9 @@ class FirestoreManager {
     }
     
     /// Used to update an entry in the document like vegan start date
-    func updateADocument(userID: String, userData: [String: String], completion: @escaping ((Result<Void, FirestoreManagerError>) -> Void)) {
-        self.userID = userID
+    func updateADocument(userID: String, userData: [String: Any], completion: @escaping ((Result<Void, FirestoreManagerError>) -> Void)) {
         
-        referenceForUserData()?.updateData(userData, completion: { error in
+        firestore?.collection(.collectionName).document(userID).updateData(userData, completion: { error in
             
             guard error == nil else {
                 completion(.failure(.unableToUpdateData))
@@ -92,13 +79,12 @@ class FirestoreManager {
         })
     }
     
-    // MARK: - Private properties
-    private let collectionName = "users"
-    private var userID = ""
-    
-    // MARK: - Private functions
-    private func referenceForUserData() -> DocumentReferenceProtocol? {
-        guard let documentReference = documentReference else { return nil}
-        return documentReference
+    /// Convert a timestamp object to a date
+    func convertTimestampObjectToDate(object: Any?) -> Date? {
+        guard let valueToReturn = object as? Timestamp else { return nil}
+        return valueToReturn.dateValue()
     }
+    
+    // MARK: - Private properties
+    private let firestore: FirestoreProtocol?
 }

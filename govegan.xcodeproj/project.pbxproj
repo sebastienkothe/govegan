@@ -51,6 +51,9 @@
 		83D08B1526C1A90400EBDFE7 /* AuthenticationDeleterService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D08B1426C1A90400EBDFE7 /* AuthenticationDeleterService+Mock.swift */; };
 		83D08B1726C1A9DE00EBDFE7 /* AuthenticationService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D08B1626C1A9DE00EBDFE7 /* AuthenticationService+Mock.swift */; };
 		83D08B1B26C1AC1300EBDFE7 /* FirestoreManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D08B1A26C1AC1300EBDFE7 /* FirestoreManager+Mock.swift */; };
+		83DA0BC626C6C2720094AD6F /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA0BC526C6C2720094AD6F /* Guest.swift */; };
+		83DA0BC826C6C7530094AD6F /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA0BC726C6C7530094AD6F /* DateHandler.swift */; };
+		83DA0BEA26C722530094AD6F /* LanguageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA0BE926C722530094AD6F /* LanguageProvider.swift */; };
 		83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEAD2668F9700087B727 /* UIApplication+.swift */; };
 		83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DEAEB42669047E0087B727 /* UIAlertService.swift */; };
 		83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */; };
@@ -126,6 +129,9 @@
 		83D08B1426C1A90400EBDFE7 /* AuthenticationDeleterService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationDeleterService+Mock.swift"; sourceTree = "<group>"; };
 		83D08B1626C1A9DE00EBDFE7 /* AuthenticationService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationService+Mock.swift"; sourceTree = "<group>"; };
 		83D08B1A26C1AC1300EBDFE7 /* FirestoreManager+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirestoreManager+Mock.swift"; sourceTree = "<group>"; };
+		83DA0BC526C6C2720094AD6F /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
+		83DA0BC726C6C7530094AD6F /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
+		83DA0BE926C722530094AD6F /* LanguageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageProvider.swift; sourceTree = "<group>"; };
 		83DEAEAD2668F9700087B727 /* UIApplication+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		83DEAEB42669047E0087B727 /* UIAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertService.swift; sourceTree = "<group>"; };
 		83E7E024266395A5005211D3 /* ProgressCalculatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCalculatorDelegate.swift; sourceTree = "<group>"; };
@@ -410,6 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				83DEAEB42669047E0087B727 /* UIAlertService.swift */,
+				83DA0BC726C6C7530094AD6F /* DateHandler.swift */,
+				83DA0BE926C722530094AD6F /* LanguageProvider.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -435,6 +443,7 @@
 		83F8D87D265917CD00EE96C4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				83DA0BC526C6C2720094AD6F /* Guest.swift */,
 				837B89A926C5CC9A00C5A6E2 /* AchievementControllerDataSource */,
 				837B89A826C5CC7400C5A6E2 /* DocumentaryControllerDataSource */,
 				837B89A726C5CC4700C5A6E2 /* ProgressControllerDataSource */,
@@ -648,6 +657,7 @@
 				83777176266A896800923AA5 /* FirestoreManager.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
+				83DA0BC626C6C2720094AD6F /* Guest.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				834C212E267BFB1F005456E0 /* AuthenticationService.swift in Sources */,
 				837B89A626C5C9AC00C5A6E2 /* Progress.swift in Sources */,
@@ -659,11 +669,13 @@
 				831D0FD72653DAF100817B5A /* NextButton.swift in Sources */,
 				83E7E025266395A5005211D3 /* ProgressCalculatorDelegate.swift in Sources */,
 				837B89A426C5C5DB00C5A6E2 /* Achievement.swift in Sources */,
+				83DA0BEA26C722530094AD6F /* LanguageProvider.swift in Sources */,
 				83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
 				83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */,
 				8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */,
+				83DA0BC826C6C7530094AD6F /* DateHandler.swift in Sources */,
 				836E7C94267D459800278CFD /* Notification.swift in Sources */,
 				837B89A226C5A9B000C5A6E2 /* Documentary.swift in Sources */,
 				836A9EC7264D471F002158FD /* SceneDelegate.swift in Sources */,

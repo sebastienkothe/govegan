@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class ProgressViewController: UIViewController {
     
@@ -34,7 +33,7 @@ class ProgressViewController: UIViewController {
     
     // MARK: - private properties
     private let progress = ProgressProvider().progress
-    private let firestoreManager = FirestoreManager.shared
+    private let firestoreManager = FirestoreManager()
     private let authenticationService = AuthenticationService()
     private let progressCalculator = ProgressCalculator()
     private var timer = Timer()
@@ -58,10 +57,10 @@ class ProgressViewController: UIViewController {
             self.handleActivityIndicator(isHidden: true)
             
             switch result {
-            case .success(let veganStartDate):
-                guard let userVeganDate = veganStartDate as? String else { return }
-                guard let convertedDate = self.progressCalculator.convertDate(userVeganDate) else { return }
-                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: convertedDate, repeats: true)
+            case .success(let anyObject):
+                guard let veganStartDate = self.firestoreManager.convertTimestampObjectToDate(object: anyObject) else { return }
+                
+                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateUserInterface(_:)), userInfo: veganStartDate, repeats: true)
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)
             }

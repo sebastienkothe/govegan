@@ -11,7 +11,7 @@ import UIKit
 class PickUpUserInformationView: UIView {
     
     // MARK: - Internal properties
-    var onMainButtonTapped: (([String]) -> Void)?
+    var onMainButtonTapped: ((Guest) -> Void)?
     var backButtonTapped: (() -> Void)?
     
     // MARK: - Internal functions
@@ -21,12 +21,13 @@ class PickUpUserInformationView: UIView {
         setupViews()
         
         datePicker.valuePickerHasBeenChanged = { [weak self] newDate in
-            self?.answerTextField.text = newDate
+            self?.answerTextField.text = self?.dateHandler.convertDateAsString(date: newDate)
         }
         
         answerTextField.previousYearButtonTapped = { [weak self] in
             guard let self = self else { return "" }
-            return self.datePicker.setDateToPreviousYear()
+            let dateMinusOneYear = self.datePicker.setDateToPreviousYear()
+            return dateMinusOneYear
         }
         
         answerTextField.currentDateButtonTapped = { [weak self] in
@@ -57,17 +58,17 @@ class PickUpUserInformationView: UIView {
     
     // MARK: - IBActions
     @IBAction private func didTapOnProceedButton() {
-        guard let textFromAnswerTextField = answerTextField.text else { return }
         
-        storeUserData(textFromAnswerTextField)
-        
-        if hasAllTheData {
-            onMainButtonTapped?([name, veganStartDate])
+        guard answerTextField.inputView == nil else {
+            onMainButtonTapped?(Guest(username: username, veganStartDate: datePicker.date))
             return
         }
         
-        questionLabel.text = "vegan_start_date_question".localized
+        guard let name = answerTextField.text,
+              name.trimmingCharacters(in: .whitespaces) != "" else { return }
         
+        username = name
+        questionLabel.text = "vegan_start_date_question".localized
         answerTextField.setupTextField(datePicker: datePicker)
     }
     
@@ -83,28 +84,10 @@ class PickUpUserInformationView: UIView {
     
     // MARK: - Private properties
     private let datePicker = VeganStartDatePicker()
-    
-    private var name = ""
-    private var veganStartDate: String = "" {
-        didSet {
-            if name != "".trimmingCharacters(in: .whitespaces) {
-                hasAllTheData = true
-            }
-        }
-    }
-    
-    private var hasAllTheData = false
+    private let dateHandler = DateHandler()
+    private var username: String = ""
     
     // MARK: - Private functions
-    
-    /// Retrieves user data
-    private func storeUserData(_ textFromAnswerTextField: String) {
-        if questionLabel.text == "vegan_start_date_question".localized {
-            veganStartDate = textFromAnswerTextField
-        } else {
-            name = textFromAnswerTextField
-        }
-    }
     
     /// Used to hide/show items
     private func handleProceedButton(mustBeActivated: Bool) {

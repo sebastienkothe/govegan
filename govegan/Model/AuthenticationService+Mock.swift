@@ -8,6 +8,12 @@
 import Foundation
 import Firebase
 
+// Used by all mocks
+enum MockError: Error {
+    case error
+}
+
+// MARK: - AuthProtocol
 protocol AuthProtocol {
     var currentUser: User? { get }
     
@@ -18,12 +24,6 @@ protocol AuthProtocol {
     func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
     
     func sendPasswordReset(withEmail email: String, completion: ((Error?) -> Void)?)
-}
-
-extension Auth: AuthProtocol { }
-
-enum MockError: Error {
-    case error
 }
 
 class MockAuth: AuthProtocol {
@@ -64,3 +64,5 @@ class MockAuthSuccessCases: AuthProtocol {
         completion!(nil)
     }
 }
+
+extension Auth: AuthProtocol { }

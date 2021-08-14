@@ -10,7 +10,7 @@ import UIKit
 class VeganStartDatePicker: UIDatePicker {
     
     // MARK: - Internal properties
-    var valuePickerHasBeenChanged: ((String) -> Void)?
+    var valuePickerHasBeenChanged: ((Date) -> Void)?
     
     // MARK: - Internal methods
     override init(frame: CGRect) {
@@ -27,7 +27,9 @@ class VeganStartDatePicker: UIDatePicker {
     func setDateToCurrentDate() -> String {
         maximumDate = Date()
         date = Date()
-        return convertDateToString()
+        
+        guard let dateAsString = dateHandler.convertDateAsString(date: date) else { return ""}
+        return dateAsString
     }
     
     /// Used to define the date minus one year
@@ -37,18 +39,13 @@ class VeganStartDatePicker: UIDatePicker {
         
         guard let previousYear = Calendar.current.date(byAdding: dateComponent, to: date) else { return "" }
         date = previousYear
-        return convertDateToString()
+        
+        guard let dateAsString = dateHandler.convertDateAsString(date: date) else { return ""}
+        return dateAsString
     }
     
-    /// Convert date to String with specific format
-    func convertDateToString() -> String {
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .short
-        dateFormat.timeStyle = .short
-        dateFormat.locale = Locale(identifier: "FR-fr")
-        
-        return dateFormat.string(from: date)
-    }
+    // MARK: - Private properties
+    private let dateHandler = DateHandler()
     
     // MARK: - Private methods
     
@@ -79,6 +76,6 @@ class VeganStartDatePicker: UIDatePicker {
     
     /// Called when the value changes
     @objc private func dateChanged() {
-        valuePickerHasBeenChanged?(convertDateToString())
+        valuePickerHasBeenChanged?(date)
     }
 }

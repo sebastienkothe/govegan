@@ -15,22 +15,22 @@ class FirestoreManagerTestCase: XCTestCase {
     var firestoreManager: FirestoreManager!
     
     override func setUp() {
-        firestoreManager = FirestoreManager.shared
-        firestoreManager.firestore = FirestoreMock()
-        firestoreManager.collectionReference = CollectionReferenceMock()
-        firestoreManager.documentReference = DocumentReferenceMock()
+        firestoreManager = FirestoreManager(with: FirestoreMock())
     }
     
     func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldReturnAnError() {
         
-        let data: [String: String] = [.usernameKey : "", .veganStartDateKey: "", .emailKey: ""]
-        
         // Given
+        let data: [String: Any] = [:]
+        
+        // When
         firestoreManager.addDocumentWith(userID: "", userData: data, completion: { result in
             switch result {
             case .success:
                 XCTFail()
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToCreateAccount)
             }
         })
@@ -38,16 +38,17 @@ class FirestoreManagerTestCase: XCTestCase {
     
     func test_GivenWeNeedToAddADocumentInDatabase_WhenAddDocumentWithIsCalled_ThenShouldNotReturnAnError() {
         
-        firestoreManager.firestore = FirestoreSuccessMock()
-        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
-        firestoreManager.documentReference = DocumentReferenceSuccessMock()
-        
-        let data: [String: String] = [.usernameKey : "Sébastien", .veganStartDateKey: "20/01/1988 00:00", .emailKey: "sebastien.kothe@icloud.com"]
+        firestoreManager = FirestoreManager(with: FirestoreSuccessMock())
         
         // Given
-        firestoreManager.addDocumentWith(userID: "0938420284702", userData: data, completion: { result in
+        let data: [String: Any] = [:]
+        
+        // When
+        firestoreManager.addDocumentWith(userID: "", userData: data, completion: { result in
             switch result {
             case .success(let success):
+                
+                // Then
                 XCTAssertTrue(success)
             case .failure:
                 XCTFail()
@@ -57,124 +58,124 @@ class FirestoreManagerTestCase: XCTestCase {
     
     func test_GivenUserIsPresentInDatabase_WhenGetValueFromDocumentIsCalled_ThenShouldNotReturnAnError() {
         
-        firestoreManager.firestore = FirestoreSuccessMock()
-        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
-        firestoreManager.documentReference = DocumentReferenceSuccessMock()
-        
-        let expectation = expectation(description: "Waiting for async operation")
+        firestoreManager = FirestoreManager(with: FirestoreSuccessMock())
         
         // When
-        firestoreManager.getValueFromDocument(userID: "0", valueToReturn: .veganStartDateKey, completion: { result in
+        firestoreManager.getValueFromDocument(userID: "", valueToReturn: "", completion: { result in
             
             switch result {
-            case .failure(let error):
-                XCTAssertNil(error)
+            case .failure:
+                XCTFail()
             case .success(_):
+                
+                // Then
+                print("Test passed")
                 break
             }
-            expectation.fulfill()
         })
-        
-        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserIsPresentButUserIDIsWrong_WhenGetValueFromDocumentIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = expectation(description: "Waiting for async operation")
-        
         // When
-        firestoreManager.getValueFromDocument(userID: "1", valueToReturn: .veganStartDateKey, completion: { result in
+        firestoreManager.getValueFromDocument(userID: "", valueToReturn: "", completion: { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToRecoverYourAccount)
             default: XCTFail()
             }
-            expectation.fulfill()
         })
-        
-        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserHasAnAccountInTheDatabase_WhenDeleteADocumentIsCalled_ThenShouldReturnAnError() {
-        let expectation = expectation(description: "Waiting for async operation")
         
         // When
-        firestoreManager.deleteADocument(userID: "0", completion: { error in
+        firestoreManager.deleteADocument(userID: "", completion: { error in
             
             if let error = error {
+                
+                // Then
                 XCTAssertEqual(error, .unableToRemoveUserFromDatabase)
             } else {
                 XCTFail()
             }
-            
-            expectation.fulfill()
         })
-        
-        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserHasAnAccountInTheDatabase_WhenDeleteADocumentIsCalled_ThenShouldNotReturnAnError() {
         
-        firestoreManager.firestore = FirestoreSuccessMock()
-        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
-        firestoreManager.documentReference = DocumentReferenceSuccessMock()
-        
-        let expectation = expectation(description: "Waiting for async operation")
+        firestoreManager = FirestoreManager(with: FirestoreSuccessMock())
         
         // When
-        firestoreManager.deleteADocument(userID: "0", completion: { error in
+        firestoreManager.deleteADocument(userID: "", completion: { error in
             
+            // Then
             XCTAssertNil(error)
-            
-            expectation.fulfill()
         })
-        
-        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserWantsToUpdateHisVeganStartDate_WhenUpdateADocumentIsCalled_ThenShouldNotReturnAnError() {
         
-        firestoreManager.firestore = FirestoreSuccessMock()
-        firestoreManager.collectionReference = CollectionReferenceSuccessMock()
-        firestoreManager.documentReference = DocumentReferenceSuccessMock()
+        firestoreManager = FirestoreManager(with: FirestoreSuccessMock())
         
-        let expectation = expectation(description: "Waiting for async operation")
+        // Given
+        let data: [String: Any] = [:]
         
-        let data: [String: String] = [.veganStartDateKey: "22/07/2021 03:05"]
         // When
-        firestoreManager.updateADocument(userID: "0", userData: data, completion: { result in
+        firestoreManager.updateADocument(userID: "", userData: data, completion: { result in
             switch result {
             case .success(let success):
+                
+                // Then
                 XCTAssertNotNil(success)
             case .failure:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         })
-        
-        waitForExpectations(timeout: 0.1, handler: nil)
     }
     
     func test_GivenUserWantsToUpdateHisVeganStartDate_WhenUpdateADocumentIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = expectation(description: "Waiting for async operation")
-        
-        let data: [String: String] = [.veganStartDateKey: "22/07/2021 03:05"]
+        // Given
+        let data: [String: String] = [:]
         
         // When
-        firestoreManager.updateADocument(userID: "0", userData: data, completion: { result in
+        firestoreManager.updateADocument(userID: "", userData: data, completion: { result in
             switch result {
             case .success:
                 XCTFail()
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToUpdateData)
             }
-            
-            expectation.fulfill()
         })
+    }
+    
+    func test_GivenArrayContainsHeterogeneousValues_WhenConvertTimestampObjectToDateIsCalled_ThenShouldReturnADate() {
         
-        waitForExpectations(timeout: 0.1, handler: nil)
+        // Given
+        let array = ["Salut", Timestamp()] as [Any]
+        
+        // When
+        let date = firestoreManager.convertTimestampObjectToDate(object: array[1])
+        
+        // Then
+        XCTAssertNotNil(date!)
+    }
+    
+    func test_GivenArrayContainsHeterogeneousValuesWithoutTimestampObject_WhenConvertTimestampObjectToDateIsCalled_ThenShouldReturnNil() {
+        
+        // Given
+        let array = ["Salut"] as [Any]
+        
+        // When
+        let date = firestoreManager.convertTimestampObjectToDate(object: array[0])
+        
+        // Then
+        XCTAssertNil(date)
     }
 }

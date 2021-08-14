@@ -14,17 +14,12 @@ protocol FirestoreProtocol {
 }
 
 class FirestoreMock: FirestoreProtocol {
-    
-    let collectionName = "users"
-    
     func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
         return CollectionReferenceMock()
     }
 }
 
 class FirestoreSuccessMock: FirestoreProtocol {
-    let collectionName = "users"
-    
     func collection(_ collectionPath: String) -> CollectionReferenceProtocol {
         return CollectionReferenceSuccessMock()
     }
@@ -60,18 +55,22 @@ extension CollectionReference: CollectionReferenceProtocol {
 }
 
 // MARK: - DocumentReferenceProtocol
+
+// MARK: - Typealias
 typealias DocumentDeleteCompletion = (_ error: Error?) -> Void
 typealias GetDocumentCompletion = (DocumentSnapshot?, Error?) -> Void
+typealias SetDataCompletion = ((Error?) -> Void)?
+typealias UpdateDataCompletion = ((Error?) -> Void)?
 
 protocol DocumentReferenceProtocol {
     func delete(completion: DocumentDeleteCompletion?)
     func getDocument(completion: @escaping GetDocumentCompletion)
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?)
-    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?)
+    func setData(_ documentData: [String : Any], completion: SetDataCompletion)
+    func updateData(_ fields: [AnyHashable : Any], completion: UpdateDataCompletion)
 }
 
 class DocumentReferenceMock : DocumentReferenceProtocol {
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
+    func setData(_ documentData: [String : Any], completion: SetDataCompletion) {
         completion!(MockError.error)
     }
     
@@ -83,13 +82,13 @@ class DocumentReferenceMock : DocumentReferenceProtocol {
         completion!(MockError.error)
     }
     
-    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?) {
+    func updateData(_ fields: [AnyHashable : Any], completion: UpdateDataCompletion) {
         completion!(MockError.error)
     }
 }
 
 class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
-    func setData(_ documentData: [String : Any], completion: ((Error?) -> Void)?) {
+    func setData(_ documentData: [String : Any], completion: SetDataCompletion) {
         completion!(nil)
     }
     
@@ -101,10 +100,9 @@ class DocumentReferenceSuccessMock: DocumentReferenceProtocol {
         completion!(nil)
     }
     
-    func updateData(_ fields: [AnyHashable : Any], completion: ((Error?) -> Void)?) {
+    func updateData(_ fields: [AnyHashable : Any], completion: UpdateDataCompletion) {
         completion!(nil)
     }
 }
 
 extension DocumentReference: DocumentReferenceProtocol {}
-

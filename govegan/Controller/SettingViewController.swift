@@ -29,7 +29,7 @@ class SettingViewController: UIViewController {
     }
     
     // MARK: - Private properties
-    private let firestoreManager = FirestoreManager.shared
+    private let firestoreManager = FirestoreManager()
     private let authenticationService = AuthenticationService()
     
     // MARK: - Private functions

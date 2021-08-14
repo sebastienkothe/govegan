@@ -38,13 +38,6 @@ class ProgressCalculator {
         return text
     }
     
-    func convertDate(_ dateAsAString: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        
-        return dateFormatter.date(from: dateAsAString)
-    }
-    
     /// Returns the time to display
     func checkTheTimeToDisplay(timeElapsed: DateComponents) -> [String] {
         guard let second = timeElapsed.second, let minute = timeElapsed.minute, let hour = timeElapsed.hour, let day = timeElapsed.day, let year = timeElapsed.year else { return [] }

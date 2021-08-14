@@ -30,7 +30,7 @@ class PickUpUserInfoTextField: UITextField {
         // Assign toolbar
         inputAccessoryView = generateToolbar()
         
-        text = datePicker.convertDateToString()
+        text = dateHandler.convertDateAsString(date: datePicker.date)
         
         // Assign date picker to the text field
         inputView = datePicker
@@ -46,6 +46,9 @@ class PickUpUserInfoTextField: UITextField {
         
         text = ""
     }
+    
+    // MARK: - Private properties
+    private let dateHandler = DateHandler()
     
     // MARK: - Private methods
     private func generateToolbar() -> UIToolbar {

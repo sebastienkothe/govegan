@@ -15,12 +15,12 @@ class PickUpUserInformationViewController: UIViewController {
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
-        pickUpUserInformationView.onMainButtonTapped = { [weak self] (userData) in
+        pickUpUserInformationView.onMainButtonTapped = { [weak self] (user) in
             
             // Retrieving the controller and changing the value of its "userData" property
             let storyBoard = UIStoryboard(name: .mainStoryboard, bundle: nil)
             guard let viewController =  storyBoard.instantiateViewController(withIdentifier: .signUpViewController) as? SignUpViewController else { return }
-            viewController.userData = userData
+            viewController.user = user
             
             self?.navigationController?.pushViewController(viewController, animated: true)
         }

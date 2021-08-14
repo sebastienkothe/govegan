@@ -10,10 +10,9 @@ import Firebase
 
 class AuthenticationService {
     
-    init(
-        auth: AuthProtocol = Auth.auth(),
-        authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()
-    ) {
+    // MARK: - Initializer
+    init(auth: AuthProtocol = Auth.auth(),
+        authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()) {
         self.auth = auth
         self.authenticationDeleterService = authenticationDeleterService
     }

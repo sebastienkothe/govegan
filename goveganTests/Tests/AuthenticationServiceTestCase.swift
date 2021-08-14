@@ -20,78 +20,68 @@ class AuthenticationServiceTestCase: XCTestCase {
     
     func test_GivenUserIsConnected_WhenDisconnectUserFromAppIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = XCTestExpectation()
-        
+        // When
         authenticationService.disconnectUserFromApp { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToLogOut)
             case .success:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserHasAnAccount_WhenDeleteUserAuthenticationIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = XCTestExpectation()
         let testMock = AuthenticationDeleterServiceMock()
         
         authenticationService = AuthenticationService(
             authenticationDeleterService: testMock
         )
         
+        // When
         authenticationService.deleteUserAuthentication { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToDeleteAccount)
             case .success:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserHasAnAccount_WhenDeleteUserAuthenticationIsCalledWithMockAuth_ThenShouldReturnAnError() {
         
-        let expectation = XCTestExpectation()
         let testMock = AuthenticationDeleterServiceMock()
-        
         
         authenticationService = AuthenticationService(
             auth: MockAuth(),
             authenticationDeleterService: testMock
         )
         
+        // When
         authenticationService.deleteUserAuthentication { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToDeleteAccount)
             case .success:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         }
-        
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     
     func test_GivenUserHasAnAccount_WhenDeleteUserAuthenticationIsCalled_ThenShouldNotReturnAnError() {
         
-        let expectation = XCTestExpectation()
         let testMock = AuthenticationDeleterServiceSuccessMock()
         
         authenticationService = AuthenticationService(
@@ -99,124 +89,117 @@ class AuthenticationServiceTestCase: XCTestCase {
             authenticationDeleterService: testMock
         )
         
+        // When
         authenticationService.deleteUserAuthentication { result in
             
             switch result {
             case .failure:
                 XCTFail()
             case .success:
+                
+                // Then
                 XCTAssertTrue(true)
             }
-            
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserIsNotConnected_WhenConnectUserWithIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = XCTestExpectation()
-        
-        authenticationService.connectUserWith("sebastien.kothe@icloud.com", and: "Mosma2973@", completion: { result in
+        // When
+        authenticationService.connectUserWith("", and: "", completion: { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToConnectUser)
             case .success:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         })
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserIsNotConnected_WhenConnectUserWithIsCalled_ThenShouldNotReturnAnError() {
         
-        let expectation = XCTestExpectation()
         authenticationService = AuthenticationService(auth: MockAuthSuccessCases())
-        authenticationService.connectUserWith("sebastien.kothe@icloud.com", and: "Mosma2973@", completion: { result in
+        
+        // When
+        authenticationService.connectUserWith("", and: "", completion: { result in
             
             switch result {
             case .failure:
                 XCTFail()
             case .success(let result):
+                
+                // Then
                 XCTAssertNotNil(result)
             }
-            
-            expectation.fulfill()
         })
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserHasNoAccount_WhenCreateAccountFromIsCalled_ThenShouldReturnAnError() {
         
-        let expectation = XCTestExpectation()
-        
-        authenticationService.createAccountFrom("sebastien.kothe@icloud.com", "Mosma2973@", completion: { result in
+        // When
+        authenticationService.createAccountFrom("", "", completion: { result in
             
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToCreateAccount)
             case .success:
                 XCTFail()
             }
-            
-            expectation.fulfill()
         })
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserHasNoAccount_WhenCreateAccountFromIsCalled_ThenShouldNotReturnAnError() {
         
-        let expectation = XCTestExpectation()
         authenticationService = AuthenticationService(auth: MockAuthSuccessCases())
-        authenticationService.createAccountFrom("sebastien.kothe@icloud.com", "Mosma2973@", completion: { result in
+        
+        // When
+        authenticationService.createAccountFrom("", "", completion: { result in
             
             switch result {
             case .failure:
                 XCTFail()
             case .success(let result):
+                
+                // Then
                 XCTAssertNil(result)
             }
-            
-            expectation.fulfill()
         })
-        
-        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_GivenUserEnterACorrectMailAdress_WhenResetPasswordIsCalled_ThenShouldNotReturnAnError() {
-        let expectation = XCTestExpectation()
+        
         authenticationService = AuthenticationService(auth: MockAuthSuccessCases())
-        authenticationService.resetPassword(email: "sebastien.kothe@icloud.com") { result in
+        
+        // When
+        authenticationService.resetPassword(email: "") { result in
             switch result {
             case .failure:
                 XCTFail()
             case .success(let result):
+                
+                // Then
                 XCTAssertNotNil(result)
             }
-            
-            expectation.fulfill()
         }
     }
     
     func test_GivenEmailAdressDoesNotExistInTheDB_WhenResetPasswordIsCalled_ThenShouldReturnAnError() {
-        let expectation = XCTestExpectation()
         
-        authenticationService.resetPassword(email: "sebastien.kothe@icloud.com") { result in
+        // When
+        authenticationService.resetPassword(email: "") { result in
             switch result {
             case .failure(let error):
+                
+                // Then
                 XCTAssertEqual(error, .unableToResetPassword)
             case .success():
                 XCTFail()
             }
-            
-            expectation.fulfill()
         }
     }
 }
