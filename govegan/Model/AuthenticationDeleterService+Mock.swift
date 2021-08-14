@@ -14,17 +14,25 @@ protocol UserProtocol {
 
 class UserMock: UserProtocol {
     func delete(completion: ((Error?) -> Void)?) {
-        completion!(nil)
+        completion!(MockError.error)
+    }
+}
+
+class UserErrorRefreshLoginMock: UserProtocol {
+    func delete(completion: ((Error?) -> Void)?) {
+        completion!(AuthErrorCode(rawValue: 17014))
     }
 }
 
 class UserSuccessMock: UserProtocol {
     func delete(completion: ((Error?) -> Void)?) {
-        completion!(MockError.error)
+        completion!(nil)
     }
 }
 
 extension User: UserProtocol {}
+extension AuthErrorCode: Error {}
+
 
 // MARK: - AuthenticationDeleterServiceProtocol
 protocol AuthenticationDeleterServiceProtocol {

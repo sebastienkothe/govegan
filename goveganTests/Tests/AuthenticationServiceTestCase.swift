@@ -12,7 +12,6 @@ import Firebase
 
 class AuthenticationServiceTestCase: XCTestCase {
     var authenticationService: AuthenticationService!
-    var user: UserProtocol!
     
     override func setUp() {
         authenticationService = AuthenticationService(auth: MockAuth())

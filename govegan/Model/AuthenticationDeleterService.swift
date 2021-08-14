@@ -14,17 +14,8 @@ class AuthenticationDeleterService: AuthenticationDeleterServiceProtocol {
     func deleteUserAuthentication(user: UserProtocol?, completion: @escaping DeleteUserAuthenticationCompletionHandler) {
         user?.delete { error in
             
-            guard error == nil else {
-                guard let error = error else { return }
-                guard let errorCode = AuthErrorCode(rawValue: error._code) else { return }
-                
-                if errorCode == .requiresRecentLogin {
-                    completion(.logInBeforeDeletingTheAccount)
-                    
-                } else {
-                    completion(.unableToDeleteAccount)
-                }
-                
+            if let error = error {
+                AuthErrorCode(rawValue: error._code) == .requiresRecentLogin ? completion(.logInBeforeDeletingTheAccount) :  completion(.unableToDeleteAccount)
                 return
             }
             
