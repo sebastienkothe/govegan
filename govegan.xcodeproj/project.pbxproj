@@ -43,6 +43,8 @@
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
 		8384A5AC26C530E2003818D6 /* VeganStartDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */; };
 		8384A5AE26C552EA003818D6 /* PickUpUserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */; };
+		839D307C26C81211008CCCE9 /* LanguageProvider+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */; };
+		839D307E26C81972008CCCE9 /* DateHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */; };
 		83BA455C26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
@@ -122,6 +124,8 @@
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganStartDatePicker.swift; sourceTree = "<group>"; };
 		8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInfoTextField.swift; sourceTree = "<group>"; };
+		839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageProvider+Mock.swift"; sourceTree = "<group>"; };
+		839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandlerTestCase.swift; sourceTree = "<group>"; };
 		83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDeleterServiceTestCase.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
@@ -420,6 +424,7 @@
 				83DEAEB42669047E0087B727 /* UIAlertService.swift */,
 				83DA0BC726C6C7530094AD6F /* DateHandler.swift */,
 				83DA0BE926C722530094AD6F /* LanguageProvider.swift */,
+				839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				83F651562672C41F00CEFE9B /* FirestoreManagerTestCase.swift */,
 				836E7C95267D56E800278CFD /* AuthenticationServiceTestCase.swift */,
 				83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */,
+				839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -676,6 +682,7 @@
 				83DEAEB52669047E0087B727 /* UIAlertService.swift in Sources */,
 				83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */,
 				836A9EC5264D471F002158FD /* AppDelegate.swift in Sources */,
+				839D307C26C81211008CCCE9 /* LanguageProvider+Mock.swift in Sources */,
 				83DEAEAE2668F9700087B727 /* UIApplication+.swift in Sources */,
 				8324D3BB2667C7A20069A249 /* LoginButton.swift in Sources */,
 				83DA0BC826C6C7530094AD6F /* DateHandler.swift in Sources */,
@@ -691,6 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839D307E26C81972008CCCE9 /* DateHandlerTestCase.swift in Sources */,
 				836A9EDC264D4722002158FD /* ProgressCalculatorTestCase.swift in Sources */,
 				833E6302266E178F006A5DE5 /* ProgressCalculatorDelegateMock.swift in Sources */,
 				83BA455C26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift in Sources */,

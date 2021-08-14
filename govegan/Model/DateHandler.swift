@@ -9,13 +9,15 @@ import UIKit
 
 class DateHandler {
     
-    // MARK: - Internal methods
+    // MARK: - Initializer
+    init(with languageProvider: LanguageProviderProtocol = LanguageProvider()) {
+        self.languageProvider = languageProvider
+    }
     
     /// Converts the date into a string taking into account the language of the device
     func convertDateAsString(date: Date) -> String? {
         
-        guard let language = languageProvider.getDeviceLanguage else { return nil }
-        
+        let language = languageProvider.getDeviceLanguage
         let deviceLanguage = language == "fr" ? "fr-FR" : "en-EN"
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -26,5 +28,5 @@ class DateHandler {
     }
     
     // MARK: - Private properties
-    private let languageProvider = LanguageProvider()
+    private let languageProvider: LanguageProviderProtocol
 }
