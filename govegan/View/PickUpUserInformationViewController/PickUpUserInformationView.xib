@@ -73,6 +73,7 @@
                     <color key="backgroundColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="LjN-EK-AZA"/>
+                        <constraint firstAttribute="width" constant="172" id="pfv-KN-0KC"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
                     <state key="normal" title="           Proceed           ">

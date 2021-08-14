@@ -19,6 +19,6 @@ struct AchievementsProvider {
         Achievement(image: UIImage(named: "water-80"), unitOfMeasure: "l"),
         Achievement(image: UIImage(named: "tree-80"), unitOfMeasure: "sqm".localized),
         Achievement(image: UIImage(named: "co2-80"), unitOfMeasure: "kg")
-    
+        
     ]
 }

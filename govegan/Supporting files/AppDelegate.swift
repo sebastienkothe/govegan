@@ -12,11 +12,8 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Initializer
-    
-    // Makes sure the configure code gets executed when AppDelegate is initialised
     override init() {
         super.init()
-        
         setupFirebase()
     }
     

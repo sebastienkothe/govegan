@@ -18,7 +18,7 @@ protocol AuthProtocol {
     var currentUser: User? { get }
     
     func signOut() throws
-
+    
     func signIn(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
     
     func createUser(withEmail email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)

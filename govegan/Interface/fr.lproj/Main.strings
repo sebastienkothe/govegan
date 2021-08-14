@@ -43,7 +43,7 @@
 "ggn-LD-W7S.text" = "Réalisations";
 
 /* Class = "UIButton"; normalTitle = "           Let's go !           "; ObjectID = "h3l-Q8-epm"; */
-"h3l-Q8-epm.normalTitle" = "           Allons-y !           ";
+"h3l-Q8-epm.normalTitle" = "Allons-y !";
 
 /* Class = "UITabBarItem"; title = "Progress"; ObjectID = "kFo-7p-aj9"; */
 "kFo-7p-aj9.title" = "Progrès";

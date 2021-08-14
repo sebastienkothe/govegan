@@ -12,4 +12,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - Internal properties
     var window: UIWindow?
 }
-

@@ -923,9 +923,10 @@
                                 <color key="backgroundColor" red="0.011499228889999999" green="0.65269833799999999" blue="0.31757211689999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="toK-Vl-9gU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="wLD-M9-mKP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Charter-Bold" family="Charter" pointSize="17"/>
-                                <state key="normal" title="           Let's go !           ">
+                                <state key="normal" title="Let's go ! ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1005,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmC-3r-1R3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176" y="-74"/>
+            <point key="canvasLocation" x="1175.625" y="-75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fdg-DM-xnM">
@@ -1030,8 +1031,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="G1o-Nd-SD7"/>
-        <segue reference="r27-xc-awl"/>
+        <segue reference="3M4-cg-4cP"/>
+        <segue reference="I0g-vg-0rY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circled-play" width="30" height="30"/>

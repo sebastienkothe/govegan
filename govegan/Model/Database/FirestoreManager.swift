@@ -29,7 +29,7 @@ class FirestoreManager {
             guard error == nil else {
                 return completion(.failure(.unableToCreateAccount))
             }
-
+            
             // Adding the document was successful
             completion(.success(true))
         }

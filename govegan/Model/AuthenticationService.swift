@@ -12,7 +12,7 @@ class AuthenticationService {
     
     // MARK: - Initializer
     init(auth: AuthProtocol = Auth.auth(),
-        authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()) {
+         authenticationDeleterService: AuthenticationDeleterServiceProtocol = AuthenticationDeleterService()) {
         self.auth = auth
         self.authenticationDeleterService = authenticationDeleterService
     }

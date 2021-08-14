@@ -58,7 +58,7 @@ class ChangeStartDateController: UIViewController {
     private let datePicker = VeganStartDatePicker()
     private let dateHandler = DateHandler()
     private var currentUserID = ""
-
+    
     // MARK: - Private methods
     
     /// Handle the request to change user's password

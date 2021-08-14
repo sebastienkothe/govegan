@@ -18,12 +18,10 @@ extension String {
     static let pickUpUserInformationView = "PickUpUserInformationView"
     
     // Controller
-    static let loginViewController = "LoginViewController"
     static let signUpViewController = "SignUpViewController"
     
     // Segue
     static let segueToTabBarFromLogin = "segueToTabBarFromLogin"
-    static let segueToLoginFromWelcome = "segueToLoginFromWelcome"
     static let segueToTabBarFromWelcome = "segueToTabBarFromWelcome"
     static let segueToTabBarFromSignUp = "segueToTabBarFromSignUp"
     static let segueToLoginFromSetting = "segueToLoginFromSetting"
