@@ -5,7 +5,6 @@
 //  Created by Mosma on 18/05/2021.
 //
 
-import Foundation
 import UIKit
 
 class NextButton: UIButton {

@@ -5,7 +5,6 @@
 //  Created by Mosma on 09/08/2021.
 //
 
-import Foundation
 import Firebase
 
 // MARK: - FirestoreProtocol

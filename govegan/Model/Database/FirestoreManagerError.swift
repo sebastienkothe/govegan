@@ -5,8 +5,6 @@
 //  Created by Mosma on 14/06/2021.
 //
 
-import Foundation
-
 enum FirestoreManagerError: Error, CaseIterable {
     case unableToCreateAccount
     case unableToRecoverYourAccount

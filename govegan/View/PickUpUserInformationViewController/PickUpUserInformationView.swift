@@ -5,7 +5,6 @@
 //  Created by Mosma on 18/05/2021.
 //
 
-import Foundation
 import UIKit
 
 class PickUpUserInformationView: UIView {
@@ -34,7 +33,6 @@ class PickUpUserInformationView: UIView {
             guard let self = self else { return "" }
             return self.datePicker.setDateToCurrentDate()
         }
-        
     }
     
     // Load the .xib and add the content view to the view hierarchy
@@ -122,6 +120,7 @@ class PickUpUserInformationView: UIView {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension PickUpUserInformationView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         answerTextField.resignFirstResponder()

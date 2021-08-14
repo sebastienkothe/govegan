@@ -82,7 +82,6 @@ class ChangeStartDateController: UIViewController {
                 guard let dateAsString = self.dateHandler.convertDateAsString(date: veganStartDate) else { return }
                 self.veganStartDateLbl.text = dateAsString
                 self.veganTextField.text = dateAsString
-                
                 self.datePicker.date = veganStartDate
             case .failure(let error):
                 UIAlertService.showAlert(style: .alert, title: "error".localized, message: error.title)

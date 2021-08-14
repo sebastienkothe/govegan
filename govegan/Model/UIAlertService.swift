@@ -10,6 +10,7 @@ import UIKit
 
 class UIAlertService {
     
+    // MARK: - Internal methods
     static func showAlert(style: UIAlertController.Style, title: String?, message: String?, actions: [UIAlertAction] = [UIAlertAction(title: "okay".localized, style: .cancel, handler: nil)], completion: (() -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         for action in actions {

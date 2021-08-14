@@ -5,8 +5,6 @@
 //  Created by Mosma on 17/06/2021.
 //
 
-import Foundation
-
 enum AuthenticationServiceError: Error, CaseIterable {
     case logInBeforeDeletingTheAccount
     case unableToDeleteAccount

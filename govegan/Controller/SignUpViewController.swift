@@ -11,7 +11,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Internal properties
     
-    /// Contains manually entered user data
+    /// Represents the temporary user
     var user: Guest?
     
     // MARK: - IBOutlets
