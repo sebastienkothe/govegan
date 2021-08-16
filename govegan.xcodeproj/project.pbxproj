@@ -43,6 +43,7 @@
 		8382FA17265E3CB300E1DB4E /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382FA16265E3CB300E1DB4E /* ProgressCell.swift */; };
 		8384A5AC26C530E2003818D6 /* VeganStartDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */; };
 		8384A5AE26C552EA003818D6 /* PickUpUserInfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */; };
+		839CE89226CAF3E8000F7C04 /* LicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CE89126CAF3E8000F7C04 /* LicenseController.swift */; };
 		839D307C26C81211008CCCE9 /* LanguageProvider+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */; };
 		839D307E26C81972008CCCE9 /* DateHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */; };
 		83BA455C26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */; };
@@ -124,6 +125,7 @@
 		8382FA16265E3CB300E1DB4E /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		8384A5AB26C530E2003818D6 /* VeganStartDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeganStartDatePicker.swift; sourceTree = "<group>"; };
 		8384A5AD26C552EA003818D6 /* PickUpUserInfoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInfoTextField.swift; sourceTree = "<group>"; };
+		839CE89126CAF3E8000F7C04 /* LicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseController.swift; sourceTree = "<group>"; };
 		839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageProvider+Mock.swift"; sourceTree = "<group>"; };
 		839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandlerTestCase.swift; sourceTree = "<group>"; };
 		83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDeleterServiceTestCase.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */,
 				830B021E26637063003EB990 /* SettingViewController.swift */,
 				830A38FF26C41B64001E9493 /* ChangeStartDateController.swift */,
+				839CE89126CAF3E8000F7C04 /* LicenseController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
 				83DA0BC626C6C2720094AD6F /* Guest.swift in Sources */,
+				839CE89226CAF3E8000F7C04 /* LicenseController.swift in Sources */,
 				83244D84265D237700A76F3A /* ProgressCalculator.swift in Sources */,
 				834C212E267BFB1F005456E0 /* AuthenticationService.swift in Sources */,
 				837B89A626C5C9AC00C5A6E2 /* Progress.swift in Sources */,

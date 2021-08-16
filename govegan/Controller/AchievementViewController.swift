@@ -10,7 +10,6 @@ import UIKit
 class AchievementViewController: UIViewController {
     
     // MARK: - Internal properties
-    let progressCalculator = ProgressCalculator()
     
     /// Contains the user current progress
     var calculatedProgress: [Double] = [] {
@@ -33,6 +32,7 @@ class AchievementViewController: UIViewController {
     
     // MARK: - Private properties
     private let achievements = AchievementsProvider().achievements
+    private let progressCalculator = ProgressCalculator()
     
     // MARK: - Private methods
     
