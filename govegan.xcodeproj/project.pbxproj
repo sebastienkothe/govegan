@@ -46,6 +46,8 @@
 		839CE89226CAF3E8000F7C04 /* LicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839CE89126CAF3E8000F7C04 /* LicenseController.swift */; };
 		839D307C26C81211008CCCE9 /* LanguageProvider+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */; };
 		839D307E26C81972008CCCE9 /* DateHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */; };
+		83AF80D126CBB6D60062BB26 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF80D026CBB6D60062BB26 /* NumberFormatter.swift */; };
+		83AF80D326CBB7590062BB26 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF80D226CBB7590062BB26 /* Double.swift */; };
 		83BA455C26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */; };
 		83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F12660B50100186C6B /* AchievementCell.swift */; };
 		83CA58F42660B80800186C6B /* AchievementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CA58F32660B80800186C6B /* AchievementHeader.swift */; };
@@ -128,6 +130,8 @@
 		839CE89126CAF3E8000F7C04 /* LicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseController.swift; sourceTree = "<group>"; };
 		839D307B26C81211008CCCE9 /* LanguageProvider+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageProvider+Mock.swift"; sourceTree = "<group>"; };
 		839D307D26C81972008CCCE9 /* DateHandlerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandlerTestCase.swift; sourceTree = "<group>"; };
+		83AF80D026CBB6D60062BB26 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		83AF80D226CBB7590062BB26 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		83BA455B26C8047300BBAE7E /* AuthenticationDeleterServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDeleterServiceTestCase.swift; sourceTree = "<group>"; };
 		83CA58F12660B50100186C6B /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		83CA58F32660B80800186C6B /* AchievementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeader.swift; sourceTree = "<group>"; };
@@ -386,9 +390,11 @@
 		83B313652654F99C00657DF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				83DEAEAD2668F9700087B727 /* UIApplication+.swift */,
 				83F3A0722656A3D40030929D /* String.swift */,
 				836E7C93267D459800278CFD /* Notification.swift */,
+				83AF80D026CBB6D60062BB26 /* NumberFormatter.swift */,
+				83AF80D226CBB7590062BB26 /* Double.swift */,
+				83DEAEAD2668F9700087B727 /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -664,10 +670,12 @@
 				83CA58F62661074A00186C6B /* AchievementsProvider.swift in Sources */,
 				835ECAD92658158100BF3E00 /* ProgressViewController.swift in Sources */,
 				834C2130267BFBBB005456E0 /* AuthenticationServiceError.swift in Sources */,
+				83AF80D326CBB7590062BB26 /* Double.swift in Sources */,
 				8337A3F4265FBD3800B1B59D /* AchievementViewController.swift in Sources */,
 				830B021F26637063003EB990 /* SettingViewController.swift in Sources */,
 				83777176266A896800923AA5 /* FirestoreManager.swift in Sources */,
 				83CA58F22660B50100186C6B /* AchievementCell.swift in Sources */,
+				83AF80D126CBB6D60062BB26 /* NumberFormatter.swift in Sources */,
 				83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */,
 				83DA0BC626C6C2720094AD6F /* Guest.swift in Sources */,
 				839CE89226CAF3E8000F7C04 /* LicenseController.swift in Sources */,

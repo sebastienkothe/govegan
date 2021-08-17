@@ -29,8 +29,7 @@ class ProgressCalculator {
     func provideComposedText(_ item: Int, _ additionalText: String) -> NSMutableAttributedString {
         
         let text = NSMutableAttributedString()
-        
-        let firstPartOfTheText = String(format: "%.\(String(0))f", objectives[item].rounded(.towardZero))
+        let firstPartOfTheText = objectives[item].formattedWithSeparator
         let attributesForAdditionalText = [.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: .avenirNext, size: 17)]
         
         text.append(NSAttributedString(string: firstPartOfTheText, attributes: [:]))
@@ -56,7 +55,7 @@ class ProgressCalculator {
     }
     
     /// Returns the current progress for each category
-    func calculateTheProgress() -> [String] {
+    func calculateTheProgress() {
         
         let totalTimeInSeconds = Double(timeData[0]) + Double(timeData[1]) * 60.0 + Double(timeData[2]) * 60.0 * 60.0 + Double(timeData[3]) * 60.0 * 60.0 * 24.0 + Double(timeData[4]) * 60.0 * 60.0 * 24.0 * 365.2422
         
@@ -67,10 +66,6 @@ class ProgressCalculator {
         let CO2saved = convertDailyDataToSeconds(9.1) * totalTimeInSeconds
         
         progressCalculated = [animalSaved, grainSaved, waterSaved, forestSaved, CO2saved]
-        
-        return [
-            convertToStringFrom(floor(animalSaved)), convertToStringFrom(grainSaved), convertToStringFrom(waterSaved), convertToStringFrom(forestSaved), convertToStringFrom(CO2saved)
-        ]
     }
     
     // MARK: - Private properties
@@ -83,9 +78,6 @@ class ProgressCalculator {
     }
     
     // MARK: - private functions
-    private func convertToStringFrom(_ number: Double) -> String{
-        return String(format: "%.\(String(0))f", number)
-    }
     
     private func convertDailyDataToSeconds(_ dailyObjective: Double) -> Double {
         return dailyObjective / 24 / 60 / 60

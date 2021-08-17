@@ -37,7 +37,7 @@ class ProgressViewController: UIViewController {
     private let authenticationService = AuthenticationService()
     private let progressCalculator = ProgressCalculator()
     private var timer = Timer()
-    private var progressByCategory: [String] = [] {
+    private var progressByCategory: [Double] = [] {
         didSet {
             progressCollectionView.reloadData()
         }
@@ -92,8 +92,8 @@ class ProgressViewController: UIViewController {
         let timeToDisplay = progressCalculator.checkTheTimeToDisplay(timeElapsed: timeElapsed)
         editTheTextOfTimeLabelsFrom(timeToDisplay)
         
-        // Retrieve the user's current progress
-        progressByCategory = progressCalculator.calculateTheProgress()
+        // Compute user's progress
+        progressCalculator.calculateTheProgress()
     }
     
     /// Used to refresh interface after user's vegan start date change
@@ -117,11 +117,10 @@ extension ProgressViewController: UICollectionViewDataSource {
         guard let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: .progressCell, for: indexPath) as? ProgressCell else { return UICollectionViewCell() }
         
         if !progressByCategory.isEmpty {
-            progressCell.counterLabel.text = "\("")\(progressByCategory[indexPath.item])"
+            progressCell.counterLabel.text = floor(progressByCategory[indexPath.item]).formattedWithSeparator
         }
         
         progressCell.setup(progress: progress[indexPath.item])
-        
         
         return progressCell
     }
@@ -144,6 +143,7 @@ extension ProgressViewController: UICollectionViewDelegateFlowLayout {
 extension ProgressViewController: ProgressCalculatorDelegate {
     func progressCanBeUpdated(data: [Double]) {
         guard let achievementViewController = tabBarController?.viewControllers?[1] as? AchievementViewController else { return }
+        progressByCategory = data
         achievementViewController.calculatedProgress = data
     }
 }

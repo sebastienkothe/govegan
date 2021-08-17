@@ -75,16 +75,11 @@ class ProgressCalculatorTestCase: XCTestCase {
         _ = progressCalculator.checkTheTimeToDisplay(timeElapsed: timeElapsed)
         
         // When
-        let result = progressCalculator.calculateTheProgress()
-        
-        /* animalSaved, grainSaved, waterSaved, forestSaved, CO2saved
-         Data without taking into account the bisextile years */
-        XCTAssertNotEqual(result, ["36500", "660650", "151982350", "102200", "332150"])
+        progressCalculator.calculateTheProgress()
         
         // Then
-        
         // Data obtained by taking into account the bisextile years
-        XCTAssertEqual(result, ["36524", "661088", "152083200", "102268", "332370"])
+        XCTAssertEqual(progressCalculatorDelegateMock.data, [36524.22, 661088.382, 152083199.658, 102267.81599999998, 332370.402])
     }
     
     func test_GivenDefaultGoalsAreSet_WhenWeCallUpdateProgressLayer_ThenShouldReturnAConsistentGoalAndPercentageProgression() {
@@ -113,7 +108,7 @@ class ProgressCalculatorTestCase: XCTestCase {
         // When
         for index in 0..<progressCalculator.objectives.count {
             
-            let firstPartOfText = String(format: "%.\(String(0))f", progressCalculator.objectives[index].rounded(.towardZero))
+            let firstPartOfText = progressCalculator.objectives[index].formattedWithSeparator
             let additionalText = " \(AchievementsProvider().achievements[index].unitOfMeasure)"
             
             // Then

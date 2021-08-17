@@ -8,6 +8,7 @@
 import Foundation
 
 extension Notification.Name {
+    
     static let accountCanBeDeletedSafely = Notification.Name("AccountCanBeDeletedSafely")
     static let veganStartDateHasBeenChanged = Notification.Name("VeganStartDateHasBeenChanged")
 }
