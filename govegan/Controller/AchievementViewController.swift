@@ -12,12 +12,7 @@ class AchievementViewController: UIViewController {
     // MARK: - Internal properties
     
     /// Contains the user current progress
-    var calculatedProgress: [Double] = [] {
-        didSet {
-            guard achievementTableView != nil else { return }
-            achievementTableView.reloadData()
-        }
-    }
+    var calculatedProgress: [Double] = []
     
     // MARK: - Internal methods
     override func viewDidLoad() {
@@ -25,6 +20,11 @@ class AchievementViewController: UIViewController {
         
         // Used to refresh interface with new vegan start date
         NotificationCenter.default.addObserver(self, selector: #selector(cleanObjectives), name: .veganStartDateHasBeenChanged, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        achievementTableView.reloadData()
     }
     
     // MARK: - IBOutlets
