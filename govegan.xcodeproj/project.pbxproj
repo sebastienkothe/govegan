@@ -891,6 +891,7 @@
 					"@executable_path/Frameworks",
 				);
 				LD_VERIFY_BITCODE = NO;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -916,6 +917,7 @@
 					"@executable_path/Frameworks",
 				);
 				LD_VERIFY_BITCODE = NO;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastienkothe.govegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

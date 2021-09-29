@@ -27,6 +27,7 @@ class AchievementCircularProgressView: UIView {
     
     /// Performs the initial configuration of the layer
     private func setupLayer(layer: CAShapeLayer, _ circlePath: UIBezierPath, strokeColor: CGColor, opacity: Float, strokeEnd: CGFloat) {
+        layer.actions = ["strokeEnd" : NSNull()]
         layer.path = circlePath.cgPath
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = strokeColor

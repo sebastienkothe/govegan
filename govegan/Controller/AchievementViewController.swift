@@ -39,6 +39,7 @@ class AchievementViewController: UIViewController {
     /// Allows you to set goals after changing the start date
     @objc private func cleanObjectives() {
         progressCalculator.objectives = AchievementsProvider.basicGoals
+        achievementTableView.reloadData()
     }
 }
 
