@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D84345C23E10A7E9F1CB68E /* Pods_goveganTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0835C52184213D5E5B5466EE /* Pods_goveganTests.framework */; };
 		8307A712266D5F850086D869 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8307A710266D5F850086D869 /* SignUpViewController.swift */; };
 		8309025E2656B36E0052D36C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 830902602656B36E0052D36C /* Localizable.strings */; };
 		830A390026C41B64001E9493 /* ChangeStartDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A38FF26C41B64001E9493 /* ChangeStartDateController.swift */; };
@@ -68,7 +67,8 @@
 		83F8D88126591C5E00EE96C4 /* ProgressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F8D88026591C5E00EE96C4 /* ProgressProvider.swift */; };
 		83F9132B2653907A00F309DA /* PickUpUserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */; };
 		83FE77AF265A99D000F003CC /* DocumentaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */; };
-		DF131208E6D7675764B97212 /* Pods_govegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDF03FC6D3BA4431217EB10 /* Pods_govegan.framework */; };
+		B316F11FFD956347DFB40C49 /* libPods-goveganTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6820EDF28DD96411AFC2A18 /* libPods-goveganTests.a */; };
+		CB8EC296209CBF2CB32BAF0E /* libPods-govegan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AD6A317379821669CA35161 /* libPods-govegan.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,11 +82,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0835C52184213D5E5B5466EE /* Pods_goveganTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goveganTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		145466E621097CD2C744FFEE /* Pods-govegan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.debug.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.debug.xcconfig"; sourceTree = "<group>"; };
-		1FDF03FC6D3BA4431217EB10 /* Pods_govegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_govegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F063A098B4E1FFEB4B526CE /* Pods-goveganTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.release.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.release.xcconfig"; sourceTree = "<group>"; };
-		6267A03B5E2CB895721FC9F6 /* Pods-govegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.release.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.release.xcconfig"; sourceTree = "<group>"; };
+		13FF2B55C1C0C7461D89A652 /* Pods-govegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.release.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.release.xcconfig"; sourceTree = "<group>"; };
+		2AD6A317379821669CA35161 /* libPods-govegan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-govegan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4389B1CCE801DF83E3389BDC /* Pods-goveganTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.release.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.release.xcconfig"; sourceTree = "<group>"; };
 		8307A710266D5F850086D869 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		830902512656B0DC0052D36C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		830902552656B0DD0052D36C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -155,7 +153,9 @@
 		83F8D88026591C5E00EE96C4 /* ProgressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressProvider.swift; sourceTree = "<group>"; };
 		83F9132A2653907A00F309DA /* PickUpUserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpUserInformationViewController.swift; sourceTree = "<group>"; };
 		83FE77AE265A99D000F003CC /* DocumentaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryViewController.swift; sourceTree = "<group>"; };
-		8C7F346D966145ADC845B2B8 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6D30D100731525883BC9E61 /* Pods-govegan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-govegan.debug.xcconfig"; path = "Target Support Files/Pods-govegan/Pods-govegan.debug.xcconfig"; sourceTree = "<group>"; };
+		D4AAFCDFD53C54F539879D06 /* Pods-goveganTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goveganTests.debug.xcconfig"; path = "Target Support Files/Pods-goveganTests/Pods-goveganTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6820EDF28DD96411AFC2A18 /* libPods-goveganTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-goveganTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF131208E6D7675764B97212 /* Pods_govegan.framework in Frameworks */,
+				CB8EC296209CBF2CB32BAF0E /* libPods-govegan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D84345C23E10A7E9F1CB68E /* Pods_goveganTests.framework in Frameworks */,
+				B316F11FFD956347DFB40C49 /* libPods-goveganTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,12 +181,21 @@
 		3B4E091718B4D2D3690DAFD1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				145466E621097CD2C744FFEE /* Pods-govegan.debug.xcconfig */,
-				6267A03B5E2CB895721FC9F6 /* Pods-govegan.release.xcconfig */,
-				8C7F346D966145ADC845B2B8 /* Pods-goveganTests.debug.xcconfig */,
-				3F063A098B4E1FFEB4B526CE /* Pods-goveganTests.release.xcconfig */,
+				B6D30D100731525883BC9E61 /* Pods-govegan.debug.xcconfig */,
+				13FF2B55C1C0C7461D89A652 /* Pods-govegan.release.xcconfig */,
+				D4AAFCDFD53C54F539879D06 /* Pods-goveganTests.debug.xcconfig */,
+				4389B1CCE801DF83E3389BDC /* Pods-goveganTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		643A22C1DF153798B00341BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AD6A317379821669CA35161 /* libPods-govegan.a */,
+				E6820EDF28DD96411AFC2A18 /* libPods-goveganTests.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8324D3B92667C7720069A249 /* LoginViewController */ = {
@@ -259,7 +268,7 @@
 				836A9EDA264D4722002158FD /* goveganTests */,
 				836A9EC2264D471F002158FD /* Products */,
 				3B4E091718B4D2D3690DAFD1 /* Pods */,
-				E4BBBA7D9AAD23B40684EBC3 /* Frameworks */,
+				643A22C1DF153798B00341BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -470,15 +479,6 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		E4BBBA7D9AAD23B40684EBC3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1FDF03FC6D3BA4431217EB10 /* Pods_govegan.framework */,
-				0835C52184213D5E5B5466EE /* Pods_goveganTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -486,11 +486,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 836A9EEB264D4723002158FD /* Build configuration list for PBXNativeTarget "govegan" */;
 			buildPhases = (
-				50D171A811D0F8AA9640D444 /* [CP] Check Pods Manifest.lock */,
+				AEEECC13FEC5BC3A5F89B3D0 /* [CP] Check Pods Manifest.lock */,
 				836A9EBD264D471F002158FD /* Sources */,
 				836A9EBE264D471F002158FD /* Frameworks */,
 				836A9EBF264D471F002158FD /* Resources */,
-				3687213E2CF884C38FE10278 /* [CP] Embed Pods Frameworks */,
+				0DE9E45F10F9BB32588F4D3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,7 +505,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 836A9EEE264D4723002158FD /* Build configuration list for PBXNativeTarget "goveganTests" */;
 			buildPhases = (
-				A8D896B246D5EC99809DDC64 /* [CP] Check Pods Manifest.lock */,
+				C27552385800DE2C6DE637C0 /* [CP] Check Pods Manifest.lock */,
 				836A9ED3264D4722002158FD /* Sources */,
 				836A9ED4264D4722002158FD /* Frameworks */,
 				836A9ED5264D4722002158FD /* Resources */,
@@ -583,24 +583,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3687213E2CF884C38FE10278 /* [CP] Embed Pods Frameworks */ = {
+		0DE9E45F10F9BB32588F4D3C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-govegan/Pods-govegan-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50D171A811D0F8AA9640D444 /* [CP] Check Pods Manifest.lock */ = {
+		AEEECC13FEC5BC3A5F89B3D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -622,7 +622,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A8D896B246D5EC99809DDC64 /* [CP] Check Pods Manifest.lock */ = {
+		C27552385800DE2C6DE637C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -808,7 +808,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -864,7 +864,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -876,7 +876,7 @@
 		};
 		836A9EEC264D4723002158FD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 145466E621097CD2C744FFEE /* Pods-govegan.debug.xcconfig */;
+			baseConfigurationReference = B6D30D100731525883BC9E61 /* Pods-govegan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -885,7 +885,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
 				INFOPLIST_FILE = "govegan/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -901,7 +901,7 @@
 		};
 		836A9EED264D4723002158FD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6267A03B5E2CB895721FC9F6 /* Pods-govegan.release.xcconfig */;
+			baseConfigurationReference = 13FF2B55C1C0C7461D89A652 /* Pods-govegan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -910,7 +910,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3CQSNJZ5Q2;
 				INFOPLIST_FILE = "govegan/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -926,7 +926,7 @@
 		};
 		836A9EEF264D4723002158FD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C7F346D966145ADC845B2B8 /* Pods-goveganTests.debug.xcconfig */;
+			baseConfigurationReference = D4AAFCDFD53C54F539879D06 /* Pods-goveganTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -949,7 +949,7 @@
 		};
 		836A9EF0264D4723002158FD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F063A098B4E1FFEB4B526CE /* Pods-goveganTests.release.xcconfig */;
+			baseConfigurationReference = 4389B1CCE801DF83E3389BDC /* Pods-goveganTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
